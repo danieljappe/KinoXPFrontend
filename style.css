@@ -9,13 +9,12 @@
 body{
     background-color: #74413e;
     color: #fff;
-    overflow: hidden;
 }
 
 
 
 nav{
-    /* position: fixed; */
+    position: fixed;
     z-index: 99;
     width: 100%;
     background: #242526;
@@ -304,6 +303,18 @@ nav input{
     line-height: 200px;
 }
 
+.flexbox-big-item {
+    width: 40vw;
+    height: 50vh;
+    margin: 10px;
+    margin-top: 7vh;
+    border: 1px solid #fff;
+    background-color: #333;
+    text-align: center;
+    line-height: 200px;
+
+}
+
 
 .flexbox-item-1{
     background-color: #300D26;
@@ -315,4 +326,54 @@ nav input{
 
 .flexbox-item-3{
     background-color: #162350;
+}
+
+.flexbox-item-4{
+    background-color: #50B498;
+}
+
+.flexbox-item-5{
+    background-color: #D49BAB;
+}
+
+.flexbox-item-6{
+    background-color: #222711;
+}
+
+.flexbox-item-7{
+    background-color: #3A15E0;
+}
+
+.flexbox-item-8{
+    background-color: #164700;
+}
+
+.flexbox-item-9{
+    background-color: #6A4115;
+}
+
+
+.page-content {
+    height: 100vh;
+    text-align: center;
+    margin: 0 auto;
+    border: 0;
+    outline: 0;
+}
+
+html, body, section {
+    block-size: 100%;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+}
+
+section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
