@@ -20,6 +20,8 @@ movies.forEach(movie => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+
+
     const flexboxItems = document.querySelectorAll('.flexbox-item');
 
     flexboxItems.forEach(flexboxItem => {
@@ -39,4 +41,28 @@ document.addEventListener('DOMContentLoaded', function() {
             description.style.display = "none";
         });
     });
+
+    document.querySelector('.drop-menu li#list1-link a').addEventListener('click', function(event) {
+        event.preventDefault();
+        var targetElement = document.querySelector('#list1-container');
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    document.querySelector('.drop-menu li#list2-link a').addEventListener('click', function(event) {
+        event.preventDefault();
+        var targetElement = document.querySelector('#list2-container');
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    document.querySelector('.drop-menu li#list3-link a').addEventListener('click', function(event) {
+        event.preventDefault();
+        var targetElement = document.querySelector('#list3-container');
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    
 });
+
+
+
+

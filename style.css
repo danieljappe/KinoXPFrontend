@@ -274,6 +274,7 @@ nav input{
     margin: 25px;
     border: 1px solid #444;
     position: relative;
+    margin-top: 10vh;
 }
 
 .flexbox-content {
@@ -283,12 +284,16 @@ nav input{
 }
 
 .flexbox-title {
-    border: 1px solid #fff;
+    border: 1px solid #555;
     background-color: #333;
     text-align: center;
     color: #fff;
     position: absolute;
-    width: 100%;
+    width: 50%;
+    /* center */
+    left: 50%;
+    margin-top: 2vh;
+    transform: translate(-50%, -50%);
     z-index: 1;
 }
 
