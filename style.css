@@ -272,7 +272,7 @@ nav input{
     display: flex;
     flex-direction: column;
     margin: 25px;
-    border: 1px solid #C9AB40;
+    border: 1px solid #444;
     position: relative;
 }
 
@@ -350,6 +350,10 @@ nav input{
 
 .flexbox-item-9{
     background-color: #6A4115;
+}
+
+.description {
+    display: none; /* or display: block; or any other initial display property */
 }
 
 
