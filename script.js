@@ -21,7 +21,7 @@ movies.forEach(movie => {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-
+    
     const flexboxItems = document.querySelectorAll('.flexbox-item');
 
     flexboxItems.forEach(flexboxItem => {
@@ -42,26 +42,46 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    document.querySelector('.drop-menu li#list1-link a').addEventListener('click', function(event) {
-        event.preventDefault();
-        var targetElement = document.querySelector('#list1-container');
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-    });
-    
-    document.querySelector('.drop-menu li#list2-link a').addEventListener('click', function(event) {
-        event.preventDefault();
-        var targetElement = document.querySelector('#list2-container');
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-    });
-    
-    document.querySelector('.drop-menu li#list3-link a').addEventListener('click', function(event) {
-        event.preventDefault();
-        var targetElement = document.querySelector('#list3-container');
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-    });
+    const loginButton = document.querySelector('.login-button');
+    const loginForm = document.querySelector('.login-form');
 
+    loginButton.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevents the form from being submitted
+
+        if (loginForm.style.display === "none" || loginForm.style.display === "") {
+            loginForm.style.display = "block";
+        } else {
+            loginForm.style.display = "none";
+        }
+    });
     
 });
+
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var loginLink = document.getElementById("login-link");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the link, open the modal
+loginLink.onclick = function(event) {
+    event.preventDefault(); // Prevent the default link behavior (navigating to a new page)
+    modal.style.display = "block";
+  }
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 
 
 

@@ -29,11 +29,10 @@
                     <input type="checkbox" id="showDrop">
                     <label for="showDrop" class="mobile-item">Dropdown Menu</label>
                     <ul class="drop-menu">
-                        <li id="list1-link"><a href="#list1-container">Popular</a></li>
-                        <li id="list2-link"><a href="#list2-container">Genre 1</a></li>
-                        <li id="list2-link"><a href="#list2-container">Genre 2</a></li>
-                        <li id="list2-link"><a href="#list2-container">Genre 3</a></li>
-                        <li id="list3-link"><a href="#list3-container">Sal</a></li>
+                        <li><a href="#">Option</a></li>
+                        <li><a href="#">Option</a></li>
+                        <li><a href="#">Option</a></li>
+                        <li><a href="#">Option</a></li>
                     </ul>
                 </li>
                 
@@ -85,19 +84,46 @@
 
                 <!-- Account -->
                 <li>
-                    <a href="#">Account</a>
-                    <input type="checkbox" id="showDrop">
-                    <label for="showDrop" class="mobile-item">Dropdown Menu</label>
-                    <ul class="drop-menu">
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Sign up</a></li>
-                    </ul>
+                    <a id="login-link" href="#">Login</a>
                 </li>
+                </ul>
+                <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+                </div>
+                </nav>
+                
+                <div id="myModal" class="modal">
 
-            </ul>
-            <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
-        </div>
-    </nav>
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      
+                        <div class="login-form">
+
+                            <h2>Sign In</h2> 
+
+                            <div> 
+                                <div> 
+                                   <h3>Username</h3> 
+                                 <input type="text" required> 
+                                </div> 
+
+                                <div> 
+                                   <h3>Password</h3> 
+                                 <input type="password" required>
+                                </div> 
+
+                                <div> <a href="#">Forgot Password</a> <a href="#">Signup</a> 
+                                </div> 
+
+                                <div> 
+                                 <input type="submit" value="Login"> 
+                                </div> 
+
+                            </div> 
+                        </div> 
+                    </div>
+                  
+                  </div>
 
     <!-- Page Content -->
 
@@ -118,7 +144,7 @@
 
         <section>
     
-            <div class="flexbox-container" id="list2-container">
+            <div class="flexbox-container" id="list2-container" style="margin-top: 12vh;">
                 <div class="flexbox-title">
                     <h1 style="color: #fff;">Genre 1</h1>
                 </div>
@@ -175,7 +201,6 @@
             </div>
         </section>
 
-        
 
     </div>
 
