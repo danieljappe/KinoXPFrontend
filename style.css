@@ -274,7 +274,7 @@ nav input{
     margin: 1.5em;
     border: 1px solid #444;
     position: relative;
-    margin-top: 10vh;
+
 }
 
 .flexbox-content {
@@ -298,13 +298,16 @@ nav input{
 
 .flexbox-item {
     width: 10vw;
-    height: 20vh;
+    height: 31vh;
     margin: 1vw;
     margin-top: 7vh;
     border: 1px solid #fff;
     background-color: #333;
     text-align: center;
     line-height: 20vh;
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .flexbox-big-item {
@@ -320,15 +323,16 @@ nav input{
 
 
 .flexbox-item-1{
-    background-color: #300D26;
+    background-image: url("https://imusic.b-cdn.net/images/item/original/520/5051895255520.jpg");
+
 }
 
 .flexbox-item-2{
-    background-color: #C9AB40;
+    background-image: url("https://play-lh.googleusercontent.com/42tn9bqVGGQRSeCFpVZfYgSCF0ClRh6217Nc6xRHOgJjZfeZjb1Jt71TYunVUzFFK4HqCCbLVFaUta9O_8I=w240-h480-rw");
 }
 
 .flexbox-item-3{
-    background-color: #162350;
+    background-image: url("https://vice-press.com/cdn/shop/products/Jurassic-Park-Editions-poster-florey.jpg");
 }
 
 .flexbox-item-4{
