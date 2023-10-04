@@ -402,7 +402,7 @@ section {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  
+
   /* Modal Content/Box */
   .modal-content {
     background-color: #333;
@@ -412,7 +412,7 @@ section {
     width: 30%; /* Could be more or less, depending on screen size */
     height: 55%;
   }
-  
+
   /* The Close Button */
   .close {
     color: #aaa;
@@ -420,7 +420,7 @@ section {
     font-size: 28px;
     font-weight: bold;
   }
-  
+
   .close:hover,
   .close:focus {
     color: black;
@@ -438,35 +438,45 @@ section {
 
  .seat {
     /*background-color: white;*/
-    background-size: cover;
-    width: 10px;
-    height: 10px;
+    /*background-size: cover;*/
+    width: 30px;
+    height: 25px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-.seat:hover{
+ .seatButton{
+     background-color: transparent;
+     border-style: hidden;
+ }
+.seatButton:hover{
     background-color: green;
     opacity: 50%;
 }
- .seat.selected {
-     color: green;
+ .seatButton.selected {
+     background-color: forestgreen;
  }
- .seat.row {
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 1.2rem;
-}
- .seat.screen {
-    margin-bottom: 1rem;
-    background-color: white;
-    width: 12rem;
-    height: 2rem;
-    padding: 3rem;
-    transform: rotateX(-45deg);
-    box-shadow: 0 25px 25px rgba(255, 255, 255, 0.8);
-}
+/* .seat.screen {*/
+/*    margin-bottom: 1rem;*/
+/*    background-color: white;*/
+/*    width: 12rem;*/
+/*    height: 2rem;*/
+/*    padding: 3rem;*/
+/*    transform: rotateX(-45deg);*/
+/*    box-shadow: 0 25px 25px rgba(255, 255, 255, 0.8);*/
+/*}*/
+ .seatDiv {
+     margin-top: 10px;
+     /*width: 50%;*/
+     /*height: 60%;*/
+     border-color: #282424;
+     border-width: 5px;
+     border-style: solid;
+ }
+ .seatInfoDiv {
+    margin-top: 75px;
+     text-align: center;
+
+ }
 
 /* Popup container */
 .popup {

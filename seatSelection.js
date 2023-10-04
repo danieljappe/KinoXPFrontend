@@ -1,24 +1,17 @@
 function createSeats(rows, seatsPerRow) {
     const container = document.getElementById("seatDiv");
-
     const table = document.createElement('table');
-    table.style.width = '100%';
-    table.style.height = '100%';
-    table.border = '1';
 
     for (let i = 1; i <= rows; i++) {
         const row = document.createElement('tr');
 
         for (let j = 1; j <= seatsPerRow; j++) {
             const seat = document.createElement('td');
-            // seat.style.backgroundColor = 'white';
             const seatButton = document.createElement('button');
-            seatButton.style.backgroundColor = 'transparent';
-            seatButton.style.borderStyle = 'hidden';
-            // seatButton.innerText = `R${i}, S${j}`;
-            seatButton.innerHTML = "<img style='width: 35px;height: 35px' src='icons/seat.png'/>";
+            seatButton.classList.add('seatButton')
+            seatButton.innerHTML = "<img class='seat' src='icons/seat.png'/>";
             seatButton.addEventListener('click', () => {
-                alert(`Seat ${j} in Row ${i}.`); //For debugging
+                selectSeat(seatButton, i, j)
             });
             seat.appendChild(seatButton);
             row.appendChild(seat);
@@ -27,22 +20,34 @@ function createSeats(rows, seatsPerRow) {
     }
     container.appendChild(table);
 }
+function selectSeat(seatButton, row, seat){
+    const seatInfo = "row" + row + ", seat" + seat;
+    if (!seatButton.classList.contains("selected")) {
+        selectedSeats.push(seatInfo)
+        seatButton.classList.toggle('selected')
+    } else {
+        const seatToRemove = selectedSeats.indexOf(seatInfo)
+        if (seatToRemove !== -1){
+            selectedSeats.splice(seatToRemove, 1)
+        }
+        seatButton.classList.toggle('selected');
+    }
+    console.log(selectedSeats)
+}
 
-// Call the function to create the seat selector table
+const selectedSeats = [];
 const smallTheatreRows = 20;
 const smallTheatreSeatsPerRow = 12;
 const bigTheatreRows = 25;
 const bigTheatreSeatsPerRow = 16;
-// createSeatSeats(smallTheatreRows, smallTheatreSeatsPerRow);
+// createSeats(smallTheatreRows, smallTheatreSeatsPerRow);
 createSeats(bigTheatreRows, bigTheatreSeatsPerRow);
-// createSeatSelector(smallTheatreRows, smallTheatreSeatsPerRow);
-createSeatSelector(bigTheatreRows, bigTheatreSeatsPerRow);
 
 //POP UP
 // document.getElementById("clickable").onclick = () => {
 //
 // }
-loginLink.onclick = function(event) {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-}
+// loginLink.onclick = function(event) {
+//     var popup = document.getElementById("myPopup");
+//     popup.classList.toggle("show");
+// }
