@@ -310,6 +310,13 @@ nav input{
     background-repeat: no-repeat;
 }
 
+.flexbox-item:hover {
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 .flexbox-big-item {
     width: 40vw;
     height: 50vh;
@@ -320,44 +327,6 @@ nav input{
     text-align: center;
     line-height: 50vh;
 }
-
-
-/* .flexbox-item-1{
-    background-image: url("https://imusic.b-cdn.net/images/item/original/520/5051895255520.jpg");
-
-}
-
-.flexbox-item-2{
-    background-image: url("https://play-lh.googleusercontent.com/42tn9bqVGGQRSeCFpVZfYgSCF0ClRh6217Nc6xRHOgJjZfeZjb1Jt71TYunVUzFFK4HqCCbLVFaUta9O_8I=w240-h480-rw");
-}
-
-.flexbox-item-3{
-    background-image: url("https://vice-press.com/cdn/shop/products/Jurassic-Park-Editions-poster-florey.jpg");
-}
-
-.flexbox-item-4{
-    background-color: #50B498;
-}
-
-.flexbox-item-5{
-    background-color: #D49BAB;
-}
-
-.flexbox-item-6{
-    background-color: #222711;
-}
-
-.flexbox-item-7{
-    background-color: #3A15E0;
-}
-
-.flexbox-item-8{
-    background-color: #164700;
-}
-
-.flexbox-item-9{
-    background-color: #6A4115;
-} */
 
 .description {
     display: none; /* or display: block; or any other initial display property */
@@ -414,24 +383,25 @@ section {
   }
 
   .modal-content-movie {
-    margin-top: -10vh;
     background-color: #333;
-    margin: 10% auto; /* 15% from the top and centered */
-    padding: 20px;
+    margin: 6% auto; /* 15% from the top and centered */
+    padding: 1vh;
     border: 1px solid #888;
     width: 85%; /* Could be more or less, depending on screen size */
-    height: 75%;
+    height: 80%;
   }
 
   .modal-content-movie img {
-    width: 20vw;
-    height: 70vh;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit:contain ;
   }
 
   .movie-flex{
     display: flex;
     flex-direction: row;
+    height: 100%;
+    margin: auto;
   }
 
   .movie-wrapper{
@@ -444,9 +414,7 @@ section {
   }
 
   .movieposter{
-    width: 20vw;
-    height: 70vh;
-    object-fit: contain;
+    width: 40%;
     margin-left: 2vw;
   }
   
@@ -460,21 +428,35 @@ section {
     width: 50%;
     display: inline-flex;
     justify-content:space-around;
+    margin: 1vh;
   }
 
   .movie-wrapper .movie-description{
     border: 1px solid #fff;
     width: 80%;
-    height: 30%;
+    max-height: 30%;
     text-align:left;
-    margin-top: 1vh;
     overflow-y: auto;
   }
+  
+  .movie-wrapper .movie-description p{
+    margin: 1vh;
+  }
+
+  .movie-wrapper .movie-booking{
+    border: 1px solid #fff;
+    width: 80%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .movie-wrapper .movie-trailer{
     border: 1px solid #fff;
     margin-top: 2vh;
     width: 80%;
-    height: 50%;
+    height: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
