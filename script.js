@@ -1,26 +1,43 @@
-const movies = [
-    { id: 1, title: "Item 1" },
-    { id: 2, title: "Item 2" },
-    { id: 3, title: "Item 3" },
-    { id: 4, title: "Item 4" },
-    { id: 5, title: "Item 5" },
-    { id: 6, title: "Item 6" },
-    { id: 7, title: "Item 7" },
-    { id: 8, title: "Item 8" }
-  ];
 
+const movies = [
+  { id: 1, title: 'Film 1', description: 'Description for item 1.', imageURL: "url1" },
+  { id: 2, title: 'Film 2', description: 'Description for item 2.', imageURL: "url2" },
+  { id: 3, title: 'Film 3', description: 'Description for item 3.', imageURL: "url3" },
+  { id: 4, title: 'Film 4', description: 'Description for item 4.', imageURL: "url4" },
+  { id: 5, title: 'Film 5', description: 'Description for item 5.', imageURL: "url5" },
+  { id: 6, title: 'Film 6', description: 'Description for item 6.', imageURL: "url6" },
+  { id: 7, title: 'Film 7', description: 'Description for item 7.', imageURL: "url7" },
+  { id: 8, title: 'Film 8', description: 'Description for item 8.', imageURL: "url8" }
+];
 const flexboxContainer = document.querySelector('.flexbox-container');
-const flexboxContent = document.querySelector('.flexbox-content');
+const flexboxContent = document.getElementById('flexboxContent');
 
 movies.forEach(movie => {
   const divElement = document.createElement('div');
   divElement.className = `flexbox-item flexbox-item-${movie.id}`;
-  divElement.textContent = movie.title;
+
+  const h1Element = document.createElement('h1');
+  h1Element.textContent = movie.title;
+
+  const imgElement = document.createElement('img');
+  imgElement.src = movie.imageUrl; // Set the image source to the movie's imageUrl
+  imgElement.alt = movie.title; // Set the alt attribute for accessibility
+
+  const spanElement = document.createElement('span');
+  spanElement.className = 'description';
+
+  const pElement = document.createElement('p');
+  pElement.textContent = movie.description;
+
+  spanElement.appendChild(pElement);
+  divElement.appendChild(h1Element);
+  divElement.appendChild(imgElement); // Append the image element
+  divElement.appendChild(spanElement);
+
   flexboxContent.appendChild(divElement);
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-
     
     const flexboxItems = document.querySelectorAll('.flexbox-item');
 
