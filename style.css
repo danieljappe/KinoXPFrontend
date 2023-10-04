@@ -451,14 +451,14 @@ section {
  .seat.selected {
      color: green;
  }
- .row {
+ .seat.row {
     height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     column-gap: 1.2rem;
 }
- .screen {
+ .seat.screen {
     margin-bottom: 1rem;
     background-color: white;
     width: 12rem;
