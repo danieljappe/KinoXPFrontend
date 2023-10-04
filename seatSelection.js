@@ -1,3 +1,11 @@
+/* Sudo code:
+When button is clicked -> Pop up with phone number needed
+->
+take all selected seats and turn them into reserved
+->
+Back to home
+
+*/
 function createSeatSelector(rows, seatsPerRow) {
     const container = document.getElementById("seatDiv");
     // const img = document.createElement("img")
@@ -37,3 +45,12 @@ const bigTheatreRows = 25;
 const bigTheatreSeatsPerRow = 16;
 // createSeatSelector(smallTheatreRows, smallTheatreSeatsPerRow);
 createSeatSelector(bigTheatreRows, bigTheatreSeatsPerRow);
+
+//POP UP
+// document.getElementById("clickable").onclick = () => {
+//
+// }
+loginLink.onclick = function(event) {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}

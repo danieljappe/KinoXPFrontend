@@ -451,13 +451,13 @@ section {
  .seat.selected {
      color: green;
  }
- .row {
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 1.2rem;
-}
+/* .row {*/
+/*    height: 2rem;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    column-gap: 1.2rem;*/
+/*}*/
  .screen {
     margin-bottom: 1rem;
     background-color: white;
@@ -466,5 +466,28 @@ section {
     padding: 3rem;
     transform: rotateX(-45deg);
     box-shadow: 0 25px 25px rgba(255, 255, 255, 0.8);
+}
+
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
 }
   
