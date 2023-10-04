@@ -42,7 +42,14 @@ createSeatSelector(bigTheatreRows, bigTheatreSeatsPerRow);
 // document.getElementById("clickable").onclick = () => {
 //
 // }
-loginLink.onclick = function(event) {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
+// loginLink.onclick = function(event) {
+//     var popup = document.getElementById("myPopup");
+//     popup.classList.toggle("show");
+// }
+
+function addPhoneNumber() {
+    // const styling = $("#container");
+    // let phoneNumber = styling.prompt("Please connect your phone number : ");
+    let phoneNumber = prompt("Please connect your phone number : ");
+    console.log("The phone number : " + phoneNumber);
 }
