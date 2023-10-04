@@ -83,6 +83,9 @@ loginLink.onclick = function(event) {
     }
   }
 
+  //Seat reservation stuff
+
+
 
 
 

@@ -376,9 +376,9 @@ html, body, section {
     block-size: 100%;
 }
 
-html {
-    scroll-snap-type: y mandatory;
-}
+/*html {*/
+/*    scroll-snap-type: y mandatory;*/
+/*}*/
 
 section {
     scroll-snap-align: start;
@@ -434,5 +434,38 @@ section {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+}
+
+ .seat {
+    background-color: white;
+    background-image: url(icons/Seat.png);
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.seat:hover{
+    background-color: green;
+    opacity: 50%;
+}
+ .seat.selected {
+     color: green;
+ }
+ .row {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1.2rem;
+}
+ .screen {
+    margin-bottom: 1rem;
+    background-color: white;
+    width: 12rem;
+    height: 2rem;
+    padding: 3rem;
+    transform: rotateX(-45deg);
+    box-shadow: 0 25px 25px rgba(255, 255, 255, 0.8);
 }
   
