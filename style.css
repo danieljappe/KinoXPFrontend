@@ -451,14 +451,14 @@ section {
  .seat.selected {
      color: green;
  }
-/* .row {*/
-/*    height: 2rem;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    column-gap: 1.2rem;*/
-/*}*/
- .screen {
+ .seat.row {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1.2rem;
+}
+ .seat.screen {
     margin-bottom: 1rem;
     background-color: white;
     width: 12rem;
@@ -490,4 +490,4 @@ section {
     left: 50%;
     margin-left: -80px;
 }
-  
+
