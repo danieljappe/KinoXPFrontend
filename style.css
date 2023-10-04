@@ -11,6 +11,8 @@ body{
     color: #fff;
 }
 
+
+
 nav{
     position: fixed;
     z-index: 99;
@@ -25,7 +27,7 @@ nav .wrapper{
     line-height: 70px;
     margin: auto;
     display: flex;
-    /* align-items: center; */
+    align-items: center;
     justify-content: space-between;
 }
 .wrapper .logo a{
@@ -139,41 +141,131 @@ nav .wrapper{
     top: 10px;
 }
 
-.search-box{
-    width: 20vw;
-    margin:  2vh auto 0;
-    border-radius: 5px;
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 970px) {
+    /* Add responsive styles here */
+    .wrapper .btn{
+        display: block;
+    }
+    .wrapper .nav-links{
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        max-width: 350px;
+        top: 0;
+        left: -100%;
+        background: #242526;
+        display: block;
+        padding: 50px 10px;
+        line-height: 50px;
+        overflow-y: auto;
+        box-shadow: 0px 15px 15px rgba(0,0,0,0.18);
+        transition: all 0.3s ease;
+    }
+    /* custom scroll bar */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #242526;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #3A3B3C;
+    }
+    #menu-btn:checked ~ .nav-links{
+        left: 0%;
+    }
+    #menu-btn:checked ~ .btn.menu-btn{
+        display: none;
+    }
+    #close-btn:checked ~ .btn.menu-btn{
+        display: block;
+    }
+    .nav-links li{
+        margin: 15px 10px;
+    }
+    .nav-links li a{
+        padding: 0 20px;
+        display: block;
+        font-size: 20px;
+    }
+    .nav-links .drop-menu{
+        position: static;
+        opacity: 1;
+        top: 65px;
+        visibility: visible;
+        padding-left: 20px;
+        width: 100%;
+        max-height: 0px;
+        overflow: hidden;
+        box-shadow: none;
+        transition: all 0.3s ease;
+    }
+    #showDrop:checked ~ .drop-menu,
+    #showMega:checked ~ .mega-box{
+        max-height: 100%;
+    }
+    .nav-links .desktop-item{
+        display: none;
+    }
+    .nav-links .mobile-item{
+        display: block;
+        color: #f2f2f2;
+        font-size: 20px;
+        font-weight: 500;
+        padding-left: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+    .nav-links .mobile-item:hover{
+        background: #3A3B3C;
+    }
+    .drop-menu li{
+        margin: 0;
+    }
+    .drop-menu li a{
+        border-radius: 5px;
+        font-size: 18px;
+    }
+    .mega-box{
+        position: static;
+        top: 65px;
+        opacity: 1;
+        visibility: visible;
+        padding: 0 20px;
+        max-height: 0px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    .mega-box .content{
+        box-shadow: none;
+        flex-direction: column;
+        padding: 20px 20px 0 20px;
+    }
+    .mega-box .content .row{
+        width: 100%;
+        margin-bottom: 15px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .mega-box .content .row:nth-child(1),
+    .mega-box .content .row:nth-child(2){
+        border-top: 0px;
+    }
+    .content .row .mega-links{
+        border-left: 0px;
+        padding-left: 15px;
+    }
+    .row .mega-links li{
+        margin: 0;
+    }
+    .content .row header{
+        font-size: 19px;
+    }
 }
-
-.search-row{
-    display: flex;
-    align-items: center;
-    padding: 1vh 2vw;
+nav input{
+    display: none;
 }
-
-input{
-    flex: 1;
-    height: 5vh;
-    background: transparent;
-    border: 0;
-    outline: none;
-    font-size: 18px;
-    color: #fff;
-}
-
-.result-box ul{
-    border-top: 1px solid #999;
-    padding: 15px 10px;
-}
-
-.result-box li{
-    list-style: none;
-    border-radius: 3px;
-    padding: 15px 10px;
-}
-
-/* nav input{
-} */
 
 
 .flexbox-container {
@@ -212,10 +304,10 @@ input{
     border: 1px solid #fff;
     background-color: #333;
     text-align: center;
+    line-height: 20vh;
     background-size: auto 100%;
     background-position: center;
     background-repeat: no-repeat;
-    
 }
 
 .flexbox-big-item {
@@ -229,16 +321,8 @@ input{
     line-height: 50vh;
 }
 
-.flexbox-item h1{
-    background-color: rgba(51, 51, 51, 0.7);
-    width: 50%;
-    margin: 0 auto;
-    border-radius: 0 0 1vh 1vh;
 
-}
-
-
-.flexbox-item-1{
+/* .flexbox-item-1{
     background-image: url("https://imusic.b-cdn.net/images/item/original/520/5051895255520.jpg");
 
 }
@@ -273,11 +357,10 @@ input{
 
 .flexbox-item-9{
     background-color: #6A4115;
-}
+} */
 
 .description {
-    display: none;
-    justify-content: center;
+    display: none; /* or display: block; or any other initial display property */
 }
 
 
@@ -329,7 +412,81 @@ section {
     width: 30%; /* Could be more or less, depending on screen size */
     height: 55%;
   }
+
+  .modal-content-movie {
+    margin-top: -10vh;
+    background-color: #333;
+    margin: 10% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 85%; /* Could be more or less, depending on screen size */
+    height: 75%;
+  }
+
+  .modal-content-movie img {
+    width: 20vw;
+    height: 70vh;
+    object-fit: contain;
+  }
+
+  .movie-flex{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .movie-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    width: 90%;
+    margin-top: 3vh;
+  }
+
+  .movieposter{
+    width: 20vw;
+    height: 70vh;
+    object-fit: contain;
+    margin-left: 2vw;
+  }
   
+  .movie-wrapper .movie-title{
+    border: 1px solid #fff;
+    width: 80%;
+    text-align: center;
+  }
+
+  .movie-wrapper .movie-undertitle{
+    width: 50%;
+    display: inline-flex;
+    justify-content:space-around;
+  }
+
+  .movie-wrapper .movie-description{
+    border: 1px solid #fff;
+    width: 80%;
+    height: 30%;
+    text-align:left;
+    margin-top: 1vh;
+    overflow-y: auto;
+  }
+  .movie-wrapper .movie-trailer{
+    border: 1px solid #fff;
+    margin-top: 2vh;
+    width: 80%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .movie-wrapper .movie-trailer iframe{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+
   /* The Close Button */
   .close {
     color: #aaa;

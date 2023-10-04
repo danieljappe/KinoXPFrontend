@@ -14,18 +14,8 @@
     <nav>
         <div class="wrapper">
             <div class="logo"><a href="#">Kino XP</a></div>
-            <div class="search-box">
-                <div class="search-row">
-                    <input type="text" id="input-box" placeholder="Search here..." autocomplete="off">
-                </div>
-                <div class="result-box">
-                    <ul>
-                        <!-- <li>Example 1</li>
-                        <li>Example 2</li>
-                        <li>Example 3</li> -->
-                    </ul>
-                </div>
-            </div>
+            <input type="checkbox" id="menu-btn">
+            <input type="checkbox" id="close-btn">
             <ul class="nav-links">
                 <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
 
@@ -36,6 +26,7 @@
 
                 <li>
                     <a href="#" class="desktop-item">Options</a>
+                    <input type="checkbox" id="showDrop">
                     <label for="showDrop" class="mobile-item">Dropdown Menu</label>
                     <ul class="drop-menu">
                         <li><a href="#">Option</a></li>
@@ -48,6 +39,7 @@
                 <!-- Mega Menu -->
                 <li>
                     <a href="#" class="desktop-item">Mega Menu</a>
+                    <input type="checkbox" id="showMega">
                     <label for="showMega" class="mobile-item">Mega Menu</label>
                     <div class="mega-box">
                         <div class="content">
@@ -100,7 +92,6 @@
                 </nav>
                 
                 <div id="myModal" class="modal">
-
                     <!-- Modal content -->
                     <div class="modal-content">
                       <span class="close">&times;</span>
@@ -130,8 +121,35 @@
                             </div> 
                         </div> 
                     </div>
-                  
-                  </div>
+                </div>
+
+                <div id="movieModal" class="modal">
+                    <div class="modal-content-movie">
+                        <span class="close">&times;</span>
+                        <div class="movie-flex">
+                            <div class="movieposter">
+                                <img id="modalPoster" src="" alt="Movie Poster">
+                            </div>
+                            <div class="movie-wrapper">
+                                <div class="movie-title">
+                                    <h2 id="modalTitle"></h2>
+                                </div>
+                                <div class="movie-undertitle">
+                                    <p id="modalGenre"></p>
+                                    <p id="modalAgeRestriction"></p>
+                                    <p id="modalRunTime"></p>
+                                </div>
+                                <div class="movie-description">
+                                    <p id="modalDescription"></p>
+                                </div>
+                                <div class="movie-trailer">
+                                    <iframe id="modalTrailer" src="" frameborder="0"></iframe>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
 
     <!-- Page Content -->
 
@@ -158,28 +176,28 @@
                 </div>
 
                 <div class="flexbox-content">
-                    <div class="flexbox-item flexbox-item-1"><h1>Film 1</h1><span class="description"><p>Description for item 1.</p></span></div>
-                    <div class="flexbox-item flexbox-item-2"><h1>Film 2</h1><span class="description"><p>Description for item 2.</p></div>
-                    <div class="flexbox-item flexbox-item-3"><h1>Film 3</h1><span class="description"><p>Description for item 3.</p></div>   
-                    <div class="flexbox-item flexbox-item-4"><h1>Film 4</h1><span class="description"><p>Description for item 4.</p></div>   
-                    <div class="flexbox-item flexbox-item-5"><h1>Film 5</h1><span class="description"><p>Description for item 5.</p></div>
-                    <div class="flexbox-item flexbox-item-6"><h1>Film 6</h1><span class="description"><p>Description for item 6.</p></div>
-                    <div class="flexbox-item flexbox-item-7"><h1>Film 7</h1><span class="description"><p>Description for item 7.</p></div>
-                    <div class="flexbox-item flexbox-item-8"><h1>Film 8</h1><span class="description"><p>Description for item 8.</p></div>
+                    <div class="flexbox-item flexbox-item-1">Item 1<span class="description"><h1>Description for item 1.</h1></span></div>
+                    <div class="flexbox-item flexbox-item-2">Item 2</div>
+                    <div class="flexbox-item flexbox-item-3">Item 3</div>   
+                    <div class="flexbox-item flexbox-item-4">Item 4</div>   
+                    <div class="flexbox-item flexbox-item-5">Item 5</div>
+                    <div class="flexbox-item flexbox-item-6">Item 6</div>
+                    <div class="flexbox-item flexbox-item-7">Item 7</div>
+                    <div class="flexbox-item flexbox-item-8">Item 8</div>
                 </div>
 
                 <div class="flexbox-content">
                     <div class="flexbox-title">
                         <h1 style="color: #fff;">Genre 2</h1>
                     </div>
-                    <div class="flexbox-item flexbox-item-1"><h1>Film 1</h1></div>
-                    <div class="flexbox-item flexbox-item-2"><h1>Film 2</h1></div>
-                    <div class="flexbox-item flexbox-item-3"><h1>Film 3</h1></div>
-                    <div class="flexbox-item flexbox-item-4"><h1>Film 4</h1></div>
-                    <div class="flexbox-item flexbox-item-5"><h1>Film 5</h1></div>
-                    <div class="flexbox-item flexbox-item-6"><h1>Film 6</h1></div>
-                    <div class="flexbox-item flexbox-item-7"><h1>Film 7</h1></div>
-                    <div class="flexbox-item flexbox-item-8"><h1>Film 8</h1></div>
+                    <div class="flexbox-item flexbox-item-1">Item 1</div>
+                    <div class="flexbox-item flexbox-item-2">Item 2</div>
+                    <div class="flexbox-item flexbox-item-3">Item 3</div>
+                    <div class="flexbox-item flexbox-item-4">Item 4</div>
+                    <div class="flexbox-item flexbox-item-5">Item 5</div>
+                    <div class="flexbox-item flexbox-item-6">Item 6</div>
+                    <div class="flexbox-item flexbox-item-7">Item 7</div>
+                    <div class="flexbox-item flexbox-item-8">Item 8</div>
                 </div>
 
             </div>
