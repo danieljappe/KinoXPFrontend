@@ -478,26 +478,16 @@ section {
 
  }
 
-/* Popup container */
-.popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-/* The actual popup (appears on top) */
-.popup .popuptext {
-    visibility: hidden;
-    width: 160px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
+#containerPOP {
+    display: none;
+    background-image: linear-gradient(to right, #66a80f, #c0eb75);
+    background-size:cover;
+    color: white;
     position: absolute;
-    z-index: 1;
-    bottom: 125%;
+    width: 350px;
+    border-radius: 5px;
     left: 50%;
-    margin-left: -80px;
+    margin-left: -160px;
+    padding: 16px 8px 8px;
+    box-sizing: border-box;
 }
-

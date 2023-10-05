@@ -51,3 +51,10 @@ createSeats(bigTheatreRows, bigTheatreSeatsPerRow);
 //     var popup = document.getElementById("myPopup");
 //     popup.classList.toggle("show");
 // }
+
+function addPhoneNumber() {
+    // const styling = $("#container");
+    // let phoneNumber = styling.prompt("Please connect your phone number : ");
+    let phoneNumber = prompt("Please connect your phone number : ");
+    console.log("The phone number : " + phoneNumber);
+}
