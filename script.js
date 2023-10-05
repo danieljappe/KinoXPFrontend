@@ -103,114 +103,54 @@ movies.forEach(movie => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    
-  const modal = document.getElementById('movieModal');
-  const close = document.querySelector('.close');
 
+  // Get modals
+  const movieModal = document.getElementById('movieModal');
+  const loginModal = document.getElementById('myModal');
 
-  window.addEventListener('click', function(event) {
-    if (event.target == movieModal) {
-        movieModal.style.display = 'none';
-    }
-});
+  // Get close buttons
+  const closeButtons = document.getElementsByClassName("close");
 
-  close.onclick = function() {
-      modal.style.display = "none";
-  }
-
-  window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
+  // Close modals
+  Array.from(closeButtons).forEach(button => {
+      button.onclick = function() {
+          movieModal.style.display = "none";
+          loginModal.style.display = "none";
       }
-  }
-
-  const flexboxItems = document.querySelectorAll('.flexbox-item');
-
-  flexboxItems.forEach((flexboxItem, index) => {
-      flexboxItem.addEventListener("click", function() {
-          // Populate modal with movie details
-            document.getElementById('modalPoster').src = movies[index].posterLink;
-            document.getElementById('modalTitle').textContent = movies[index].title;
-            document.getElementById('modalDescription').textContent = movies[index].description;
-            document.getElementById('modalGenre').innerHTML = "<strong>Genre:</strong> " + movies[index].genre;
-            document.getElementById('modalAgeRestriction').innerHTML = "<strong>Age:</strong> " + movies[index].ageRestriction;
-            document.getElementById('modalRunTime').innerHTML = "<strong>Run time:</strong> " + movies[index].runTime + " minutes";
-            document.getElementById('modalTrailer').src = movies[index].trailerLink;
-
-          // Display modal
-          modal.style.display = "block";
-
-          // Get the modal
-          var movieModal = document.getElementById("movieModal"); 
-
-          var span = document.querySelector(".close")
-
-          
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function(event) {
-              if (event.target == modal) {
-                movieModal.style.display = "none";
-              }
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-              if (event.target == modal) {
-                movieModal.style.display = "none";
-              }
-            }
-          
-          
-      });
   });
 
-  
+  // Close modals when clicking outside
+  window.onclick = function(event) {
+      if (event.target == movieModal) {
+          movieModal.style.display = "none";
+      } else if (event.target == loginModal) {
+          loginModal.style.display = "none";
+      }
+  }
 
-  // Login Modal
-
-  var loginModal = document.getElementById("myModal");
-  // Get the button that opens the modal
-  var loginLink = document.getElementById("login-link");
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
-  // When the user clicks on the link, open the modal
-
-  loginLink.onclick = function(event) {
-      event.preventDefault(); // Prevent the default link behavior (navigating to a new page)
+  // Login link
+  document.getElementById("login-link").onclick = function(event) {
+      event.preventDefault(); 
       loginModal.style.display = "block";
-    }
+  }
+  
+  // Movie items
+  const flexboxItems = document.querySelectorAll('.flexbox-item');
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-      loginModal.style.display = "none";
-    }
+  // Open movie modal on item click
+  flexboxItems.forEach((flexboxItem, index) => {
+      flexboxItem.addEventListener("click", function() {
+          document.getElementById('modalPoster').src = movies[index].posterLink;
+          document.getElementById('modalTitle').textContent = movies[index].title;
+          document.getElementById('modalDescription').textContent = movies[index].description;
+          document.getElementById('modalGenre').textContent = movies[index].genre;
+          document.getElementById('modalAgeRestriction').textContent = movies[index].ageRestriction;
+          document.getElementById('modalRunTime').textContent = movies[index].runTime + " minutes";
+          document.getElementById('modalTrailer').src = movies[index].trailerLink;
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == loginModal) {
-        loginModal.style.display = "none";
-      }
-    }
-
-
-      // Toggle function to show/hide an element
-      function toggleElement(element) {
-        if (element.style.display === "none" || element.style.display === "") {
-          element.style.display = "block";
-        } else {
-          element.style.display = "none";
-        }
-      }
-
-      // Add event listener to login button
-      const loginButton = document.querySelector('.login-button');
-      const loginForm = document.querySelector('.login-form');
-
-      loginButton.addEventListener("click", function(event) {
-        event.preventDefault(); // Prevents the form from being submitted
-        toggleElement(loginForm);
+          movieModal.style.display = "block";
       });
-    
+  });
 });
 
 
