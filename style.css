@@ -375,11 +375,11 @@ section {
   /* Modal Content/Box */
   .modal-content {
     background-color: #333;
-    margin: 10% auto; /* 15% from the top and centered */
+    margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 30%; /* Could be more or less, depending on screen size */
-    height: 55%;
+    width: 20%; /* Could be more or less, depending on screen size */
+    height: 40%;
   }
 
   /* Login Modal */
@@ -392,8 +392,15 @@ section {
   }
 
   .modal-content .login-form h3{
-    margin: 2vh;
+    margin-top: 2vh;
   }
+
+  #login-btn{
+    height: 2.5vh;
+    width: 4vw;
+  }
+
+  
   
 
 
