@@ -1,4 +1,5 @@
-//DOM Manipulation
+//get testing data from the script.js file
+import DateParser from "./date_parser.js";
 
 //List Views
 const publicMovieSchedule = document.getElementById('movie-schedule');
@@ -29,8 +30,8 @@ const movie3 = {
     theater : "Theater 1"
 }
 const movie4 = {
-    title : "After Everything", 
-    genre : "Romance", 
+    title : "Murder In Venice", 
+    genre : "Crime", 
     imageUrl : "https://poster.ebillet.dk/MordetIVenedig-2023.large.jpg", 
     hour : "21:00", 
     date : "October 25th",
@@ -123,60 +124,16 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-function parseDate(date, now) {
-    const monthNumber = date.getMonth() + 1;
-    const dayNumber = date.getDate();
-    if (dayNumber == now.getDate() + 1 && monthNumber == now.getMonth() + 1) {
-        return "Today";
-    } else if (monthNumber == now.getMonth() + 1 && dayNumber == now.getDate() + 1 + 1) {
-        return "Tomorrow"
-    }
-
-    let month = "undefined";
-    let suffix = "th";
-    switch(monthNumber) {
-        case 1: month = "January"; break;
-        case 2: month = "February"; break;
-        case 3: month = "March"; break;
-        case 4: month = "April"; break;
-        case 5: month = "May"; break;
-        case 6: month = "June"; break;
-        case 7: month = "July"; break;
-        case 8: month = "August"; break;
-        case 9: month = "September"; break;
-        case 10: month = "October"; break;
-        case 11: month = "November"; break;
-        case 12: month = "December"; break;
-    }
-    const lastDigit = date.getDate() % 10;
-    switch(lastDigit) {
-        case 1: suffix = "st"; break;
-        case 2: suffix = "nd"; break;
-        case 3: suffix = "rd"; break;
-        default: suffix = "th"; break;
-    }
-    return `${month} ${date.getDate()}${suffix}`;
-}
-
-
-const now = new Date(Date.now())
 const d = new Date("2023-10-5");
-for (i = 0; i < 30; i++) {
-    const a = getRandomInt(2);
-    const b = getRandomInt(2);
-    movie1.date = parseDate(d, now);
-    movie2.date = parseDate(d, now);
-    movie3.date = parseDate(d, now);
-    movie4.date = parseDate(d, now);
-    createCard(
-        a == 0? movie3 : movie2, 
-        b == 0? movie1 : movie4, 
-        false,
-    );
-    createCard(
-        a == 0? movie3 : movie2, 
-        b == 0? movie1 : movie4, 
-        true,
-    );
+const dateParser = new DateParser();
+const now = new Date(Date.now());
+for (let i = 0; i < 30; i++) {
+    const a = getRandomInt(2), b = getRandomInt(2);
+    movie1.date = dateParser.parseDate(d, now);
+    movie2.date = dateParser.parseDate(d, now);
+    movie3.date = dateParser.parseDate(d, now);
+    movie4.date = dateParser.parseDate(d, now);
+    createCard(a == 0? movie3 : movie2, b == 0? movie1 : movie4, false);
+    createCard(a == 0? movie3 : movie2, b == 0? movie1 : movie4, true);
     d.setDate(d.getDate() + 1);
 }

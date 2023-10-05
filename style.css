@@ -274,7 +274,6 @@ nav input{
     margin: 1.5em;
     border: 1px solid #444;
     position: relative;
-
 }
 
 .flexbox-content {
@@ -368,14 +367,15 @@ section:not(.calendar-box) {
     overflow: hidden; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    z-index: 3;
   }
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #333;
+    background-color: #121212;
     margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #121212;
     width: 30%; /* Could be more or less, depending on screen size */
     height: 55%;
   }
