@@ -166,27 +166,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // ADD MOVIE MODAL
 
-        let addMovieModal = document.getElementById("addMovieModal")
-        let addMovieLink = document.getElementById("addMovieLink")
-        let addMovieCLose = document.getElementById("addMovieCLose")
+        let addMovieModal = document.getElementById("addMovieModal");
+        let addMovieLink = document.getElementById("addMovieLink");
+        let addMovieClose = document.getElementById("addMovieClose");
 
         addMovieLink.onclick = function (event) {
-            event.preventDefault()
+            event.preventDefault();
             addMovieModal.style.display = "block";
-        }
+        };
 
         // When user clicks X
-        addMovieCLose.onclick = function () {
+        addMovieClose.onclick = function () {
             addMovieModal.style.display = "none";
-        }
+        };
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
             if (event.target == addMovieModal) {
                 addMovieModal.style.display = "none";
-                addMovieModal.style.pointer = "pointer";
             }
-        }
+        };
+
 
         // SLUT ADD MOVIE MODAL
 
@@ -242,13 +242,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ... Your existing JavaScript code ...
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // ... Your existing DOMContentLoaded code ...
 
     const modal = document.getElementById('movieModal');
     const close = document.querySelector('.close');
 
-    flexboxContainer.addEventListener('click', function(event) {
+    flexboxContainer.addEventListener('click', function (event) {
         const item = event.target.closest('.flexbox-item');
         if (!item) return;
         const movieId = item.classList[1].split('-')[2] - 1; // Extracting ID from class and adjusting index
@@ -264,11 +264,11 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = 'block';
     });
 
-    close.onclick = function() {
+    close.onclick = function () {
         modal.style.display = 'none';
     };
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = 'none';
         }

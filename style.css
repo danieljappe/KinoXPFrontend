@@ -578,3 +578,25 @@ nav{
     background: #242526;
     top: 0;  /* Ensure it's at the top of the page */
 }
+#leftBox{
+    margin-top: 170px;
+    margin-left: 5%;
+    padding: 25px;
+    width: 42.5%;
+    float:left;
+    height:auto;
+    background: #242526;
+    text-align: center;
+}
+#rightBox{
+    margin-top: 170px;
+    margin-left: 5%;
+    padding: 25px;
+    width: 42.5%;
+    float:left;
+    height:400px;
+    background: #242526;
+}
+#addMovieH2{
+    text-transform: capitalize;
+}

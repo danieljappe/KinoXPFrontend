@@ -6,240 +6,244 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kino XP</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
-    
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+
 </head>
 
 <body>
-    <nav>
-        <div class="wrapper">
-            <div class="logo"><a href="#">Kino XP</a></div>
-            <input type="checkbox" id="menu-btn">
-            <input type="checkbox" id="close-btn">
-            <ul class="nav-links">
-                <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+<nav>
+    <div class="wrapper">
+        <div class="logo"><a href="#">Kino XP</a></div>
+        <input type="checkbox" id="menu-btn">
+        <input type="checkbox" id="close-btn">
+        <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
 
-                <!-- <li><a href="#">Home</a></li> -->
-
-                
-                <li><a href="about.html">Krav</a></li>
-
-                <li>
-                    <a href="#" class="desktop-item">Operations</a>
-                    <input type="checkbox" id="showDrop">
-                    <label for="showDrop" class="mobile-item">Dropdown Menu</label>
-                    <ul class="drop-menu">
-                        <li><a href="#">Option</a></li>
-                        <li><a href="#">Option</a></li>
-                        <li><a href="#">Option</a></li>
-                        <li><a href="#">Option</a></li>
-                    </ul>
-                </li>
-
-                <li><a id="addMovieLink" href="#">Add Movie</a></li>
-
-                <div id="addMovieModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <div id="addMovieCLose" class="closeAddMovieModal">&times;</div>
-                        <div class="login-form">
-                            <h2>Add Movie</h2>
-                            <div>
-                                <div>
-                                    <h3>Movie title</h3>
-                                    <input type="text" required>
-                                </div>
-                                <div>
-                                    <h3>Description</h3>
-                                    <input type="text" required>
-                                </div>
-                                <div>
-                                    <input type="submit" value="Add movie">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Mega Menu -->
-                <li>
-                    <a href="#" class="desktop-item">Mega Menu</a>
-                    <input type="checkbox" id="showMega">
-                    <label for="showMega" class="mobile-item">Mega Menu</label>
-                    <div class="mega-box">
-                        <div class="content">
-                          
-                            <div class="row">
-                                <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="">
-                            </div>
-
-                            <div class="row">
-                                <header>Service 1</header>
-                                <ul class="mega-links">
-                                    <li><a>Drop menu 1</a></li>
-                                    <li><a>Drop menu 2</a></li>
-                                    <li><a>Drop menu 3</a></li>
-                                    <li><a>Drop menu 4</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="row">
-                                <header>Service 2</header>
-                                <ul class="mega-links">
-                                    <li><a href="#">Text</a></li>
-                                    <li><a href="#">Text</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="row">
-                                <header>Service 3</header>
-                                <ul class="mega-links">
-                                    <li><a href="#">Text</a></li>
-                                    <li><a href="#">Text</a></li>
-                                    <li><a href="#">Text</a></li>
-                                </ul>
-                            </div>
+            <!-- <li><a href="#">Home</a></li> -->
 
 
-                        </div>
-                    </div>
-                </li>
+            <li><a href="about.html">Krav</a></li>
 
-                <li><a href="#">About</a></li>
-
-                <!-- Account -->
-                <li>
-                    <a id="login-link" href="#">Login</a>
-                </li>
+            <li>
+                <a href="#" class="desktop-item">Operations</a>
+                <input type="checkbox" id="showDrop">
+                <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+                <ul class="drop-menu">
+                    <li><a href="#">Option</a></li>
+                    <li><a href="#">Option</a></li>
+                    <li><a href="#">Option</a></li>
+                    <li><a href="#">Option</a></li>
                 </ul>
-                <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
-                </div>
-                </nav>
-                
-                <div id="myModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span class="close">&times;</span>
-                        <div class="login-form">
-                            <h2>Sign In</h2> 
-                            <div> 
-                                <div> 
-                                   <h3>Username</h3> 
-                                 <input type="text" required> 
-                                </div> 
-                                <div> 
-                                   <h3>Password</h3> 
-                                 <input type="password" required>
-                                </div> 
-                                <div> <a href="#">Forgot Password</a> <a href="#">Signup</a> 
-                                </div> 
-                                <div> 
-                                 <input type="submit" value="Login"> 
-                                </div> 
-                            </div> 
-                        </div> 
-                    </div>
-                </div>
+            </li>
 
-                <div id="movieModal" class="modal">
-                    <div class="modal-content-movie">
-                        <span class="close">&times;</span>
-                        <div class="movie-flex">
-                            <div class="movieposter">
-                                <img id="modalPoster" src="" alt="Movie Poster">
+            <li><a href="addMovie.html">Add Movie</a></li>
+
+            <div id="addMovieModal" class="modal">
+                <div class="modal-content">
+                    <div id="addMovieClose" class="close">&times;</div>
+                    <form id="addMovieForm">
+                        <h2>Add Movie</h2>
+                        <div>
+                            <div>
+                                <h3>Movie title</h3>
+                                <input type="text" placeholder="Indtast filmtitel" required>
                             </div>
-                            <div class="movie-wrapper">
-                                <div class="movie-title">
-                                    <h2 id="modalTitle"></h2>
-                                </div>
-                                <div class="movie-undertitle">
-                                    <p id="modalGenre"></p>
-                                    <p id="modalAgeRestriction"></p>
-                                    <p id="modalRunTime"></p>
-                                </div>
-                                <div class="movie-description">
-                                    <p id="modalDescription"></p>
-                                </div>
-                                <div class="movie-booking">
-                                    <p style="margin-right: 10px;">Next showing: ?</p>
-                                    <button id="modalBooking">Reserve Seats</button>
-                                </div>
-                                <div class="movie-trailer">
-                                    <iframe id="modalTrailer" width="640" height="360" frameborder="0" allowfullscreen allow="autoplay"></iframe></iframe>
-                                </div>
+                            <div>
+                                <h3>Description</h3>
+                                <input type="text" required>
                             </div>
-                            
+                            <div>
+                                <input type="submit" value="Add movie">
+                            </div>
                         </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Mega Menu -->
+            <li>
+                <a href="#" class="desktop-item">Mega Menu</a>
+                <input type="checkbox" id="showMega">
+                <label for="showMega" class="mobile-item">Mega Menu</label>
+                <div class="mega-box">
+                    <div class="content">
+
+                        <div class="row">
+                            <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg"
+                                 alt="">
+                        </div>
+
+                        <div class="row">
+                            <header>Service 1</header>
+                            <ul class="mega-links">
+                                <li><a>Drop menu 1</a></li>
+                                <li><a>Drop menu 2</a></li>
+                                <li><a>Drop menu 3</a></li>
+                                <li><a>Drop menu 4</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="row">
+                            <header>Service 2</header>
+                            <ul class="mega-links">
+                                <li><a href="#">Text</a></li>
+                                <li><a href="#">Text</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="row">
+                            <header>Service 3</header>
+                            <ul class="mega-links">
+                                <li><a href="#">Text</a></li>
+                                <li><a href="#">Text</a></li>
+                                <li><a href="#">Text</a></li>
+                            </ul>
+                        </div>
+
+
                     </div>
                 </div>
+            </li>
 
-    <!-- Page Content -->
+            <li><a href="#">About</a></li>
 
-    <div class="page-content">
-
-        <section>
-            <h1 style="margin-bottom: 20vh;">Kino Xp Projekt</h1>
-            
-            <div class="flexbox-container" id="list1-container" style="margin-bottom: -30vh;">
-                <div class="flexbox-title">
-                    <h1 style="color: #fff;">Popular Movies</h1>
-                </div>
-                <div class="flexbox-content" >
-                    <!-- forEach -->
-                </div>
-            </div>
-        </section>
-
-        <section>
-    
-            <div class="flexbox-container" id="list2-container" style="margin-top: 12vh;">
-                <div class="flexbox-title">
-                    <h1 style="color: #fff;">Genre 1</h1>
-                </div>
-
-                <div class="flexbox-content">
-                    <div class="flexbox-item flexbox-item-1">Item 1<span class="description"><h1>Description for item 1.</h1></span></div>
-                    <div class="flexbox-item flexbox-item-2">Item 2</div>
-                    <div class="flexbox-item flexbox-item-3">Item 3</div>   
-                    <div class="flexbox-item flexbox-item-4">Item 4</div>   
-                    <div class="flexbox-item flexbox-item-5">Item 5</div>
-                    <div class="flexbox-item flexbox-item-6">Item 6</div>
-                    <div class="flexbox-item flexbox-item-7">Item 7</div>
-                    <div class="flexbox-item flexbox-item-8">Item 8</div>
-                </div>
-
-                <div class="flexbox-content">
-                    <div class="flexbox-title">
-                        <h1 style="color: #fff;">Genre 2</h1>
-                    </div>
-                    <div class="flexbox-item flexbox-item-1">Item 1</div>
-                    <div class="flexbox-item flexbox-item-2">Item 2</div>
-                    <div class="flexbox-item flexbox-item-3">Item 3</div>
-                    <div class="flexbox-item flexbox-item-4">Item 4</div>
-                    <div class="flexbox-item flexbox-item-5">Item 5</div>
-                    <div class="flexbox-item flexbox-item-6">Item 6</div>
-                    <div class="flexbox-item flexbox-item-7">Item 7</div>
-                    <div class="flexbox-item flexbox-item-8">Item 8</div>
-                </div>
-
-            </div>
-
-        </section>
-
-        <section>
-            <h1>Ny section (Evt vælg biograf)</h1>
-
-            <div class="flexbox-content" id="list3-container">
-                <div class="flexbox-big-item">Sal 1</div>
-                <div class="flexbox-big-item">Sal 2</div>
-            </div>
-        </section>
-
-
+            <!-- Account -->
+            <li>
+                <a id="login-link" href="#">Login</a>
+            </li>
+        </ul>
+        <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
     </div>
+</nav>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="script.js"></script>
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="login-form">
+            <h2>Sign In</h2>
+            <div>
+                <div>
+                    <h3>Username</h3>
+                    <input type="text" required>
+                </div>
+                <div>
+                    <h3>Password</h3>
+                    <input type="password" required>
+                </div>
+                <div><a href="#">Forgot Password</a> <a href="#">Signup</a>
+                </div>
+                <div>
+                    <input type="submit" value="Login">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="movieModal" class="modal">
+    <div class="modal-content-movie">
+        <span class="close">&times;</span>
+        <div class="movie-flex">
+            <div class="movieposter">
+                <img id="modalPoster" src="" alt="Movie Poster">
+            </div>
+            <div class="movie-wrapper">
+                <div class="movie-title">
+                    <h2 id="modalTitle"></h2>
+                </div>
+                <div class="movie-undertitle">
+                    <p id="modalGenre"></p>
+                    <p id="modalAgeRestriction"></p>
+                    <p id="modalRunTime"></p>
+                </div>
+                <div class="movie-description">
+                    <p id="modalDescription"></p>
+                </div>
+                <div class="movie-booking">
+                    <p style="margin-right: 10px;">Next showing: ?</p>
+                    <button id="modalBooking">Reserve Seats</button>
+                </div>
+                <div class="movie-trailer">
+                    <iframe id="modalTrailer" width="640" height="360" frameborder="0" allowfullscreen
+                            allow="autoplay"></iframe>
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Page Content -->
+
+<div class="page-content">
+
+    <section>
+        <h1 style="margin-bottom: 20vh;">Kino Xp Projekt</h1>
+
+        <div class="flexbox-container" id="list1-container" style="margin-bottom: -30vh;">
+            <div class="flexbox-title">
+                <h1 style="color: #fff;">Popular Movies</h1>
+            </div>
+            <div class="flexbox-content">
+                <!-- forEach -->
+            </div>
+        </div>
+    </section>
+
+    <section>
+
+        <div class="flexbox-container" id="list2-container" style="margin-top: 12vh;">
+            <div class="flexbox-title">
+                <h1 style="color: #fff;">Genre 1</h1>
+            </div>
+
+            <div class="flexbox-content">
+                <div class="flexbox-item flexbox-item-1">Item 1<span
+                        class="description"><h1>Description for item 1.</h1></span></div>
+                <div class="flexbox-item flexbox-item-2">Item 2</div>
+                <div class="flexbox-item flexbox-item-3">Item 3</div>
+                <div class="flexbox-item flexbox-item-4">Item 4</div>
+                <div class="flexbox-item flexbox-item-5">Item 5</div>
+                <div class="flexbox-item flexbox-item-6">Item 6</div>
+                <div class="flexbox-item flexbox-item-7">Item 7</div>
+                <div class="flexbox-item flexbox-item-8">Item 8</div>
+            </div>
+
+            <div class="flexbox-content">
+                <div class="flexbox-title">
+                    <h1 style="color: #fff;">Genre 2</h1>
+                </div>
+                <div class="flexbox-item flexbox-item-1">Item 1</div>
+                <div class="flexbox-item flexbox-item-2">Item 2</div>
+                <div class="flexbox-item flexbox-item-3">Item 3</div>
+                <div class="flexbox-item flexbox-item-4">Item 4</div>
+                <div class="flexbox-item flexbox-item-5">Item 5</div>
+                <div class="flexbox-item flexbox-item-6">Item 6</div>
+                <div class="flexbox-item flexbox-item-7">Item 7</div>
+                <div class="flexbox-item flexbox-item-8">Item 8</div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section>
+        <h1>Ny section (Evt vælg biograf)</h1>
+
+        <div class="flexbox-content" id="list3-container">
+            <div class="flexbox-big-item">Sal 1</div>
+            <div class="flexbox-big-item">Sal 2</div>
+        </div>
+    </section>
+
+
+</div>
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="script.js"></script>
 
 </body>
 
