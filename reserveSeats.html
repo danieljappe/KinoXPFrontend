@@ -91,20 +91,55 @@
 </nav>
 
 <div class="page-content">
-    <section>
-        <h1>Reserve Tickets</h1>
-        <h1>Movie name</h1>
-        <h1>Theater</h1>
-        <div id="seatDiv" style="width: 50%; height: 60%;border-color: black;border-width: 5px;border-style: solid">
-        </div>
-        <input type="button" value="Next" onclick="addPhoneNumber()"/>
 
-<script src="seatSelection.js"></script>
+    <!-- Modal -->
+    <div id="seatModal" class="seatModal">
+        <div class="modal-content-seat">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <!-- <div class="seat-flexbox">
+                <div class="seat-id">
+                
+                </div>
+                <div class="seat-booking">
+                    <button id="seatBooking">Reserve Seat</button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <section>
+        <div class="sideBar">
+            <div class="sideBarContent">
+                <h2>Tickets:</h2>
+                <!-- <h2>Movie name</h2>
+                <h2>Theater</h2>
+                <h2>Time</h2>
+                <h2>Seats</h2>
+                <h2>Price</h2>
+                <h2>Total</h2> -->
+                <div class="seat-flexbox">
+                    <div class="seat-id">
+                        
+                        <!-- For each -->
+                    </div>
+                </div>
+                <input style="margin: 1vh;" id="bookButton" type="button" value="Book" onclick="openPopup()"/>   
+            </div>
+        </div>
+
+        <div class="section-generator">
+            <div id="seatDiv" style="width: 70%; height: 70%;border-color: black;border-width: 5px;border-style: solid">
+            </div>
+        </div>
+        
+        
     </section>
+
+    
 </div>
 
 
 
-
+<script src="seatSelection.js"></script>
 </body>
 </html>

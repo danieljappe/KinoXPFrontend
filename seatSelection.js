@@ -1,5 +1,9 @@
+// Selected seats by user
+const selectedSeats = [];
+
 function createSeats(rows, seatsPerRow) {
     const container = document.getElementById("seatDiv");
+    const maxSelectedSeats = 12;
 
     const table = document.createElement('table');
     table.style.width = '100%';
@@ -11,15 +15,36 @@ function createSeats(rows, seatsPerRow) {
 
         for (let j = 1; j <= seatsPerRow; j++) {
             const seat = document.createElement('td');
-            // seat.style.backgroundColor = 'white';
             const seatButton = document.createElement('button');
             seatButton.style.backgroundColor = 'transparent';
             seatButton.style.borderStyle = 'hidden';
-            // seatButton.innerText = `R${i}, S${j}`;
             seatButton.innerHTML = "<img style='width: 35px;height: 35px' src='icons/seat.png'/>";
+
             seatButton.addEventListener('click', () => {
-                alert(`Seat ${j} in Row ${i}.`); //For debugging
+                if (selectedSeats.length < maxSelectedSeats) {
+                    seatButton.style.backgroundColor = 'green';
+                    // Add to array of selected seats
+                    selectedSeats.push({ row: i, seat: j });
+
+                    const seatIdContainer = document.querySelector(".seat-id");
+
+                    const seatDiv = document.createElement("div");
+                    const ticketNumber = document.createElement("h3");
+                    ticketNumber.innerText = "Ticket " + selectedSeats.length; 
+                            
+                    const seatInfo = document.createElement("p"); 
+                    seatInfo.innerText = "Row: " + i + " Seat: " + j;
+                            
+                    seatDiv.appendChild(ticketNumber);
+                    seatDiv.appendChild(seatInfo);
+                            
+                    seatIdContainer.appendChild(seatDiv);
+                } else {
+                    //TODO: Need to be able to unselect seats
+                    alert('You can select up to 12 seats.');
+                }
             });
+
             seat.appendChild(seatButton);
             row.appendChild(seat);
         }
@@ -47,9 +72,17 @@ createSeatSelector(bigTheatreRows, bigTheatreSeatsPerRow);
 //     popup.classList.toggle("show");
 // }
 
-function addPhoneNumber() {
-    // const styling = $("#container");
-    // let phoneNumber = styling.prompt("Please connect your phone number : ");
-    let phoneNumber = prompt("Please connect your phone number : ");
-    console.log("The phone number : " + phoneNumber);
-}
+
+    const seatModal = document.getElementById("seatModal");
+
+    //TODO: selectedSeats duplicates when opened again
+    function openPopup() {
+        const seatModal = document.getElementById("seatModal");
+        seatModal.style.display = "block";
+
+    }
+
+    function closePopup() {
+        const seatModal = document.getElementById("seatModal");
+        seatModal.style.display = "none";
+    }
