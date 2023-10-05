@@ -382,6 +382,23 @@ section {
     height: 55%;
   }
 
+  /* Login Modal */
+
+  .modal-content .login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content .login-form h3{
+    margin: 2vh;
+  }
+  
+
+
+  /* Movie Modal */
+
   .modal-content-movie {
     background-color: #333;
     margin: 6% auto; /* 15% from the top and centered */
