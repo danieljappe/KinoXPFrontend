@@ -478,6 +478,7 @@ section {
 
  }
 
+/* Bliver den her brugt??*/
 #containerPOP {
     display: none;
     background-image: linear-gradient(to right, #66a80f, #c0eb75);
@@ -490,4 +491,17 @@ section {
     margin-left: -160px;
     padding: 16px 8px 8px;
     box-sizing: border-box;
+}
+
+.addPhoneNumberbtn{
+    position: relative;
+    max-width: 1300px;
+    padding: 0px 30px;
+    height: 70px;
+    line-height: 70px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    color: forestgreen;
+    justify-content: space-between;
 }
