@@ -341,7 +341,7 @@ nav input{
     outline: 0;
 }
 
-html, body, section {
+html, body, section:not(.calendar-box) {
     block-size: 100%;
 }
 
@@ -349,9 +349,7 @@ html {
     scroll-snap-type: y mandatory;
 }
 
-section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+section:not(.calendar-box) {
     display: flex;
     align-items: center;
     justify-content: center;
