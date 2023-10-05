@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kino XP</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+    
+</head>
+
+<body>
+    <nav>
+        <div class="wrapper">
+            <div class="logo"><a href="index.html">Kino XP</a></div>
+            <input type="checkbox" id="menu-btn">
+            <input type="checkbox" id="close-btn">
+            <ul class="nav-links">
+                <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+
+                <!-- <li><a href="#">Home</a></li> -->
+
+                
+                <li><a href="about.html">Krav</a></li>
+
+                <li>
+                    <a href="#" class="desktop-item">Options</a>
+                    <input type="checkbox" id="showDrop">
+                    <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+                    <ul class="drop-menu">
+                        <li><a href="#">Option</a></li>
+                        <li><a href="#">Option</a></li>
+                        <li><a href="#">Option</a></li>
+                        <li><a href="#">Option</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Mega Menu -->
+                <li>
+                    <a href="#" class="desktop-item">Mega Menu</a>
+                    <input type="checkbox" id="showMega">
+                    <label for="showMega" class="mobile-item">Mega Menu</label>
+                    <div class="mega-box">
+                        <div class="content">
+                          
+                            <div class="row">
+                                <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="">
+                            </div>
+
+                            <div class="row">
+                                <header>Service 1</header>
+                                <ul class="mega-links">
+                                    <li><a>Drop menu 1</a></li>
+                                    <li><a>Drop menu 2</a></li>
+                                    <li><a>Drop menu 3</a></li>
+                                    <li><a>Drop menu 4</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="row">
+                                <header>Service 2</header>
+                                <ul class="mega-links">
+                                    <li><a href="#">Text</a></li>
+                                    <li><a href="#">Text</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="row">
+                                <header>Service 3</header>
+                                <ul class="mega-links">
+                                    <li><a href="#">Text</a></li>
+                                    <li><a href="#">Text</a></li>
+                                    <li><a href="#">Text</a></li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </li>
+
+                <li><a href="#">About</a></li>
+
+                <!-- Account -->
+                <li>
+                    <a id="login-link" href="#">Login</a>
+                </li>
+                </ul>
+                <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+                </div>
+                </nav>
+                
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="login-form">
+                            <h2>Sign In</h2>
+                            <div>
+                                <h3>Username</h3>
+                                <input type="text" id="username" required>
+                            </div>
+                            <div>
+                                <h3>Password</h3>
+                                <input type="password" id="password" required>
+                            </div>
+                            <div>
+                                <a href="#">Forgot Password</a> 
+                                <a href="#" id="signup-link">Signup</a>
+                            </div>
+                            <div>
+                                <input type="submit" value="Login" id="login-btn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+    <!-- Page Content -->
+
+    <div class="page-content">
+
+        <section>
+            <h1>Logged in as Employee</h1>
+            
+            
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve employee data from sessionStorage
+    const employeeData = JSON.parse(window.sessionStorage.getItem('employee'));
+
+    // Get the <section> element by its ID
+    const sectionElement = document.querySelector('section');
+
+    // Check if employeeData is not null or undefined
+    if (employeeData) {
+        // Update the content inside the <section> element
+        sectionElement.innerHTML = `
+            <h1>Logged in as Operator</h1>
+            <p>Employee ID: ${employeeData.employee_id}</p>
+            <p>Is operator: ${employeeData.is_operator}</p>
+            <!-- Add more properties as needed -->
+        `;
+    } else {
+        // Handle the case when employeeData is null or undefined
+        sectionElement.innerHTML = `<h1>No employee data found!</h1>`;
+    }
+});
+    </script>
+</body>
+
+</html>

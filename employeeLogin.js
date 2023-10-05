@@ -2,6 +2,11 @@ const employeeCheck = "http://localhost:8080/employeeCheck";
 const postEmployee = "http://localhost:8080/employee";
 const getEmployeeById = "http://localhost:8080/employee/";
 
+const employeeData = {
+    id: null,
+    is_operator: null
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const loginBtn = document.getElementById('login-btn');
     const usernameInput = document.getElementById('username');
@@ -30,13 +35,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 throw new Error('Network response was not ok.');
             })
             .then(data => {
-                // Handle the response from the server
                 if (data.is_operator) {
-                    // Redirect to operator dashboard or perform desired action
-                    alert('Login successful as operator!');
+                    // Redirect to operator dashboard or desired page
+                    window.sessionStorage.setItem('employee', JSON.stringify(data));
+                    window.location.href = '/operatorDashboard.html'; // Change the URL to your operator dashboard page
                 } else {
-                    // Redirect to regular employee dashboard or perform desired action
-                    alert('Login successful as regular employee!');
+                    // Redirect to regular employee dashboard or desired page
+                    window.sessionStorage.setItem('employee', JSON.stringify(data));
+                    window.location.href = '/employeeDashboard.html'; // Change the URL to your regular employee dashboard page
                 }
             })
             .catch(error => {
