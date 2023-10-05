@@ -213,6 +213,40 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
+// ... Your existing JavaScript code ...
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ... Your existing DOMContentLoaded code ...
+
+    const modal = document.getElementById('movieModal');
+    const close = document.querySelector('.close');
+
+    flexboxContainer.addEventListener('click', function(event) {
+        const item = event.target.closest('.flexbox-item');
+        if (!item) return;
+        const movieId = item.classList[1].split('-')[2] - 1; // Extracting ID from class and adjusting index
+        const movie = movies[movieId];
+
+        document.getElementById('modalPoster').src = movie.posterLink;
+        document.getElementById('modalTitle').textContent = movie.title;
+        document.getElementById('modalDescription').textContent = movie.description;
+        document.getElementById('modalGenre').textContent = movie.genre;
+        document.getElementById('modalAgeRestriction').textContent = movie.ageRestriction;
+        document.getElementById('modalRunTime').textContent = movie.runTime;
+        document.getElementById('modalTrailer').src = movie.trailerLink;
+        modal.style.display = 'block';
+    });
+
+    close.onclick = function() {
+        modal.style.display = 'none';
+    };
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
+});
 
 
 
