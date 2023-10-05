@@ -87,9 +87,46 @@
         </ul>
         <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
     </div>
+</nav>
+
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <div class="login-form">
+
+            <h2>Sign In</h2>
+
+            <div>
+                <div>
+                    <h3>Username</h3>
+                    <input type="text" required>
+                </div>
+
+                <div>
+                    <h3>Password</h3>
+                    <input type="password" required>
+                </div>
+
+                <div> <a href="#">Forgot Password</a> <a href="#">Signup</a>
+                </div>
+
+                <div>
+                    <input type="submit" value="Login">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
 
 </nav>
 
+<<<<<<< HEAD
 <div class="page-content">
 
     <!-- Modal -->
@@ -133,13 +170,78 @@
         </div>
         
         
+=======
+<div>
+    <section>
+
+        <div id="info"class="seatInfoDiv">
+            <h1>Reserve Tickets</h1>
+            <h2>{Movie name}</h2>
+            <h2>{Theater}</h2></div>
+        <div id="seatDiv" class="seatDiv"></div>
+
+
+
+<!--WHAT CLASS/ID SHOULD BE HERE?? THE BUTTON LOOKS LIKE SHEIT-->
+<div>
+    <ul class="nav-links">
+<!--        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>-->
+        <li><a class="addPhoneNumberbtn" id="add-phone-link" href="#">Next</a></li>
+        </ul>
+</div>
+>>>>>>> 0e92065b99d353beb5799c871114927aa1282a67
     </section>
 
     
 </div>
 
+<div id="myNextButton" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <div class="login-form">
+
+            <h2>Please add your phone number</h2>
+
+            <div>
+                <form action="index.html" method="get">
+                <div>
+                    <h3>Phone number</h3>
+                    <input type="text" id="phoneNumber" required>
+<!--                    todo HOW DO WE TRANSFER THIS PHONE NUMBER DATA TO THE DATABASE ALONG WITH SEATS??-->
+                </div>
+
+<!--                <div>-->
+<!--                    <h3>Password</h3>-->
+<!--                    <input type="password" required>-->
+<!--                </div>-->
+
+<!--                <div> <a href="#">Forgot Password</a> <a href="#">Signup</a>-->
+<!--                </div>-->
+
+                <div>
+                    <input type="submit" value="Confirm reservation">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<<<<<<< HEAD
+=======
+</div>
 
 
+
+
+
+
+<script src="seatSelection.js"></script>
+</div>
+
+>>>>>>> 0e92065b99d353beb5799c871114927aa1282a67
 <script src="seatSelection.js"></script>
 </body>
 </html>

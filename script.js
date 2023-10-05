@@ -21,7 +21,7 @@ movies.forEach(movie => {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    
+
     const flexboxItems = document.querySelectorAll('.flexbox-item');
 
     flexboxItems.forEach(flexboxItem => {
@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const loginButton = document.querySelector('.login-button');
-    const loginForm = document.querySelector('.login-form');
+    const loginButton = document.querySelector('.cancel-button');
+    const loginForm = document.querySelector('.cancel-form');
 
     loginButton.addEventListener("click", function(event) {
         event.preventDefault(); // Prevents the form from being submitted
@@ -52,6 +52,20 @@ document.addEventListener('DOMContentLoaded', function() {
             loginForm.style.display = "block";
         } else {
             loginForm.style.display = "none";
+        }
+    });
+
+    //TODO Cancel reservation
+    const cancelReservationButton = document.querySelector('.cancel-button');
+    const cancelForm = document.querySelector('.cancel-form');
+
+    cancelReservationButton.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevents the form from being submitted
+
+        if (cancelForm.style.display === "none" || cancelForm.style.display === "") {
+            cancelForm.style.display = "block";
+        } else {
+            cancelForm.style.display = "none";
         }
     });
     
@@ -84,7 +98,61 @@ loginLink.onclick = function(event) {
   }
 
   //Seat reservation stuff
+console.log(document.getElementById("phoneNumber").value);
 
+
+//TODO CANCEL RESERVATION
+var cancelModal = document.getElementById("myCancelModal");
+
+// Get the button that opens the modal
+var cancelLink = document.getElementById("cancel-link");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the link, open the modal
+cancelLink.onclick = function(event) {
+    event.preventDefault(); // Prevent the default link behavior (navigating to a new page)
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+var modal = document.getElementById("myCancelModal");
+
+// Get the button that opens the modal
+var cancelLink = document.getElementById("cancel-reservation");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the link, open the modal
+cancelLink.onclick = function(event) {
+    event.preventDefault(); // Prevent the default link behavior (navigating to a new page)
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 
 
