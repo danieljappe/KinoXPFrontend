@@ -107,6 +107,7 @@ function getRandomInt(max) {
 const d = new Date("2023-10-5");
 const dateParser = new DateParser();
 const now = new Date(Date.now());
+console.log(dateParser.getTimeFromIso8601("2023-10-06T15:00:00"));
 for (let i = 0; i < 30; i++) {
     const a = getRandomInt(2), b = getRandomInt(2);
     movie1.date = dateParser.parseDate(d, now);

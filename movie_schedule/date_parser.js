@@ -11,6 +11,10 @@ export default class DateParser {
         }
     }
 
+    getTimeFromIso8601 = function(date) {
+        return String(date).split('T')[1].substring(0, 5);
+    }
+
     getIsToday = function(date, now) {
         //const sameMonth = now.getMonth() + 1 == date.getMonth();
         //const sameDay = now.getDate() + 1 == date.getDate();
