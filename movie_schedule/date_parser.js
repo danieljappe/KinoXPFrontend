@@ -2,12 +2,12 @@ export default class DateParser {
 
     // return a date object into a string like "2023,10,05" -> October 5th
     parseDate = function(date, now) {
-        if (this.getIsToday(date, now)) {
+        if (this._getIsToday(date, now)) {
             return "Today";
-        } else if (this.getIsTomorrow(date, now)) {
+        } else if (this._getIsTomorrow(date, now)) {
             return "Tomorrow";
         } else {
-            return `${this.getMonth(date.getMonth() +1)} ${date.getDate()}${this.getSuffix(date.getDay())}`;
+            return `${this.getMonth(date.getMonth() +1)} ${date.getDate()}${this.getSuffix(date.getDate())}`;
         }
     }
 
@@ -15,15 +15,19 @@ export default class DateParser {
         return String(date).split('T')[1].substring(0, 5);
     }
 
-    getIsToday = function(date, now) {
-        //const sameMonth = now.getMonth() + 1 == date.getMonth();
-        //const sameDay = now.getDate() + 1 == date.getDate();
-        return false; 
+    _getIsToday = function(date, now) {
+        const sameMonth = now.getMonth() == date.getMonth();
+        const sameDay = now.getDate() == date.getDate();
+        const sameYear = now.getYear() == date.getYear();
+        return sameDay && sameMonth && sameYear; 
     }
 
-    getIsTomorrow = function(date, now) {
-        //sameDay = now.getDate() + 1 == date.getDate();
-        return false;
+    //return a boolean if p1 is one date ahead of now
+    _getIsTomorrow = function(date, now) {
+        const sameMonth = now.getMonth() == date.getMonth();
+        const sameDay = now.getDate() + 1 == date.getDate();
+        const sameYear = now.getYear() == date.getYear();
+        return sameDay && sameMonth && sameYear;
     }
 
     // turn month as num into month as string
@@ -46,8 +50,9 @@ export default class DateParser {
     }
 
     // get suffix to put behind a number like 1 -> "st" or 2 -> "nd"
-    getSuffix = function(day) {
-        const lastDigit = day % 10;
+    getSuffix = function(date) {
+        const lastDigit = date % 10;
+        if (date > 10 && date < 20) return "th";
         switch(lastDigit) {
             case 1: return "st";
             case 2: return "nd";
