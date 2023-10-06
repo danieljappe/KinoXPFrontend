@@ -192,9 +192,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-
-      // Toggle function to show/hide an element
-      function toggleElement(element) {
+    // Toggle function to show/hide an element
+    function toggleElement(element) {
         if (element.style.display === "none" || element.style.display === "") {
           element.style.display = "block";
         } else {
