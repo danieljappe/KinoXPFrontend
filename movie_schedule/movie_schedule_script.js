@@ -7,6 +7,11 @@ const elementMaker = new ElementMaker();
 //List View
 const publicMovieSchedule = document.getElementById('movie-schedule');
 
+//List data
+let showings = [];  //showings with movies
+let movies = []; //movie objects
+
+
 //Test Data
 const movie1 = {
     title : "The Creator", 
@@ -100,7 +105,53 @@ const getMovieContainer = function(movie, isMO) {
     return movieContainer;
 }
 
+//fetch data and insert
+function fetchShowings() {
+    const apiUrlShowings = 'https://example.com/api/data'; //todo: http request to showings
+    fetch(apiUrlShowings).then(
+        response => {
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+            return response.json();
+        }).then(
+            data => {
+                // Work with the JSON data here
+                //1. for each -> get movie
+                //2. if movie id is already fetched, use the movie object from there.
+                
+                let movieObject = getMovieIfExists(movieId);
+                //else get movie info and add to movies.
+                //3. add to showings.
+                //4. sort list by date
+                return showings;
+        }).catch(error => console.error('Fetch error:', error));
+}
 
+function getMovieIfExists(id) {
+    for (let i = 0; i < movies.length; i++) {
+        if (movies[i].movieId === id) return movies[i];
+    }
+    return null;
+}
+
+//fetch data and insert
+function fetchMovie() {
+    const apiUrlMovie = 'https://example.com/api/data'; //http request to movie
+    fetch(apiUrlMovie).then(
+        response => {
+        // Check if the response status is OK (200)
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        
+        // Parse the response body as JSON
+        return response.json();
+    }).then(data => {
+        // Work with the JSON data here
+        console.log(data);
+    }).catch(error => console.error('Fetch error:', error));
+}
+
+
+
+//todo: implement
 
 //Test Run - insert test data to test
 function getRandomInt(max) {
