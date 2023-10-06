@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
   }
 
-  const flexboxItems = document.querySelectorAll('.flexbox-item');
+  const flexboxItems = document.querySelectorAll('.popular-movies-item');
 
   flexboxItems.forEach((flexboxItem, index) => {
       flexboxItem.addEventListener("click", function() {
