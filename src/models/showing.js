@@ -10,7 +10,7 @@ export default class Showing {
         movieId, //num
         theaterId, //num
         dateTime, //string
-        dateParser, //object
+        dateParser, //object for parsing dates
     ) {
         //direct class variables
         this.movieId = movieId;

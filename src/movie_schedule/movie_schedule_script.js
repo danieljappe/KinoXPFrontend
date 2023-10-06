@@ -1,5 +1,5 @@
 //get testing data from the script.js file
-import DateParser from "./date_parser.js";
+import DateParser from "../utilities/date_parser.js";
 import ElementMaker from "../element_maker/element_maker.js";
 
 const elementMaker = new ElementMaker();
@@ -117,7 +117,7 @@ function fetchShowings() {
                 // Work with the JSON data here
                 //1. for each -> get movie
                 //2. if movie id is already fetched, use the movie object from there.
-                
+
                 let movieObject = getMovieIfExists(movieId);
                 //else get movie info and add to movies.
                 //3. add to showings.

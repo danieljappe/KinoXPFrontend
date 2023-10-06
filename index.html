@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kino XP</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="movie_schedule/movie_schedule_styles.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="src/movie_schedule/movie_schedule_styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
     
     <!-- Scripts -->
     <!--<script src="https://kit.fontawesome.com/a076d05399.js" defer></script>-->
-    <script src="script.js" defer></script>
-    <script src="movie_schedule/movie_schedule_script.js" type="module" defer></script>
+    <script src="src/script.js" defer></script>
+    <script src="src/movie_schedule/movie_schedule_script.js" type="module" defer></script>
 </head>
 
 <body>
@@ -155,77 +155,73 @@
 
     <!-- Page Content -->
 
-    <div class="page-content">
-        <section>
-            <h1 style="margin-bottom: 20vh;">Kino Xp Projekt</h1>
-            
-            <div class="flexbox-container" id="list1-container" style="margin-bottom: -30vh;">
+    <section>
+        <h1 style="margin-bottom: 20vh;">Kino Xp Projekt</h1>
+        
+        <div class="flexbox-container" id="list1-container" style="margin-bottom: -30vh;">
+            <div class="flexbox-title">
+                <h1 style="color: #fff;">Popular Movies</h1>
+            </div>
+            <div class="flexbox-content" >
+                <!-- forEach -->
+            </div>
+        </div>
+    </section>
+
+    <section class="calendar-box">
+        <div id="calendar-header">
+            <img id="calendar-header-image" src="https://www.svgrepo.com/show/411277/schedule.svg"></img>
+            <hr class="calendar-header-divider"></hr>
+            <h1>Movie Schedule</h1>
+            <p>On the right, you can see the schedule for our showings.</p>
+        </div>
+        <div class="calendar" id="movie-schedule">
+        </div>
+    </section>
+
+    <section>
+        <div class="flexbox-container" id="list2-container" style="margin-top: 12vh;">
+            <div class="flexbox-title">
+                <h1 style="color: #fff;">Genre 1</h1>
+            </div>
+
+            <div class="flexbox-content">
+                <div class="flexbox-item flexbox-item-1">Item 1<span class="description"><h1>Description for item 1.</h1></span></div>
+                <div class="flexbox-item flexbox-item-2">Item 2</div>
+                <div class="flexbox-item flexbox-item-3">Item 3</div>   
+                <div class="flexbox-item flexbox-item-4">Item 4</div>   
+                <div class="flexbox-item flexbox-item-5">Item 5</div>
+                <div class="flexbox-item flexbox-item-6">Item 6</div>
+                <div class="flexbox-item flexbox-item-7">Item 7</div>
+                <div class="flexbox-item flexbox-item-8">Item 8</div>
+            </div>
+
+            <div class="flexbox-content">
                 <div class="flexbox-title">
-                    <h1 style="color: #fff;">Popular Movies</h1>
+                    <h1 style="color: #fff;">Genre 2</h1>
                 </div>
-                <div class="flexbox-content" >
-                    <!-- forEach -->
-                </div>
-            </div>
-        </section>
-
-        <section class="calendar-box">
-            <div id="calendar-header">
-                <img id="calendar-header-image" src="https://www.svgrepo.com/show/411277/schedule.svg"></img>
-                <hr class="calendar-header-divider"></hr>
-                <h1>Movie Schedule</h1>
-                <p>On the right, you can see the schedule for our showings.</p>
-            </div>
-            <div class="calendar" id="movie-schedule">
-            </div>
-        </section>
-
-        <section>
-            <div class="flexbox-container" id="list2-container" style="margin-top: 12vh;">
-                <div class="flexbox-title">
-                    <h1 style="color: #fff;">Genre 1</h1>
-                </div>
-
-                <div class="flexbox-content">
-                    <div class="flexbox-item flexbox-item-1">Item 1<span class="description"><h1>Description for item 1.</h1></span></div>
-                    <div class="flexbox-item flexbox-item-2">Item 2</div>
-                    <div class="flexbox-item flexbox-item-3">Item 3</div>   
-                    <div class="flexbox-item flexbox-item-4">Item 4</div>   
-                    <div class="flexbox-item flexbox-item-5">Item 5</div>
-                    <div class="flexbox-item flexbox-item-6">Item 6</div>
-                    <div class="flexbox-item flexbox-item-7">Item 7</div>
-                    <div class="flexbox-item flexbox-item-8">Item 8</div>
-                </div>
-
-                <div class="flexbox-content">
-                    <div class="flexbox-title">
-                        <h1 style="color: #fff;">Genre 2</h1>
-                    </div>
-                    <div class="flexbox-item flexbox-item-1">Item 1</div>
-                    <div class="flexbox-item flexbox-item-2">Item 2</div>
-                    <div class="flexbox-item flexbox-item-3">Item 3</div>
-                    <div class="flexbox-item flexbox-item-4">Item 4</div>
-                    <div class="flexbox-item flexbox-item-5">Item 5</div>
-                    <div class="flexbox-item flexbox-item-6">Item 6</div>
-                    <div class="flexbox-item flexbox-item-7">Item 7</div>
-                    <div class="flexbox-item flexbox-item-8">Item 8</div>
-                </div>
-
+                <div class="flexbox-item flexbox-item-1">Item 1</div>
+                <div class="flexbox-item flexbox-item-2">Item 2</div>
+                <div class="flexbox-item flexbox-item-3">Item 3</div>
+                <div class="flexbox-item flexbox-item-4">Item 4</div>
+                <div class="flexbox-item flexbox-item-5">Item 5</div>
+                <div class="flexbox-item flexbox-item-6">Item 6</div>
+                <div class="flexbox-item flexbox-item-7">Item 7</div>
+                <div class="flexbox-item flexbox-item-8">Item 8</div>
             </div>
 
-        </section>
+        </div>
 
-        <section>
-            <h1>Ny section (Evt vælg biograf)</h1>
+    </section>
 
-            <div class="flexbox-content" id="list3-container">
-                <div class="flexbox-big-item">Sal 1</div>
-                <div class="flexbox-big-item">Sal 2</div>
-            </div>
-        </section>
+    <section>
+        <h1>Ny section (Evt vælg biograf)</h1>
 
-
-    </div>
+        <div class="flexbox-content" id="list3-container">
+            <div class="flexbox-big-item">Sal 1</div>
+            <div class="flexbox-big-item">Sal 2</div>
+        </div>
+    </section>
 </body>
 
 </html>
