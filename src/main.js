@@ -82,12 +82,12 @@ const movies = [
   }
 ];
 
-const flexboxContainer = document.querySelector('.flexbox-container');
-const flexboxContent = document.querySelector('.flexbox-content');
+const flexboxContainer = document.querySelector('.popular-movies-section');
+const flexboxContent = document.querySelector('.popular-movies-content');
 
 movies.forEach(movie => {
   const divElement = document.createElement('div');
-  divElement.className = `flexbox-item flexbox-item-${movie.id}`;
+  divElement.className = `popular-movies-item popular-movies-item-${movie.id}`;
   divElement.style.backgroundImage = `url(${movie.posterLink})`;
   divElement.innerHTML = `
     <div class="description">

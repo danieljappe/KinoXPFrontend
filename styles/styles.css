@@ -9,8 +9,8 @@
 
 /* Variables */
 :root {
-    --background-color: #74413e;
-    --navbar-color: #121212;
+    --background-color: #121212;
+    --navbar-color: #080808;
 }
 
 body{
@@ -336,7 +336,7 @@ nav input{
     display: none; /* or display: block; or any other initial display property */
 }
 
-html, body, section:not(.calendar-box) {
+html, body, section:not(.calendar-box .popular-movies-section) {
     block-size: 100%;
 }
 
@@ -344,7 +344,7 @@ html {
     scroll-snap-type: y mandatory;
 }
 
-section:not(.calendar-box) {
+section:not(.calendar-box .popular-movies-section) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -355,7 +355,7 @@ section:not(.calendar-box) {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 5; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -363,7 +363,6 @@ section:not(.calendar-box) {
     overflow: hidden; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    z-index: 3;
   }
   
   /* Modal Content/Box */

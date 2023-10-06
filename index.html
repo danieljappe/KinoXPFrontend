@@ -4,14 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kino XP</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="src/movie_schedule/movie_schedule_styles.css">
+    <title>Kino XP - Big picture cinema</title>
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/popular_movies.css">
+    <link rel="stylesheet" href="styles/movie_schedule_styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
     
     <!-- Scripts -->
     <!--<script src="https://kit.fontawesome.com/a076d05399.js" defer></script>-->
-    <script src="src/script.js" defer></script>
+    <script src="src/main.js" defer></script>
     <script src="src/movie_schedule/movie_schedule_script.js" type="module" defer></script>
 </head>
 
@@ -22,13 +24,8 @@
             <input type="checkbox" id="menu-btn">
             <input type="checkbox" id="close-btn">
             <ul class="nav-links">
-                <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-
-                <!-- <li><a href="#">Home</a></li> -->
-
-                
+                <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>                
                 <li><a href="about.html">Krav</a></li>
-
                 <li>
                     <a href="#" class="desktop-item">Options</a>
                     <input type="checkbox" id="showDrop">
@@ -153,18 +150,12 @@
         </div>
     </div>
 
-    <!-- Page Content -->
-
-    <section>
-        <h1 style="margin-bottom: 20vh;">Kino Xp Projekt</h1>
-        
-        <div class="flexbox-container" id="list1-container" style="margin-bottom: -30vh;">
-            <div class="flexbox-title">
-                <h1 style="color: #fff;">Popular Movies</h1>
-            </div>
-            <div class="flexbox-content" >
-                <!-- forEach -->
-            </div>
+    <section class="popular-movies-section">
+        <div class="popular-movies-title">
+            <h1>Popular movies</h1>
+        </div>
+        <div class="popular-movies-content">
+            <!-- forEach -->
         </div>
     </section>
 
@@ -223,5 +214,4 @@
         </div>
     </section>
 </body>
-
 </html>
