@@ -6,12 +6,11 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
 body{
     background-color: #74413e;
     color: #fff;
 }
-
-
 
 nav{
     position: fixed;

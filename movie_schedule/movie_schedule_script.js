@@ -4,6 +4,9 @@ import DateParser from "./date_parser.js";
 //List Views
 const publicMovieSchedule = document.getElementById('movie-schedule');
 
+//Fetch movies
+const movies = []; //todo get movies
+
 //Data
 const movie1 = {
     title : "The Creator", 

@@ -2,28 +2,28 @@ export default class DateParser {
 
     // return a date object into a string like "2023,10,05" -> October 5th
     parseDate = function(date, now) {
-        if (this.getIsToday(date, now)) {
+        if (this._getIsToday(date, now)) {
             return "Today";
-        } else if (this.getIsTomorrow(date, now)) {
+        } else if (this._getIsTomorrow(date, now)) {
             return "Tomorrow";
         } else {
-            return `${this.getMonth(date.getMonth() +1)} ${date.getDate()}${this.getSuffix(date.getDay())}`;
+            return `${this._getMonth(date.getMonth() +1)} ${date.getDate()}${this._getSuffix(date.getDay())}`;
         }
     }
 
-    getIsToday = function(date, now) {
+    _getIsToday = function(date, now) {
         //const sameMonth = now.getMonth() + 1 == date.getMonth();
         //const sameDay = now.getDate() + 1 == date.getDate();
         return false; 
     }
 
-    getIsTomorrow = function(date, now) {
+    _getIsTomorrow = function(date, now) {
         //sameDay = now.getDate() + 1 == date.getDate();
         return false;
     }
 
     // turn month as num into month as string
-    getMonth = function(month) {
+    _getMonth = function(month) {
         switch(month) {
             case 1: return "January";
             case 2: return "February";
@@ -42,7 +42,7 @@ export default class DateParser {
     }
 
     // get suffix to put behind a number like 1 -> "st" or 2 -> "nd"
-    getSuffix = function(day) {
+    _getSuffix = function(day) {
         const lastDigit = day % 10;
         switch(lastDigit) {
             case 1: return "st";
