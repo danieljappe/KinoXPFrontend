@@ -4,6 +4,7 @@
     height: 644px !important;
     display: flexbox;
     flex-direction: row !important;
+    margin-bottom: 100px;
 }
 
 .mo-calendar-box {

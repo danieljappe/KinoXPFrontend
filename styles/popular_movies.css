@@ -5,6 +5,7 @@
 }
 
 .popular-movies-section {
+    width: 100%;
     background: linear-gradient(
         130deg,
         transparent 0% 0%,
