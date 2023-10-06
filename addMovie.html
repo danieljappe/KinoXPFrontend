@@ -20,8 +20,52 @@
 </div>
 
 <div id="rightBox">
+    <form id="movieForm">
+        <div>
+            <label class="addMovieLabel">Enter movie title: </label>
+            <input class="addMovieInput" type="text" name="movieTitle" required>
+        </div>
 
+        <div>
+            <label class="addMovieLabel">Enter movie desc.: </label>
+            <textarea class="addMovieDescription" name="movieDescription" rows="4" cols="50" required></textarea>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Enter movie genre: </label>
+            <input class="addMovieInput" type="text" name="movieGenre" required>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Enter age restriction: </label>
+            <input class="addMovieInput" type="text" name="ageRestriction" required>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Enter movie runtime: </label>
+            <input class="addMovieInput" type="text" name="runtime" required>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Enter movie trailer link: </label>
+            <input class="addMovieInput" type="text" name="trailerLink" required>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Enter movie poster link: </label>
+            <input class="addMovieInput" type="text" name="posterLink" required>
+        </div>
+
+        <button class="addMovieSubmit" type="submit">Add Movie</button>
+        <button class="addMovieBackBtn" type="button" onclick="goToIndex()">Tilbage til forsiden</button>
+    </form>
 </div>
+
+<script>
+    function goToIndex() {
+        window.location.href = 'index.html';
+    }
+</script>
 
 </body>
 </html>

@@ -579,24 +579,67 @@ nav{
     top: 0;  /* Ensure it's at the top of the page */
 }
 #leftBox{
-    margin-top: 170px;
+    border:1px solid lightgray;
+    margin-top: 150px;
     margin-left: 5%;
     padding: 25px;
-    width: 42.5%;
+    width: 22.5%;
     float:left;
     height:auto;
-    background: #242526;
+    background: #192531;
+    font-style: normal;
     text-align: center;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
 }
 #rightBox{
-    margin-top: 170px;
+    border:1px solid lightgray;
+    margin-top: 150px;
     margin-left: 5%;
-    padding: 25px;
-    width: 42.5%;
+    padding: 0 25px 25px 25px;
+    width: 62.5%;
     float:left;
-    height:400px;
-    background: #242526;
+    height:auto;
+    background: #192531;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+
 }
 #addMovieH2{
+    text-transform: uppercase;
+}
+.addMovieLabel{
+    display: block;
+    margin-top:15px;
+    margin-bottom: 10px;
     text-transform: capitalize;
+}
+.addMovieInput{
+    background: lightgray;
+    padding: 5px 10px 5px 10px;
+    border:0px solid black;
+    color: black;
+}
+.addMovieSubmit{
+    margin-top:15px;
+    color:white;
+    background-color: #024825;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    padding: 10px 25px 10px 25px;
+    margin-left:15px;
+    float:right;
+}
+.addMovieSubmit:hover{
+    background-color: #036132;
+}
+.addMovieBackBtn{
+    margin-top:15px;
+    color:white;
+    background-color: #480202;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    padding: 10px 25px 10px 25px;
+    float:right;
+}
+.addMovieBackBtn:hover{
+    background-color: #610303;
 }
