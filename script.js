@@ -102,58 +102,6 @@ movies.forEach(movie => {
     flexboxContent.appendChild(divElement);
 });
 
-<<<<<<< HEAD
-document.addEventListener('DOMContentLoaded', function() {
-
-  // Get modals
-  const movieModal = document.getElementById('movieModal');
-  const loginModal = document.getElementById('myModal');
-
-  // Get close buttons
-  const closeButtons = document.getElementsByClassName("close");
-
-  // Close modals
-  Array.from(closeButtons).forEach(button => {
-      button.onclick = function() {
-          movieModal.style.display = "none";
-          loginModal.style.display = "none";
-      }
-  });
-
-  // Close modals when clicking outside
-  window.onclick = function(event) {
-      if (event.target == movieModal) {
-          movieModal.style.display = "none";
-      } else if (event.target == loginModal) {
-          loginModal.style.display = "none";
-      }
-  }
-
-  // Login link
-  document.getElementById("login-link").onclick = function(event) {
-      event.preventDefault(); 
-      loginModal.style.display = "block";
-  }
-  
-  // Movie items
-  const flexboxItems = document.querySelectorAll('.flexbox-item');
-
-  // Open movie modal on item click
-  flexboxItems.forEach((flexboxItem, index) => {
-      flexboxItem.addEventListener("click", function() {
-          document.getElementById('modalPoster').src = movies[index].posterLink;
-          document.getElementById('modalTitle').textContent = movies[index].title;
-          document.getElementById('modalDescription').textContent = movies[index].description;
-          document.getElementById('modalGenre').textContent = movies[index].genre;
-          document.getElementById('modalAgeRestriction').textContent = movies[index].ageRestriction;
-          document.getElementById('modalRunTime').textContent = movies[index].runTime + " minutes";
-          document.getElementById('modalTrailer').src = movies[index].trailerLink;
-
-          movieModal.style.display = "block";
-      });
-  });
-});
-=======
 document.addEventListener('DOMContentLoaded', function () {
 
         const modal = document.getElementById('movieModal');
@@ -287,7 +235,6 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault(); // Prevents the form from being submitted
             toggleElement(loginForm);
         });
->>>>>>> d65f341ad4baac1e6fdcc6c763cc55ddabf076f1
 
     }
 )
