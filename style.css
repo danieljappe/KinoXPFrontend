@@ -580,8 +580,8 @@ nav{
 }
 #leftBox{
     border:1px solid lightgray;
-    margin-top: 150px;
-    margin-left: 5%;
+    margin-top: 140px;
+    margin-left: 15%;
     padding: 25px;
     width: 22.5%;
     float:left;
@@ -593,10 +593,10 @@ nav{
 }
 #rightBox{
     border:1px solid lightgray;
-    margin-top: 150px;
+    margin-top: 140px;
     margin-left: 5%;
     padding: 0 25px 25px 25px;
-    width: 62.5%;
+    width: 42.5%;
     float:left;
     height:auto;
     background: #192531;
@@ -611,35 +611,43 @@ nav{
     margin-top:15px;
     margin-bottom: 10px;
     text-transform: capitalize;
+    font-size: 17px;
 }
 .addMovieInput{
     background: lightgray;
     padding: 5px 10px 5px 10px;
-    border:0px solid black;
+    border:1px solid white;
     color: black;
+    width: 60%;
 }
 .addMovieSubmit{
-    margin-top:15px;
+    margin-top:20px;
     color:white;
     background-color: #024825;
     border: 1px solid lightgray;
     cursor: pointer;
     padding: 10px 25px 10px 25px;
-    margin-left:15px;
-    float:right;
+    margin-right:15px;
+    float:left;
 }
 .addMovieSubmit:hover{
     background-color: #036132;
 }
 .addMovieBackBtn{
-    margin-top:15px;
+    margin-top:20px;
     color:white;
     background-color: #480202;
     border: 1px solid lightgray;
     cursor: pointer;
     padding: 10px 25px 10px 25px;
-    float:right;
+    float:left;
 }
 .addMovieBackBtn:hover{
     background-color: #610303;
+}
+.addMovieDescription{
+    width:60%;
+    background: lightgray;
+    padding: 5px 10px 5px 10px;
+    border:1px solid white;
 }
