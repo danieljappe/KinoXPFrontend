@@ -4,6 +4,8 @@
 
 ###  Link to site
 [Click here](https://kinoxp-9c7c3.web.app/?fbclid=IwAR1LuI1v4vs6Xy7mxmt1Da_vPg1w-j-n__oLbdpEevfspVjpMFVvox6N40o) to see the Kino XP website
+
+Unable to see your changes on this site after deployment, then remember to hard reload the site.
 ***
 ### Specifications
 * 2 movie theatres
