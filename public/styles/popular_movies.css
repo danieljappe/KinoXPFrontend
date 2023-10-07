@@ -106,8 +106,7 @@
     font-weight: 100;
     line-height: 12px;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* number of lines to show */
-    line-clamp: 2; 
+    -webkit-line-clamp: 5; /* number of lines to show */
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     text-align: start !important;
@@ -118,7 +117,7 @@
 
 
 .popular-movies-item {
-    height: 31vh;
+    height: calc(100% * 2.5);
     width: 100%;
     margin-left: 0.5%;
     margin-right: 0.5%;
