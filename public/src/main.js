@@ -87,9 +87,10 @@ const flexboxContent = document.querySelector('.popular-movies-content');
 
 movies.forEach(movie => {
   const divElement = document.createElement('div');
-  divElement.className = `popular-movies-item popular-movies-item-${movie.id}`;
+  divElement.className = ` popular-movies-item popular-movies-item-${movie.id}`;
   divElement.style.backgroundImage = `url(${movie.posterLink})`;
   divElement.innerHTML = `
+  <div class="popular-movies-overlay">
     <div class="description">
       <h3>${movie.title}</h3>
       <p>${movie.description}</p>
@@ -98,6 +99,11 @@ movies.forEach(movie => {
       <p>Run Time: ${movie.runTime} minutes</p>
       <a href="${movie.trailerLink}" target="_blank">Watch Trailer</a>
     </div>
+    <div class="overlay-textbox">
+      <p class="popular-movies-overlay-title">${movie.title}</p>
+      <p class="popular-movies-overlay-subtitle">${movie.description}</p>
+    </div>
+  </div>  
   `;
   flexboxContent.appendChild(divElement);
 });

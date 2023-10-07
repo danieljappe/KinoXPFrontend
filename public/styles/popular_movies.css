@@ -62,6 +62,60 @@
     z-index: 4;
 }
 
+.popular-movies-overlay {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+    background-image: linear-gradient(to top, rgba(0,0,0,1),rgba(0,0,0,0.8), rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.0));
+    transition: 300ms ease;
+}
+
+.popular-movies-overlay:hover {
+    opacity: 1;
+    transition: 300ms ease;
+}
+
+.overlay-textbox {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 12px;
+}
+
+.popular-movies-overlay-title {
+    bottom: 0;
+    font-size: 14px !important;
+    font-weight: 500;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    text-align: start !important;
+    overflow: hidden;
+    white-space:wrap;
+    height: min-content;
+    transition: 500ms ease;
+    margin-bottom: 2px;
+
+}
+.popular-movies-overlay-subtitle {
+    bottom: 0;
+    font-size: 10px !important;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 100;
+    line-height: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    text-align: start !important;
+    overflow: hidden;
+    height: 61px;
+    transition: 500ms ease;
+}
+
 
 .popular-movies-item {
     height: 31vh;
@@ -74,11 +128,12 @@
     background-repeat: no-repeat;
     box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.05);
     z-index: 2;
+    transition: 1s ease;
 }
 
 .popular-movies-item:hover {
     transition: 500ms ease;
-    box-shadow: 0px 0px 40px 30px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 0px 40px 30px rgba(0, 0, 0, 0.4);
     background-position: center;
     background-repeat: no-repeat;
     margin-left: 32px;
