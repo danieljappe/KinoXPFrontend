@@ -86,4 +86,5 @@
     scale: 1.3;
     cursor: pointer;
     z-index: 3;
+    translate: 0% -5%;
 }
