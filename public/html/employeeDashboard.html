@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kino XP</title>
-    <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/dashboard.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
     
@@ -120,15 +119,23 @@
 
     <!-- Page Content -->
 
-    <div class="page-content">
+    <div class="page-container">
 
         <section>
-            <div class="dashboard-content">
-
-            </div>
-    
-            
-            
+                <div class="flexbox-container">
+                    <div class="flexbox-content">
+                        <div class="div1"> </div>
+                        <div style="flex: 2;">
+                            <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis, rerum odit itaque voluptatum molestias beatae in debitis dignissimos et, neque aperiam rem animi repellendus illum facere consequatur ab obcaecati eveniet. </p> 
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="div3"> 
+                        <h1>Lorem</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consequatur aliquam voluptate iusto accusamus quidem id eos nam velit vel esse facere ex, debitis nostrum obcaecati nihil sunt sapiente? Mollitia.</p>
+                    </div>
+                </div>
         </section>
 
     </div>
@@ -139,7 +146,7 @@
     const employeeData = JSON.parse(window.sessionStorage.getItem('employee'));
 
     // Get the <section> element by its ID
-    const dashboardDivElement = document.querySelector('.dashboard-content');
+    const dashboardDivElement = document.querySelector('.div1');
 
     // Check if employeeData is not null or undefined
     if (employeeData) {
