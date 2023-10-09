@@ -3,8 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
+<nav id="addMovieNav" style="display: flex; margin-bottom: 25px;">
+    <a href="../index.html" style="text-decoration: none; color: inherit;">
+        <h1 style="font-size: 45px; padding: 10px 15px 10px 15px; text-transform: capitalize;">
+            Edit Movie</h1>
+    </a>
+</nav>
+
+<div id="leftBox">
+    <h2 id="addMovieH2">Edit Movie</h2>
+</div>
+
+<div id="rightBox">
+    <form id="movieForm" action="http://localhost:8080/movie" method="post">
+        <div>
+            <label class="addMovieLabel">Enter Movie ID to Edit: </label>
+            <input class="addMovieInput" type="text" id="editMovieId" placeholder="Enter Movie ID...">
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Edit movie title: </label>
+            <input class="addMovieInput" type="text" id="movieName" name="movieName" placeholder="...">
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Edit movie desc.: </label>
+            <textarea class="addMovieDescription" id="movieDescription" name="movieDescription" rows="4" cols="50" placeholder="..."></textarea>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Edit movie genre: </label>
+            <select class="addMovieInput" name="genre">
+                <option value="" disabled="" selected="">Select a genre</option>
+                <option value="action">Action</option>
+                <option value="adventure">Adventure</option>
+                <option value="animation">Animation</option>
+                <option value="comedy">Comedy</option>
+                <option value="crime">Crime</option>
+                <option value="documentary">Documentary</option>
+                <option value="drama">Drama</option>
+                <option value="family">Family</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="history">History</option>
+                <option value="horror">Horror</option>
+                <option value="music">Music</option>
+                <option value="mystery">Mystery</option>
+                <option value="romance">Romance</option>
+                <option value="science_fiction">Science Fiction</option>
+                <option value="thriller">Thriller</option>
+                <option value="war">War</option>
+                <option value="western">Western</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Edit age restriction: </label>
+            <select class="addMovieInput" name="ageRestriction">
+                <option value="" disabled="" selected="">Choose an age restriction</option>
+                <option value="0">General Audience (G)</option>
+                <option value="6">Suitable for 6 years and older (PG)</option>
+                <option value="12">Suitable for 12 years and older (PG-12)</option>
+                <option value="15">Suitable for 15 years and older (PG-15)</option>
+                <option value="18">Suitable for 18 years and older (R)</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Edit movie runtime: </label>
+            <input class="addMovieInput" type="number" name="runtime" placeholder="...">
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Edit movie trailer link: </label>
+            <input class="addMovieInput" type="text" name="trailerLink" placeholder="...">
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Edit movie poster link: </label>
+            <input class="addMovieInput" type="text" name="posterLink" placeholder="...">
+        </div>
+
+        <button class="addMovieSubmit" type="submit">The Fetch Button</button>
+        <button class="addMovieBackBtn" type="button" onclick="goToIndex()">The Back Button</button>
+    </form>
+</div>
+
+<script>
+
+    document.getElementById('movieForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        let movieId = document.getElementById("editMovieId").value
+
+        fetch('http://localhost:8080/movie/' + movieId, {
+            method: 'GET',
+            header: {'content-type': 'application/json'}
+        })
+            .then(res => res.json())
+            .then(movieData => {
+                document.getElementById("movieName").value = movieData.name
+                document.getElementById("movieDescription").value = movieData.description
+                document.getElementById("genre").value = movieData.genre
+                document.getElementById("ageRestriction").value = movieData.ageRestriction
+                document.getElementById("runtime").value = movieData.runtime
+                document.getElementById("trailerLink").value = movieData.trailerLink
+                document.getElementById("posterLink").value = movieData.posterLink
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+
+    function goToIndex() {
+        window.location.href = '../index.html';
+    }
+</script>
+
+
 
 </body>
 </html>
