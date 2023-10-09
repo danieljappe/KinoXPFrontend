@@ -1,24 +1,30 @@
-//hardcoded stuff
-const selectedSeatsIDs = [];
-const selectedSeats = [];
-const bigTheatreRows = 25;
-const bigTheatreSeatsPerRow = 16;
-// const smallTheatreRows = 20;
-// const smallTheatreSeatsPerRow = 12;
+//variables
+const bigTheatreRows = 25
+const bigTheatreSeatsPerRow = 16
+const smallTheatreRows = 20
+const smallTheatreSeatsPerRow = 12
 
-//data the html/Javascript needs when requesting
-const showingId = 1
+let selectedSeatsIDs = []
+let selectedSeats = []
+let occupiedSeatIds = []
+let movieId = 0
+let theaterId = 0
+
+//data the html/Javascript needs to function
+const showingId = 2
+
 
 //URL for fetching
-const fetchShowingWithId = "http://localhost:8080/showing/"
-const fetchMovieWithId = "http://localhost:8080/movie/";
+const getShowingWithId = "http://localhost:8080/showing/"
+const getMovieWithId = "http://localhost:8080/movie/"
+const getAllTickets = "http://localhost:8080/tickets"
 
-fetchShowing()
+//methods to get the shit going
+fetchTickets(getAllTickets)
+fetchShowing(getShowingWithId, showingId)
 
-function fetchShowing() {
-    //fetch the showing to access the movieName, showing_date_time, tickets and reservedSeats
-
-    fetch("http://localhost:8080/showing/1")
+function fetchShowing(fetchUrl, id) {
+    fetch(fetchUrl + id)
         .then(result => {
             if (result >= 400) {
                 throw new Error();
@@ -26,31 +32,66 @@ function fetchShowing() {
             return result.json()
         }).then(body => {
         console.log(body)
-        // inputMovieInfo(body)
-        // const occupiedSeatIds = body.ticketDTOSet.map(ticket => ticket.seatId); //TODO ny fetch skal bruges for at finde occupiedseats
-        const occupiedSeatIds = [1,3,10];
-        //hent movie_name fra movie_id
-        //hent theatre_id fra theater_id
-        createSeats(bigTheatreRows, bigTheatreSeatsPerRow, occupiedSeatIds);
+        movieId = body.movieId
+        theaterId = body.theaterId
+        fetchMovie(getMovieWithId, movieId)
+
+        //this 'if' creates the amount of seats based on the theaterID
+        if (theaterId === 1) {
+            createSeats(smallTheatreRows, smallTheatreSeatsPerRow)
+        } else {
+            createSeats(bigTheatreRows, bigTheatreSeatsPerRow)
+        }
+    })
+}
+
+function fetchMovie(fetchUrl, id) {
+    fetch(fetchUrl + id)
+        .then(result => {
+            if (result >= 400) {
+                throw new Error();
+            }
+            return result.json()
+        }).then(body => {
+        console.log(body)
+        inputMovieInfo(body)
+    })
+}
+
+function fetchTickets(fetchUrl) {
+    fetch(fetchUrl)
+        .then(result => {
+            if (result >= 400) {
+                throw new Error();
+            }
+            return result.json()
+        }).then(body => {
+        occupiedSeatIds = body.filter(ticket => ticket.showingId === showingId).map(ticket => ticket.seatId);
+        console.log("occupied seats ids: " + occupiedSeatIds)
     })
 }
 
 
-function inputMovieInfo(showingBody){
-    console.log(showingBody)
+function inputMovieInfo(movieBody) {
     const movieName = document.getElementById("movieName")
     const theaterName = document.getElementById("theaterName")
-    showingBody.forEach(movie =>{
-        // movieName.innerHTML = showing.movieName
-        movieName.innerHTML = "{Movie Name}"
-        // theaterName.innerHTML = showing.
-    })
+    movieName.innerHTML = "Movie name: " + movieBody.movieName
+    theaterName.innerHTML = "Theater number: " + theaterId
 }
 
-function createSeats(rows, seatsPerRow, occupiedSeatIds) {
+function createSeats(rows, seatsPerRow) {
     const container = document.getElementById("seatDiv")
     const table = document.createElement('table')
-    let seatId = 1;
+
+    //this 'if' sets the initial value of the first seat. This must match the DB seat table.
+    //SO if bigTheatre = true. first seat_id must be 241 according to the seat table
+    let seatId
+    if (theaterId === 1){
+        seatId = 1;
+    }else {
+        seatId = 241;
+    }
+
     for (let i = 1; i <= rows; i++) {
         const row = document.createElement('tr')
 
@@ -62,20 +103,21 @@ function createSeats(rows, seatsPerRow, occupiedSeatIds) {
         for (let j = 1; j <= seatsPerRow; j++) {
             const seat = document.createElement('td')
             const seatButton = document.createElement('button')
-            seatButton.id = seatId++
             seatButton.innerHTML = "<img class='seat' src='icons/seat.png'/>"
 
-            if (i >= bigTheatreRows - 10) {
-                seatButton.classList.add('vipSeat')}
+            if (i >= rows - 10) {
+                seatButton.classList.add('vipSeat')
+            }
 
-             if (!occupiedSeatIds.includes(seatId)){
+            if (!occupiedSeatIds.includes(seatId)) {
                 seatButton.classList.add('seatButton')
                 seatButton.addEventListener('click', () => {
                     selectSeat(seatButton, i, j)
                 });
-            }else {
+            } else {
                 seatButton.classList.add('seatButtonOccupied')
             }
+            seatButton.id = seatId++
             seat.appendChild(seatButton)
             row.appendChild(seat)
         }
@@ -94,17 +136,19 @@ function selectSeat(seatButton, row, seatNum) {
         const seatToRemoveID = selectedSeatsIDs.indexOf(seatButton.id)
         if (seatToRemoveID !== -1) {
             selectedSeatsIDs.splice(seatToRemoveID, 1)
-            selectedSeats.splice(seatToRemoveID,1)
+            selectedSeats.splice(seatToRemoveID, 1)
         }
         seatButton.classList.toggle('selected');
     }
     console.log(selectedSeatsIDs)
     console.log(selectedSeats)
 }
+function saveSelectedSeats(){
+    //TODO
+    //TODO save selectedSeatsIDs with customerPhone, showingId, seat_id
+}
 
 
-
-//POP UP
 // document.getElementById("clickable").onclick = () => {
 //
 // }
