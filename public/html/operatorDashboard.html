@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kino XP</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
     
 </head>
@@ -122,7 +123,10 @@
     <div class="page-content">
 
         <section>
-            <h1>Logged in as Operator</h1>
+            <div class="dashboard-content">
+
+            </div>
+    
             
             
         </section>
@@ -135,7 +139,7 @@
     const employeeData = JSON.parse(window.sessionStorage.getItem('employee'));
 
     // Get the <section> element by its ID
-    const sectionElement = document.querySelector('section');
+    const sectionElement = document.querySelector('.dashboard-content');
 
     // Check if employeeData is not null or undefined
     if (employeeData) {
