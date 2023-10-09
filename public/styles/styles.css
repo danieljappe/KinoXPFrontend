@@ -370,9 +370,16 @@ section:not(.calendar-box .popular-movies-section) {
     background-color: #121212;
     margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #121212;
-    width: 30%; /* Could be more or less, depending on screen size */
-    height: 55%;
+    width: 20%;
+    height: 50%;
+    border-radius: 10vh;
+    box-shadow: 
+        0 0 0 2px #501010 inset, /* Inner gradient shadow */
+        0 0 0 3px #43101a, /* Middle gradient shadow 1 */
+        0 0 0 5px #361024, /* Middle gradient shadow 2 */
+        0 0 0 7px #29102d, /* Middle gradient shadow 3 */
+        0 0 0 9px #1d1037, /* Middle gradient shadow 4 */
+        0 0 0 11px #101040; /* Outer gradient shadow */
   }
 
   .modal-content-movie {
@@ -464,10 +471,12 @@ section:not(.calendar-box .popular-movies-section) {
 
   /* The Close Button */
   .close {
+    z-index: 10;
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    margin-right: 1.5vw;
   }
   
   .close:hover,
@@ -483,5 +492,47 @@ section:not(.calendar-box .popular-movies-section) {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+}
+.login-form div {
+    position: relative;
+    margin: 4vh;
+    padding: 1vh;
+    padding-bottom: 1vh;
+    color: white;
+    border-radius: 20px; /* Border radius for rounded corners */
+    background-color: #222;
+}
+
+.login-form div input {
+    width: calc(100% - 60px); /* Adjust width based on padding and border widths */
+    text-align: center;
+    padding: 3px 30px;
+    font-size: 12px;
+    outline: none; /* Remove input outline */
+    background-color: transparent; /* Make input background transparent */
+    color: white; /* Text color */
+    border: 2px solid #1d1037; /* Border color for input focus */
+    border-radius: 20px; /* Match the border-radius of the container */
+}
+
+.login-form div input:focus {
+    background-image: linear-gradient(to right, #101040, #501010);;
+}
+
+
+.btn-style{
+    background-color: transparent;
+    border: 2px solid;
+    border-image: linear-gradient(to right, #101040, #501010); /* Gradient border */
+    border-image-slice: 1; /* Ensures the entire border is covered by the gradient */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.btn-style:hover{
+    background-color: lightgray;
+    color: #000;
 }
   
