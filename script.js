@@ -97,34 +97,32 @@ loginLink.onclick = function(event) {
     }
   }
 
-  //Seat reservation stuff
-console.log(document.getElementById("phoneNumber").value);
-
 
 //TODO CANCEL RESERVATION
 var cancelModal = document.getElementById("myCancelModal");
 
 // Get the button that opens the modal
-var cancelLink = document.getElementById("cancel-link");
+var cancelLink = document.getElementById("cancel-reservation");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("cancelClose")[0];
+
 
 // When the user clicks on the link, open the modal
 cancelLink.onclick = function(event) {
     event.preventDefault(); // Prevent the default link behavior (navigating to a new page)
-    modal.style.display = "block";
+    cancelModal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-    modal.style.display = "none";
+    cancelModal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
-        modal.style.display = "none";
+        cancelModal.style.display = "none";
     }
 }
 

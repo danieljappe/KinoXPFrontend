@@ -125,45 +125,49 @@
                         </div> 
                     </div>
 
+                </div>
+
 <!--                    todo add cancel reservation-->
 
-                    <div id="myCancelModal" class="modal">
+                    <div id="myCancelModal" class="myCancelModal">
 
                         <!-- Modal content -->
                         <div class="modal-content">
-                            <span class="close">&times;</span>
+                            <span class="cancelClose">&times;</span>
 
-                            <div class="login-form">
+                            <div class="cancel-form">
 
                                 <h2>Cancel reservation</h2>
 
                                 <div>
                                     <div>
-                                        <h3>Phone Number</h3>
+                                        <h3>Input phone number to see reservations</h3>
                                         <input type="text" required>
                                     </div>
+<!--                                    todo: When you input your phone number you should get a list of all
+                                              active reservations and a button on the side of each to cancel.
+                                              But where do I get this list from? Has it been made yet?-->
+                                    <ul>
+                                        <li>Reservation 1 -- <button>Cancel me</button></li>
+                                        <li>Reservation 2 -- <button>Cancel me</button></li>
+                                        <li>Reservation 3 -- <button>Cancel me</button></li>
+                                    </ul>
+<!--                                    <div>-->
+<!--                                        <h3>ID?</h3>-->
+<!--                                        <input type="password" required>-->
+<!--                                    </div>-->
+
+<!--                                    <div> <a href="#">Forgot Password</a> <a href="#">Signup</a>-->
+<!--                                    </div>-->
 
                                     <div>
-                                        <h3>Password</h3>
-                                        <input type="password" required>
-                                    </div>
-
-                                    <div> <a href="#">Forgot Password</a> <a href="#">Signup</a>
-                                    </div>
-
-                                    <div>
-                                        <input type="submit" value="Login">
+                                        <input type="submit" value="What button?">
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-                  </div>
+                    </div>
 
     <!-- Page Content -->
 
@@ -226,9 +230,7 @@
                 <div class="flexbox-big-item">Sal 2</div>
             </div>
         </section>
-
-
-    </div>
+        </div>
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="script.js"></script>
