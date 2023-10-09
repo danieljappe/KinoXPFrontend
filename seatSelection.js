@@ -27,12 +27,14 @@ function fetchShowing() {
         }).then(body => {
         console.log(body)
         // inputMovieInfo(body)
-        const occupiedSeatIds = body.ticketDTOSet.map(ticket => ticket.seatId);
+        // const occupiedSeatIds = body.ticketDTOSet.map(ticket => ticket.seatId); //TODO ny fetch skal bruges for at finde occupiedseats
+        const occupiedSeatIds = [1,3,10];
         //hent movie_name fra movie_id
         //hent theatre_id fra theater_id
         createSeats(bigTheatreRows, bigTheatreSeatsPerRow, occupiedSeatIds);
     })
 }
+
 
 function inputMovieInfo(showingBody){
     console.log(showingBody)
@@ -89,9 +91,10 @@ function selectSeat(seatButton, row, seatNum) {
         selectedSeats.push(seatInfo)
         seatButton.classList.toggle('selected')
     } else {
-        const seatToRemove = selectedSeatsIDs.indexOf(seatButton.id)
-        if (seatToRemove !== -1) {
-            selectedSeatsIDs.splice(seatToRemove, 1)
+        const seatToRemoveID = selectedSeatsIDs.indexOf(seatButton.id)
+        if (seatToRemoveID !== -1) {
+            selectedSeatsIDs.splice(seatToRemoveID, 1)
+            selectedSeats.splice(seatToRemoveID,1)
         }
         seatButton.classList.toggle('selected');
     }
