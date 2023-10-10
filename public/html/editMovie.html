@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css">
 </head>
 <body>
 <nav id="addMovieNav" style="display: flex; margin-bottom: 25px;">
@@ -104,7 +104,7 @@
         })
             .then(res => res.json())
             .then(movieData => {
-                document.getElementById("movieName").value = movieData.name
+                document.getElementById("movieName").value = movieData.getName(0)
                 document.getElementById("movieDescription").value = movieData.description
                 document.getElementById("genre").value = movieData.genre
                 document.getElementById("ageRestriction").value = movieData.ageRestriction
