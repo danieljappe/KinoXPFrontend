@@ -1,14 +1,21 @@
+import Showing from "../models/showing.js";
+import DateParser from "../utilities/date_parser.js";
+
 export default class Repository {
     baseURL;
     allMovies;
+    createShowing;
     allShowings3Months;
     allShowings2Months;
+    dateParser;
 
     constructor() {
         this.baseURL = "https://kino-xp-backend.azurewebsites.net";
         this.allMovies = this.baseURL + "/movies";
+        this.createShowing = this.baseURL + "/showing";
         this.allShowings3Months = this.baseURL + "/showings/months/3";
         this.allShowings2Months = this.baseURL + "/showings/months/2";
+        this.dateParser = new DateParser()
     }
     
     //arrays to keep data stored
@@ -17,51 +24,54 @@ export default class Repository {
 
 
     getAllMovies = function() {
-        const response = fetch(this.allMovies);
-        console.log(response);
-        for (let i = 0; i < response.length; i++) {
-            addToMoviesIfNotExists(setMovie(response[i]));
-        }
-        return movies;
+        
     }
 
+    async createShowing(showingData) {
+        try {
+            const response = await fetch(this.allShowings3Months, {
+                method: 'POST',
+                headers: {  'Content-Type': 'application/json'  },
+                body: JSON.stringify(showingData),
+            });
+            console.log(response);
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+            const createdShowing = await response.json();
+            return createdShowing;
+        } catch (error) {
+            console.error('Create Showing Error:', error);
+            throw error;
+        }
+    }
 
     getAllShowings = async function() {
-        console.log(this.allShowings3Months);
-        const response = await fetch(this.allShowings3Months);
-        console.log(response);
+        const response = await this._fetchData(this.allShowings2Months);
+        console.log(`There are ${response.length} showings`);
+        if (response.length === 0) return [];
+        for (let i = 0; i < response.length; i++) {
+            showings.push(createShowingObject(response[i])); 
+        }
+        
+        return showings;
     }
 
-    // Fetch data
-    fetch = async function(url) {
+    // Fetch data from URL
+    _fetchData = async function(url) {
         try {
             const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
             return await response.json();
         } catch (error) {
             console.error('Fetch error:', error);
-            throw error; // Re-throw the error so that it can be handled further if needed
-        }
-}
-
-    getMovieIfExists = function(id) {
-        for (let i = 0; i < movies.length; i++) {
-            if (movies[i].movieId === id) return movies[i];
-        }
-        return null;
+            throw error;
+        } 
     }
 
-    addToMoviesIfNotExists = function(movie) {
-        let exists = false;
-        for (let i = 0; i < movies.length; i++) {
-            if (movies[i].movieId === movie.movieId) return exists = true;
-        }
-        if (!exists) movies.push(movie);
+    createShowingObject = function(jsonResponse) {
+        return new Showing(jsonResponse.movieId, jsonResponse.theaterId, jsonResponse.date, dateParser);
     }
 
-    createMovieObject = function(response) {
+    createMovieObject = function(jsonResponse) {
 
     }
 

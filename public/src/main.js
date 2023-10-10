@@ -88,7 +88,17 @@ const repository = new TheRepository();
 /*const movs = repository.getAllMovies();
 for (let i = 0; i < movs.length; i++) console.log(movs[i]);*/
 const showings = await repository.getAllShowings();
-
+/*
+for (let i = 0; i < 4; i++) {
+  await repository.createShowing(
+    {
+      "movieId" : i,
+      "theaterId" : 1,
+      "showingDateTime" : "2023-10-06T15:00:00",
+    }
+  );
+}
+*/
 
 console.log("after");
 
