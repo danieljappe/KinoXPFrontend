@@ -96,13 +96,11 @@
 
         var formData = new FormData(event.target);
 
-        // Create JSON object
         var jsonObject = {};
         formData.forEach(function(value, key){
             jsonObject[key] = value;
         });
 
-        // Convert JSON object to string for testing/logging
         var jsonString = JSON.stringify(jsonObject);
         console.log(jsonString);
 
