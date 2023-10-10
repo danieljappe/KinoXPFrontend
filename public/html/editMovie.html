@@ -96,15 +96,15 @@
     document.getElementById('movieForm').addEventListener('submit', function (event) {
         event.preventDefault();
 
-        let movieId = document.getElementById("editMovieId").value
+        let movieId = document.getElementById("editMovieId").value;
 
         fetch('http://localhost:8080/movie/' + movieId, {
             method: 'GET',
-            header: {'content-type': 'application/json'}
+            headers: {'content-type': 'application/json'}
         })
             .then(res => res.json())
             .then(movieData => {
-                document.getElementById("movieName").value = movieData.getName(0)
+                document.getElementById("movieName").value = movieData.name
                 document.getElementById("movieDescription").value = movieData.description
                 document.getElementById("genre").value = movieData.genre
                 document.getElementById("ageRestriction").value = movieData.ageRestriction
