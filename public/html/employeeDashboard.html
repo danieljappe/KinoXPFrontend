@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kino XP</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
     
 </head>
@@ -13,7 +13,7 @@
 <body>
     <nav>
         <div class="wrapper">
-            <div class="logo"><a href="#">Kino XP</a></div>
+            <div class="logo"><a href="../index.html">Kino XP</a></div>
             <input type="checkbox" id="menu-btn">
             <input type="checkbox" id="close-btn">
             <ul class="nav-links">
@@ -36,8 +36,7 @@
                         <li><a href="#">Option</a></li>
                     </ul>
                 </li>
-
-
+                
                 <!-- Mega Menu -->
                 <li>
                     <a href="#" class="desktop-item">Mega Menu</a>
@@ -97,32 +96,25 @@
 
                     <!-- Modal content -->
                     <div class="modal-content">
-                      <span class="close">&times;</span>
-                      
+                        <span class="close">&times;</span>
                         <div class="login-form">
-
-                            <h2>Sign In</h2> 
-
-                            <div> 
-                                <div> 
-                                   <h3>Username</h3> 
-                                 <input type="text" required> 
-                                </div> 
-
-                                <div> 
-                                   <h3>Password</h3> 
-                                 <input type="password" required>
-                                </div> 
-
-                                <div> <a href="#">Forgot Password</a> <a href="#">Signup</a> 
-                                </div> 
-
-                                <div> 
-                                 <input type="submit" value="Login"> 
-                                </div> 
-
-                            </div> 
-                        </div> 
+                            <h2>Sign In</h2>
+                            <div>
+                                <h3>Username</h3>
+                                <input type="text" id="username" required>
+                            </div>
+                            <div>
+                                <h3>Password</h3>
+                                <input type="password" id="password" required>
+                            </div>
+                            <div>
+                                <a href="#">Forgot Password</a>
+                                <a href="#" id="signup-link">Signup</a>
+                            </div>
+                            <div>
+                                <input type="submit" value="Login" id="login-btn">
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -174,67 +166,38 @@
     <div class="page-content">
 
         <section>
-            <h1 style="margin-bottom: 20vh;">Kino Xp Projekt</h1>
+            <h1>Logged in as Employee</h1>
             
-            <div class="flexbox-container" id="list1-container" style="margin-bottom: -20vh;">
-                <div class="flexbox-title">
-                    <h1 style="color: #fff;">Popular Movies</h1>
-                </div>
-                <div class="flexbox-content" >
-                    <!-- forEach -->
-                </div>
-            </div>
-        </section>
-
-        <section>
-    
-            <div class="flexbox-container" id="list2-container" style="margin-top: 12vh;">
-                <div class="flexbox-title">
-                    <h1 style="color: #fff;">Genre 1</h1>
-                </div>
-
-                <div class="flexbox-content">
-                    <div class="flexbox-item flexbox-item-1">Item 1<span class="description"><h1>Description for item 1.</h1></span></div>
-                    <div class="flexbox-item flexbox-item-2">Item 2</div>
-                    <div class="flexbox-item flexbox-item-3">Item 3</div>   
-                    <div class="flexbox-item flexbox-item-4">Item 4</div>   
-                    <div class="flexbox-item flexbox-item-5">Item 5</div>
-                    <div class="flexbox-item flexbox-item-6">Item 6</div>
-                    <div class="flexbox-item flexbox-item-7">Item 7</div>
-                    <div class="flexbox-item flexbox-item-8">Item 8</div>
-                </div>
-
-                <div class="flexbox-content">
-                    <div class="flexbox-title">
-                        <h1 style="color: #fff;">Genre 2</h1>
-                    </div>
-                    <div class="flexbox-item flexbox-item-1">Item 1</div>
-                    <div class="flexbox-item flexbox-item-2">Item 2</div>
-                    <div class="flexbox-item flexbox-item-3">Item 3</div>
-                    <div class="flexbox-item flexbox-item-4">Item 4</div>
-                    <div class="flexbox-item flexbox-item-5">Item 5</div>
-                    <div class="flexbox-item flexbox-item-6">Item 6</div>
-                    <div class="flexbox-item flexbox-item-7">Item 7</div>
-                    <div class="flexbox-item flexbox-item-8">Item 8</div>
-                </div>
-
-            </div>
 
         </section>
 
-        <section>
-            <h1>Ny section (Evt vælg biograf)</h1>
-
-            <div class="flexbox-content" id="list3-container">
-                <div class="flexbox-big-item">Sal 1</div>
-                <div class="flexbox-big-item">Sal 2</div>
-            </div>
-        </section>
+    </div>
         </div>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve employee data from sessionStorage
+    const employeeData = JSON.parse(window.sessionStorage.getItem('employee'));
 
+    // Get the <section> element by its ID
+    const sectionElement = document.querySelector('section');
+
+    // Check if employeeData is not null or undefined
+    if (employeeData) {
+        // Update the content inside the <section> element
+        sectionElement.innerHTML = `
+            <h1>Logged in as Operator</h1>
+            <p>Employee ID: ${employeeData.employee_id}</p>
+            <p>Is operator: ${employeeData.is_operator}</p>
+            <p>Name: ${employeeData.employee_name}</p>
+            <!-- Add more properties as needed -->
+        `;
+    } else {
+        // Handle the case when employeeData is null or undefined
+        sectionElement.innerHTML = `<h1>No employee data found!</h1>`;
+    }
+});
+    </script>
 </body>
 
 </html>

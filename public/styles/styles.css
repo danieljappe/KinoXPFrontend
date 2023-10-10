@@ -6,18 +6,23 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-body{
-    background-color: #74413e;
-    color: #fff;
+
+/* Variables */
+:root {
+    --background-color: #101010;
+    --navbar-color: #080808;
 }
 
-
+body{
+    background-color: var(--background-color);
+    color: #fff;
+}
 
 nav{
     position: fixed;
     z-index: 99;
     width: 100%;
-    background: #242526;
+    background: var(--navbar-color);
 }
 nav .wrapper{
     position: relative;
@@ -274,7 +279,6 @@ nav input{
     margin: 1.5em;
     border: 1px solid #444;
     position: relative;
-
 }
 
 .flexbox-content {
@@ -310,6 +314,13 @@ nav input{
     background-repeat: no-repeat;
 }
 
+.flexbox-item:hover {
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 .flexbox-big-item {
     width: 40vw;
     height: 50vh;
@@ -321,68 +332,19 @@ nav input{
     line-height: 50vh;
 }
 
-
-.flexbox-item-1{
-    background-image: url("https://imusic.b-cdn.net/images/item/original/520/5051895255520.jpg");
-
-}
-
-.flexbox-item-2{
-    background-image: url("https://play-lh.googleusercontent.com/42tn9bqVGGQRSeCFpVZfYgSCF0ClRh6217Nc6xRHOgJjZfeZjb1Jt71TYunVUzFFK4HqCCbLVFaUta9O_8I=w240-h480-rw");
-}
-
-.flexbox-item-3{
-    background-image: url("https://vice-press.com/cdn/shop/products/Jurassic-Park-Editions-poster-florey.jpg");
-}
-
-.flexbox-item-4{
-    background-color: #50B498;
-}
-
-.flexbox-item-5{
-    background-color: #D49BAB;
-}
-
-.flexbox-item-6{
-    background-color: #222711;
-}
-
-.flexbox-item-7{
-    background-color: #3A15E0;
-}
-
-.flexbox-item-8{
-    background-color: #164700;
-}
-
-.flexbox-item-9{
-    background-color: #6A4115;
-}
-
 .description {
     display: none; /* or display: block; or any other initial display property */
 }
 
-
-.page-content {
-    height: 100vh;
-    text-align: center;
-    margin: 0 auto;
-    border: 0;
-    outline: 0;
-}
-
-html, body, section {
+html, body, section:not(.calendar-box .popular-movies-section) {
     block-size: 100%;
 }
 
-/*html {*/
-/*    scroll-snap-type: y mandatory;*/
-/*}*/
+html {
+    scroll-snap-type: y mandatory;
+}
 
-section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+section:not(.calendar-box .popular-movies-section) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -393,7 +355,7 @@ section {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 10; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -402,21 +364,109 @@ section {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-
+  
   /* Modal Content/Box */
   .modal-content {
-    background-color: #333;
+    background-color: #121212;
     margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #121212;
     width: 30%; /* Could be more or less, depending on screen size */
     height: 55%;
   }
 
+  .modal-content-movie {
+    background-color: #333;
+    margin: 6% auto; /* 15% from the top and centered */
+    padding: 1vh;
+    border: 1px solid #888;
+    width: 85%; /* Could be more or less, depending on screen size */
+    height: 80%;
+  }
+
+  .modal-content-movie img {
+    width: 100%;
+    height: 100%;
+    object-fit:contain ;
+  }
+
+  .movie-flex{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin: auto;
+  }
+
+  .movie-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    width: 90%;
+    margin-top: 3vh;
+  }
+
+  .movieposter{
+    width: 40%;
+    margin-left: 2vw;
+  }
+
+  .movie-wrapper .movie-title{
+    border: 1px solid #fff;
+    width: 80%;
+    text-align: center;
+  }
+
+  .movie-wrapper .movie-undertitle{
+    width: 50%;
+    display: inline-flex;
+    justify-content:space-around;
+    margin: 1vh;
+  }
+
+  .movie-wrapper .movie-description{
+    border: 1px solid #fff;
+    width: 80%;
+    max-height: 30%;
+    text-align:left;
+    overflow-y: auto;
+  }
+
+  .movie-wrapper .movie-description p{
+    margin: 1vh;
+  }
+
+  .movie-wrapper .movie-booking{
+    border: 1px solid #fff;
+    width: 80%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .movie-wrapper .movie-trailer{
+    border: 1px solid #fff;
+    margin-top: 2vh;
+    width: 80%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .movie-wrapper .movie-trailer iframe{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+
+
 .myCancelModal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 10; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -514,7 +564,7 @@ section {
 
  }
 
-/* Bliver den her brugt??*/
+/* TODO Bliver den her brugt??*/
 #containerPOP {
     display: none;
     background-image: linear-gradient(to right, #66a80f, #c0eb75);
@@ -529,6 +579,7 @@ section {
     box-sizing: border-box;
 }
 
+/*Is this in use?*/
 .addPhoneNumberbtn{
     position: relative;
     max-width: 1300px;
