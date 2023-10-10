@@ -336,7 +336,7 @@ nav input{
 .page-content {
     height: 100vh;
     text-align: center;
-    margin: 0 auto;
+    margin: 10vh auto;
     border: 0;
     outline: 0;
 }
@@ -350,12 +350,7 @@ html, body, section {
 /*}*/
 
 section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
 
 /* The Modal (background) */
@@ -493,9 +488,9 @@ section {
     text-align: center;
 }
 .sideBar {
-
-    width: 33vh;
+    width: 40vh;
     background: #333;
+    height: 140%;
 }
 
 .section-generator {
@@ -506,8 +501,9 @@ section {
     justify-content: center;
 }
 .sideBarContent{
-    margin: 11vh 1vw 1vh 1vw;
+    margin: 1vh 1vw 1vh 1vw;
     border: 1px solid #fff;
+    padding: 1vh;
 }
 
  .seat {
@@ -515,14 +511,15 @@ section {
     height: 25px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-     filter: hue-rotate(235deg);
+     /*filter: hue-rotate(235deg);*/
+     /*filter: hue-rotate(300deg);*/
 }
  .vipSeat{
      width: 30px;
      height: 25px;
      border-top-left-radius: 10px;
      border-top-right-radius: 10px;
-     filter: hue-rotate(50deg);
+     /*filter: hue-rotate(50deg);*/
  }
 .seatButtonOccupied{
     background-color: transparent;
@@ -547,6 +544,12 @@ section {
 
  .seatDiv {
      margin-top: 10px;
+ }
+ .ticketDiv{
+     border: gray;
+     border-style: solid;
+     padding: 1vh;
+     margin: 1vh;
  }
 .selectedSeatInfoDiv{
     width: 20%;
@@ -575,14 +578,6 @@ section {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-.sideBar {
-    width: 33vh;
-    background: #333;
-}
-.sideBarContent{
-    margin: 11vh 1vw 1vh 1vw;
-    border: 1px solid #fff;
-}
 .seat-flexbox{
     display: flex;
     flex-direction: column;
@@ -604,8 +599,9 @@ section {
     flex: 1;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: start;
     justify-content: center;
+    /*margin-top: 50vh;*/
 }
 
 #containerPOP {
