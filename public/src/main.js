@@ -1,3 +1,4 @@
+import { TheRepository } from "./repository/repository.js";
 
 const movies = [
   {
@@ -82,7 +83,17 @@ const movies = [
   }
 ];
 
-const flexboxContainer = document.querySelector('.popular-movies-section');
+console.log("before");
+const repository = new TheRepository();
+/*const movs = repository.getAllMovies();
+for (let i = 0; i < movs.length; i++) console.log(movs[i]);*/
+const showings = await repository.getAllShowings();
+
+
+console.log("after");
+
+
+
 const flexboxContent = document.querySelector('.popular-movies-content');
 
 for (let i = 0; i < movies.length; i++) {

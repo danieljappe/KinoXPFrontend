@@ -1,7 +1,15 @@
 export default class Repository {
-    baseURL = "kino-xp-backend.azurewebsites.net";
-    allMovies = baseURL + "/movies";
-    allShowings = baseURL + "/showings";
+    baseURL;
+    allMovies;
+    allShowings3Months;
+    allShowings2Months;
+
+    constructor() {
+        this.baseURL = "https://kino-xp-backend.azurewebsites.net";
+        this.allMovies = this.baseURL + "/movies";
+        this.allShowings3Months = this.baseURL + "/showings/months/3";
+        this.allShowings2Months = this.baseURL + "/showings/months/2";
+    }
     
     //arrays to keep data stored
     showings = [];
@@ -9,32 +17,34 @@ export default class Repository {
 
 
     getAllMovies = function() {
-        const response = fetch(allMovies);
+        const response = fetch(this.allMovies);
+        console.log(response);
         for (let i = 0; i < response.length; i++) {
             addToMoviesIfNotExists(setMovie(response[i]));
         }
+        return movies;
     }
 
-    getAllShowings = function() {
-        // Work with the JSON data here
-        //1. for each -> get movie
-        //2. if movie id is already fetched, use the movie object from there.
-    
-        let movieObject = getMovieIfExists(movieId);
-        //else get movie info and add to movies.
-        //3. add to showings.
-        //4. sort list by date                   
+
+    getAllShowings = async function() {
+        console.log(this.allShowings3Months);
+        const response = await fetch(this.allShowings3Months);
+        console.log(response);
     }
 
-    //fetch data
-    fetch = function(url) {
-        fetch(url).then(
-            response => {
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-                return response.json();
-            },
-        ).then(data => data).catch(error => console.error('Fetch error:', error));
-    }
+    // Fetch data
+    fetch = async function(url) {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Fetch error:', error);
+            throw error; // Re-throw the error so that it can be handled further if needed
+        }
+}
 
     getMovieIfExists = function(id) {
         for (let i = 0; i < movies.length; i++) {
@@ -56,4 +66,4 @@ export default class Repository {
     }
 
 
-}
+} export { Repository as TheRepository };
