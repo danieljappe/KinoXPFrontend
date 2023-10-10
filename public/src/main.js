@@ -85,28 +85,28 @@ const movies = [
 const flexboxContainer = document.querySelector('.popular-movies-section');
 const flexboxContent = document.querySelector('.popular-movies-content');
 
-movies.forEach(movie => {
+for (let i = 0; i < movies.length; i++) {
   const divElement = document.createElement('div');
-  divElement.className = ` popular-movies-item popular-movies-item-${movie.id}`;
-  divElement.style.backgroundImage = `url(${movie.posterLink})`;
+  divElement.className = ` popular-movies-item popular-movies-item-${movies[i].id}`;
+  divElement.style.backgroundImage = `url(${movies[i].posterLink})`;
   divElement.innerHTML = `
   <div class="popular-movies-overlay">
     <div class="description">
-      <h3>${movie.title}</h3>
-      <p>${movie.description}</p>
-      <p><strong>Genre:</strong> ${movie.genre}</p>
-      <p><strong>Age Restriction:</strong> ${movie.ageRestriction}</p>
-      <p>Run Time: ${movie.runTime} minutes</p>
-      <a href="${movie.trailerLink}" target="_blank">Watch Trailer</a>
+      <h3>${movies[i].title}</h3>
+      <p>${movies[i].description}</p>
+      <p><strong>Genre:</strong> ${movies[i].genre}</p>
+      <p><strong>Age Restriction:</strong> ${movies[i].ageRestriction}</p>
+      <p>Run Time: ${movies[i].runTime} minutes</p>
+      <a href="${movies[i].trailerLink}" target="_blank">Watch Trailer</a>
     </div>
     <div class="overlay-textbox">
-      <p class="popular-movies-overlay-title">${movie.title}</p>
-      <p class="popular-movies-overlay-subtitle">${movie.description}</p>
+      <p class="popular-movies-overlay-title">${movies[i].title}</p>
+      <p class="popular-movies-overlay-subtitle">${movies[i].description}</p>
     </div>
   </div>  
   `;
   flexboxContent.appendChild(divElement);
-});
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -149,12 +149,14 @@ document.addEventListener('DOMContentLoaded', function() {
           // Get the modal
           var movieModal = document.getElementById("movieModal"); 
 
-          var span = document.querySelector(".close")
+          var span = document.querySelector("span.close");
 
           
             // When the user clicks on <span> (x), close the modal
             span.onclick = function(event) {
+              console.log("Event handler called");
               if (event.target == modal) {
+                console.log("Clicked outside the modal");
                 movieModal.style.display = "none";
               }
             }
