@@ -23,9 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-        // Movie Operations
-
+            // Movie Operations
     baseURL = "https://kino-xp-backend.azurewebsites.net/"
+    
+        //Get all movies
+
     getAllMovies = baseURL + "/api/movies/getAll"
     fetch(getAllMovies)
     .then(response => {
@@ -42,10 +44,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const moviesDiv = document.querySelector('.div3 .viewmovies');
         // Assuming data is an array of movie objects, you can format and display them as needed
         moviesDiv.innerHTML = data.map(movie => {
-            return `<div class="movieDiv">
-                        <div>Movie ID: ${movie.movieId}</div>
-                        <div>${movie.title}</div>
-                    </div>`; // Adjust this according to your movie object structure
+            return `
+                    <div class="movieBox">
+                        <div class="movieDiv">
+                            <div>Movie ID: ${movie.movieId}</div>
+                            <div>${movie.title}</div>
+                        </div>
+                        <div>
+                            <button class="deleteMovieButton" data-movie-id="${movie.movieId}">Delete</button>
+                        </div>
+                    </div>`;
         }).join('');
     })
     .catch(error => {
@@ -53,6 +61,59 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('There has been a problem with your fetch operation:', error);
     });
 
+                    
+    
+                    //Add a movie
+
+    document.getElementById('movieForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+    
+        // Get values from the form fields
+        const imdbId = document.querySelector('.addMovieIdInput').value;
+        const ageRestriction = document.querySelector('.addMovieInput[name="ageRestriction"]').value;
+        const trailerUrl = document.querySelector('.addMovieInput[name="trailerLink"]').value;
+    
+        // Prepare the movie data object
+        const movieData = {
+            imdbId: imdbId,
+            trailerUrl: trailerUrl,
+            ageRestriction: ageRestriction
+        };
+    
+        const baseURL = "https://kino-xp-backend.azurewebsites.net/";
+        const addMovieEndpoint = baseURL + "/api/movies/";
+    
+        // Make a POST request to add a new movie
+        fetch(addMovieEndpoint + imdbId, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(movieData)
+        })
+        .then(response => {
+            // Check if the request was successful (status code 200)
+            if (response.ok) {
+                // Movie added successfully
+                alert('Movie added successfully!');
+                // You can update the UI or perform any other actions here
+            } else {
+                // Handle errors if the response status is not OK
+                console.error('Movie could not be added.');
+                // You can display an error message or perform any other error handling here
+            }
+        })
+        .catch(error => {
+            // Handle errors occurred during the fetch operation
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+    });
+                    
+    
+
+
+
+    
     // Get references to the divs in div3
     const defaultShowingDiv = document.querySelector('.div3 .default-showing');
     const viewMoviesDiv = document.querySelector('.div3 .viewmovies');
