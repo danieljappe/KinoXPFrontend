@@ -1,3 +1,30 @@
+import Showing from "./models/showing.js";
+import { ShowingRepository } from "./repository/showing_repository.js";
+import DateParser from "./utilities/date_parser.js";
+
+console.log("before");
+const showingRepository = new ShowingRepository();
+/*const movs = repository.getAllMovies();
+for (let i = 0; i < movs.length; i++) console.log(movs[i]);*/
+
+const showings = await showingRepository.getAllShowings();
+const dateParser = new DateParser();
+
+console.log("after");
+
+const showingsToCreate = [
+  new Showing(1, 1, "2023-11-06T17:00:00", dateParser),
+  new Showing(2, 2, "2023-11-01T15:00:00", dateParser),
+  new Showing(3, 2, "2023-11-12T18:00:00", dateParser),
+  new Showing(4, 1, "2023-11-31T11:00:00", dateParser),
+  new Showing(5, 1, "2023-10-31T21:00:00", dateParser),
+];
+console.log(showingsToCreate);
+
+for (let i = 0; i < showingsToCreate.length; i++) {
+  //await showingRepository.createShowing(showingsToCreate[i]); 
+}
+
 
 const movies = [
   {
@@ -82,7 +109,6 @@ const movies = [
   }
 ];
 
-const flexboxContainer = document.querySelector('.popular-movies-section');
 const flexboxContent = document.querySelector('.popular-movies-content');
 
 for (let i = 0; i < movies.length; i++) {
