@@ -6,18 +6,23 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-body{
-    background-color: #74413e;
-    color: #fff;
+
+/* Variables */
+:root {
+    --background-color: #101010;
+    --navbar-color: #080808;
 }
 
-
+body{
+    background-color: var(--background-color);
+    color: #fff;
+}
 
 nav{
     position: fixed;
     z-index: 99;
     width: 100%;
-    background: #242526;
+    background: var(--navbar-color);
 }
 nav .wrapper{
     position: relative;
@@ -274,7 +279,6 @@ nav input{
     margin: 1.5em;
     border: 1px solid #444;
     position: relative;
-
 }
 
 .flexbox-content {
@@ -333,7 +337,10 @@ nav input{
 }
 
 
-.page-content {
+html, body, section:not(.calendar-box .popular-movies-section) {
+    block-size: 100%;
+}
+.page-content-reserveSeats {
     height: 100vh;
     text-align: center;
     margin: 10vh auto;
@@ -345,45 +352,44 @@ html, body, section {
     block-size: 100%;
 }
 
-/*html {*/
-/*    scroll-snap-type: y mandatory;*/
-/*}*/
+html {
+    scroll-snap-type: y mandatory;
+}
 
-section {
+section:not(.calendar-box .popular-movies-section) {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 10; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: hidden; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-
+  
   /* Modal Content/Box */
   .modal-content {
-    background-color: #333;
+    background-color: #121212;
     margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
     width: 30%; /* Could be more or less, depending on screen size */
     height: 55%;
   }
 
-
   .modal-content-movie {
-    background-color: #333;
+    background-color: #181818;
     margin: 6% auto; /* 15% from the top and centered */
     padding: 1vh;
-    border: 1px solid #888;
-    width: 85%; /* Could be more or less, depending on screen size */
+    width: 90%; /* Could be more or less, depending on screen size */
     height: 80%;
   }
 
@@ -413,44 +419,51 @@ section {
     width: 40%;
     margin-left: 2vw;
   }
-  
+
   .movie-wrapper .movie-title{
-    border: 1px solid #fff;
+    padding: 0%;
     width: 80%;
-    text-align: center;
+    text-align: start;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 40px;
+    height: 45px;
   }
 
   .movie-wrapper .movie-undertitle{
-    width: 50%;
-    display: inline-flex;
-    justify-content:space-around;
-    margin: 1vh;
+    width: 80%;
+    display: flex;
+    justify-content: start;
+    text-align: start;
   }
 
-  .movie-wrapper .movie-description{
-    border: 1px solid #fff;
-    width: 80%;
-    max-height: 30%;
+  #modalGenre, #modalAgeRestriction, #modalRunTime {
+    margin-right: 24px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .movie-wrapper .movie-description, #modalDescription{
+    margin-top: 6px;
+    margin-bottom: 12px;
+    width: 100%;
+    height: 130px;
+    font-size: 14px;
     text-align:left;
     overflow-y: auto;
-  }
-  
-  .movie-wrapper .movie-description p{
-    margin: 1vh;
+    padding-left: 3vw;
+    font-weight: 100;
+    color: rgba(255,255,255,0.7);
   }
 
   .movie-wrapper .movie-booking{
-    border: 1px solid #fff;
     width: 80%;
     height: 10%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
+    align-items: start;
   }
 
   .movie-wrapper .movie-trailer{
-    border: 1px solid #fff;
-    margin-top: 2vh;
     width: 80%;
     height: 60%;
     display: flex;
@@ -467,15 +480,17 @@ section {
 
   /* The Close Button */
   .close {
+    z-index: 10;
     color: #aaa;
     float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 36px;
+    font-weight: 400;
+    margin-right: 24px;
   }
-
+  
   .close:hover,
   .close:focus {
-    color: black;
+    color: white;
     text-decoration: none;
     cursor: pointer;
   }
@@ -487,24 +502,122 @@ section {
     transform: translate(-50%, -50%);
     text-align: center;
 }
-.sideBar {
-    width: 40vh;
-    background: #333;
-    height: 140%;
+.login-form div {
+    position: relative;
+    margin: 4vh;
+    padding: 1vh;
+    padding-bottom: 1vh;
+    color: white;
+    border-radius: 20px; /* Border radius for rounded corners */
+    background-color: #222;
 }
 
-.section-generator {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+.login-form div input {
+    width: calc(100% - 60px); /* Adjust width based on padding and border widths */
+    text-align: center;
+    padding: 3px 30px;
+    font-size: 12px;
+    outline: none; /* Remove input outline */
+    background-color: transparent; /* Make input background transparent */
+    color: white; /* Text color */
+    border: 2px solid #1d1037; /* Border color for input focus */
+    border-radius: 20px; /* Match the border-radius of the container */
 }
-.sideBarContent{
-    margin: 1vh 1vw 1vh 1vw;
-    border: 1px solid #fff;
-    padding: 1vh;
+
+.login-form div input:focus {
+    background-image: linear-gradient(to right, #101040, #501010);;
 }
+
+
+.btn-style{
+    background-color: transparent;
+    border: 2px solid;
+    border-image: linear-gradient(to right, #101040, #501010); /* Gradient border */
+    border-image-slice: 1; /* Ensures the entire border is covered by the gradient */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.btn-style:hover{
+    background-color: lightgray;
+    color: #000;
+}
+#leftBox{
+    border:1px solid lightgray;
+    margin-top: 140px;
+    margin-left: 15%;
+    padding: 25px;
+    width: 22.5%;
+    float:left;
+    height:auto;
+    background: #192531;
+    font-style: normal;
+    text-align: center;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+#rightBox{
+    border:1px solid lightgray;
+    margin-top: 140px;
+    margin-left: 5%;
+    padding: 0 25px 25px 25px;
+    width: 42.5%;
+    float:left;
+    height:auto;
+    background: #192531;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+
+}
+#addMovieH2{
+    text-transform: uppercase;
+}
+.addMovieLabel{
+    display: block;
+    margin-top:15px;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    font-size: 17px;
+}
+.addMovieInput{
+    background: lightgray;
+    padding: 5px 10px 5px 10px;
+    border:1px solid white;
+    color: black;
+    width: 60%;
+}
+.addMovieSubmit{
+    margin-top:20px;
+    color:white;
+    background-color: #024825;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    padding: 10px 25px 10px 25px;
+    margin-right:15px;
+    float:left;
+}
+.addMovieSubmit:hover{
+    background-color: #036132;
+}
+.addMovieBackBtn{
+    margin-top:20px;
+    color:white;
+    background-color: #480202;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    padding: 10px 25px 10px 25px;
+    float:left;
+}
+.addMovieBackBtn:hover{
+    background-color: #610303;
+}
+.addMovieDescription{
+    width:60%;
+    background: lightgray;
+    padding: 5px 10px 5px 10px;
+    border:1px solid white;
+}
+
 
  .seat {
     width: 30px;
@@ -566,18 +679,6 @@ section {
      text-align: center;
 
  }
-.seatModal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: hidden; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
 .seat-flexbox{
     display: flex;
     flex-direction: column;
@@ -604,125 +705,94 @@ section {
     /*margin-top: 50vh;*/
 }
 
-#containerPOP {
-    display: none;
-    background-image: linear-gradient(to right, #66a80f, #c0eb75);
-    background-size:cover;
-    color: white;
-    position: absolute;
-    width: 350px;
-    border-radius: 5px;
-    left: 50%;
-    margin-left: -160px;
-    padding: 16px 8px 8px;
-    box-sizing: border-box;}
+/*#containerPOP {*/
+/*    display: none;*/
+/*    background-image: linear-gradient(to right, #66a80f, #c0eb75);*/
+/*    background-size:cover;*/
+/*    color: white;*/
+/*    position: absolute;*/
+/*    width: 350px;*/
+/*    border-radius: 5px;*/
+/*    left: 50%;*/
+/*    margin-left: -160px;*/
+/*    padding: 16px 8px 8px;*/
+/*    box-sizing: border-box;}*/
 
 /* New/Updated CSS */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-}
+/*.modal {*/
+/*    display: none;*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background: rgba(0, 0, 0, 0.8);*/
+/*}*/
 
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    width: 80%;
-    max-width: 800px;
-    background-color: #333;
-    display: flex;
-}
+/*.modal-content {*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    transform: translate(-50%, -50%);*/
+/*    padding: 20px;*/
+/*    width: 80%;*/
+/*    max-width: 800px;*/
+/*    background-color: #333;*/
+/*    display: flex;*/
+/*}*/
 
-.modal-content img {
-    width: 50%;
-    border-right: 2px solid #fff;
-}
+/*.modal-content img {*/
+/*    width: 50%;*/
+/*    border-right: 2px solid #fff;*/
+/*}*/
 
-.modal-content .modal-info {
-    padding: 20px;
-    width: 50%;
-}
+/*.modal-content .modal-info {*/
+/*    padding: 20px;*/
+/*    width: 50%;*/
+/*}*/
 
-.modal-content h2 {
-    margin-top: 10px;
-}
+/*.modal-content h2 {*/
+/*    margin-top: 10px;*/
+/*}*/
 
-.modal-content p {
-    margin: 5px 0;
-}
+/*.modal-content p {*/
+/*    margin: 5px 0;*/
+/*}*/
 
-.modal-content iframe {
-    width: 100%;
-    height: 300px;
-}
+/*.modal-content iframe {*/
+/*    width: 100%;*/
+/*    height: 300px;*/
+/*}*/
 
-.close {
-    color: #fff;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
+/*.close {*/
+/*    color: #fff;*/
+/*    position: absolute;*/
+/*    top: 10px;*/
+/*    right: 10px;*/
+/*    cursor: pointer;*/
+/*}*/
 
-.error-container {
-    text-align: center;
-    padding: 50px;
-    background-color: #f8d7da;
-    color: #721c24;
-    max-width: 600px;
-    margin: 100px auto;
-    border-radius: 5px;
-}
+/*.error-container {*/
+/*    text-align: center;*/
+/*    padding: 50px;*/
+/*    background-color: #f8d7da;*/
+/*    color: #721c24;*/
+/*    max-width: 600px;*/
+/*    margin: 100px auto;*/
+/*    border-radius: 5px;*/
+/*}*/
 
-.error-container h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
+/*.error-container h1 {*/
+/*    font-size: 24px;*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
-.error-container h2 {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
+/*.error-container h2 {*/
+/*    font-size: 18px;*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
-.error-container img {
-    max-width: 100%;
-    height: auto;
-}
-
-nav{
-    position: fixed;
-    z-index: 99;
-    width: 100%;
-    background: #242526;
-    top: 0;  /* Ensure it's at the top of the page */
-}
-#leftBox{
-    margin-top: 170px;
-    margin-left: 5%;
-    padding: 25px;
-    width: 42.5%;
-    float:left;
-    height:auto;
-    background: #242526;
-    text-align: center;
-}
-#rightBox{
-    margin-top: 170px;
-    margin-left: 5%;
-    padding: 25px;
-    width: 42.5%;
-    float:left;
-    height:400px;
-    background: #242526;
-}
-#addMovieH2{
-    text-transform: capitalize;
->>>>>>> 6606538e72b9795aa6da95d250bcab99da96ff9c
-}
+/*.error-container img {*/
+/*    max-width: 100%;*/
+/*    height: auto;*/
+/*}*/
