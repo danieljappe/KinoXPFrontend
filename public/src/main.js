@@ -27,10 +27,33 @@ for (let i = 0; i < showingsToCreate.length; i++) {
 const currentMovies = new CurrentMovies(allMovies);
 await currentMovies.show();
 
+//fill the calendar schedule
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//needs to be moved away - current movies have been moved away
 document.addEventListener('DOMContentLoaded', function() {
       const close = document.querySelector('.close');
 
