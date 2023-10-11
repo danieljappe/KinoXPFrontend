@@ -125,45 +125,43 @@
                 <div class="flexbox-container">
                     <div class="flexbox-content">
                         <div class="div1"> </div>
-                        <div style="flex: 2;">
-                            <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis, rerum odit itaque voluptatum molestias beatae in debitis dignissimos et, neque aperiam rem animi repellendus illum facere consequatur ab obcaecati eveniet. </p> 
+                        <h2 style="margin-bottom: -3vh;">Operator Functions:</h2>
+                        <div class="div2">
+                            <button>
+                                <a>View movies in the database</a>
+                            </button>
+                            <button>
+                                <a">Add movie to the database</a>
+                            </button>
+                            <button>
+                                <a>Delete movie </a>
+                            </button>
                         </div>
                     </div>
                     
                     
-                    <div class="div3"> 
-                        <h1>Lorem</h1>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consequatur aliquam voluptate iusto accusamus quidem id eos nam velit vel esse facere ex, debitis nostrum obcaecati nihil sunt sapiente? Mollitia.</p>
+                    <div class="div3">
+                        <div class="default-showing">
+                            <h1>Welcome operator</h1>
+                            <p>This is your homepage, you can access movie operations on the left and view and edit the schedule below</p>
+                        </div>
+                        <div class="viewmovies">
+                            <h1>heyyy</h1>
+                        </div>
+                        <div class="addmovies">
+                            <h1>Add movies</h1>
+                        </div>
+                        <div class="deletemovies">
+                            <h1>Delete movies</h1>
+                        </div>
                     </div>
                 </div>
         </section>
 
+
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-    // Retrieve employee data from sessionStorage
-    const employeeData = JSON.parse(window.sessionStorage.getItem('employee'));
-
-    // Get the <section> element by its ID
-    const sectionElement = document.querySelector('.div1');
-
-    // Check if employeeData is not null or undefined
-    if (employeeData) {
-        // Update the content inside the <section> element
-        sectionElement.innerHTML = `
-            <h1>Logged in as Operator</h1>
-            <p>Employee ID: ${employeeData.employee_id}</p>
-            <p>Is operator: ${employeeData.is_operator}</p>
-            <p>Name: ${employeeData.employee_name}</p>
-            <!-- Add more properties as needed -->
-        `;
-    } else {
-        // Handle the case when employeeData is null or undefined
-        sectionElement.innerHTML = `<h1>No employee data found!</h1>`;
-    }
-});
-    </script>
+    <script src="../src/dashboardJS/dashboard.js"></script>
 </body>
 
 </html>
