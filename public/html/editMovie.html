@@ -36,8 +36,7 @@
 
         <div>
             <label class="addMovieLabel">Edit movie genre: </label>
-            <select class="addMovieInput" name="genre">
-                <option value="" disabled="" selected="">Select a genre</option>
+            <select class="addMovieInput" name="genre" multiple>
                 <option value="action">Action</option>
                 <option value="adventure">Adventure</option>
                 <option value="animation">Animation</option>
@@ -58,6 +57,7 @@
                 <option value="western">Western</option>
             </select>
         </div>
+
 
         <div>
             <label class="addMovieLabel">Edit age restriction: </label>
@@ -98,15 +98,30 @@
 
         let movieId = document.getElementById("editMovieId").value;
 
-        fetch('http://localhost:8080/movie/' + movieId, {
+        fetch('https://kino-xp-backend.azurewebsites.net/api/movies/movieid/' + movieId, {
             method: 'GET',
             headers: {'content-type': 'application/json'}
         })
             .then(res => res.json())
             .then(movieData => {
-                document.getElementById("movieName").value = movieData.name
-                document.getElementById("movieDescription").value = movieData.description
-                document.getElementById("genre").value = movieData.genre
+                console.log(movieData.movieId)
+                document.getElementById("movieName").value = movieData.title
+                document.getElementById("movieDescription").value = movieData.plot
+                //document.querySelector('select[name="genre"]').value = movieData.genre;
+
+                document.querySelectorAll('select[name="genre"] option').forEach(option => {
+                    option.remove();
+                });
+
+                // Tilføj genrer til dropdown-menuen
+                const genreSelect = document.querySelector('select[name="genre"]');
+                movieData.genres.forEach(genre => {
+                    const option = document.createElement('option');
+                    option.value = genre;
+                    option.text = genre;
+                    genreSelect.appendChild(option);
+                });
+
                 document.getElementById("ageRestriction").value = movieData.ageRestriction
                 document.getElementById("runtime").value = movieData.runtime
                 document.getElementById("trailerLink").value = movieData.trailerLink
