@@ -1,4 +1,4 @@
-import { TheRepository } from "./repository/repository.js";
+import { ShowingRepository } from "./repository/showing_repository.js";
 
 const movies = [
   {
@@ -84,10 +84,10 @@ const movies = [
 ];
 
 console.log("before");
-const repository = new TheRepository();
+const showingRepository = new ShowingRepository();
 /*const movs = repository.getAllMovies();
 for (let i = 0; i < movs.length; i++) console.log(movs[i]);*/
-const showings = await repository.getAllShowings();
+const showings = await showingRepository.getAllShowings();
 /*
 for (let i = 0; i < 4; i++) {
   await repository.createShowing(
