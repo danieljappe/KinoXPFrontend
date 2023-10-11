@@ -704,6 +704,16 @@ section:not(.calendar-box .popular-movies-section) {
     justify-content: center;
     /*margin-top: 50vh;*/
 }
+.sideBar {
+    width: 40vh;
+    background: #333;
+    height: 140%;
+}
+.sideBarContent{
+    margin: 1vh 1vw 1vh 1vw;
+    border: 1px solid #fff;
+    padding: 1vh;
+}
 
 /*#containerPOP {*/
 /*    display: none;*/

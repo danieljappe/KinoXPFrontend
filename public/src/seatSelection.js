@@ -116,10 +116,10 @@ function createSeats(rows, seatsPerRow) {
 
             if (i >= rows - 10) {
                 seatButton.classList.add("vipSeat")
-                seatButton.innerHTML = "<img class='vipSeat' src='icons/vipSeat.png'/>"
+                seatButton.innerHTML = "<img class='vipSeat' src='public/icons/vipSeat.png'/>"
             } else {
                 seatButton.classList.add("seat")
-                seatButton.innerHTML = "<img class='seat' src='icons/seat.png'/>"
+                seatButton.innerHTML = "<img class='seat' src='public/icons/seat.png'/>"
             }
 
             if (!occupiedSeatIds.includes(seatId)) {
