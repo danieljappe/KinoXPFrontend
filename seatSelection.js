@@ -17,16 +17,20 @@ let totalPrice = 0
 //data the html/Javascript needs to function
 const showingId = 1
 
-//URL for fetching
-const getShowingWithId = "http://localhost:8080/showing/"
-const getMovieWithId = "http://localhost:8080/movie/"
-const getMovieWithIdNEW = "http://localhost:8080/api/movies/movieid/"
-const getAllTickets = "http://localhost:8080/tickets"
-const saveSeatsUrl = "http://localhost:8080/ticket"
+//URL for  fetching
+const getShowingWithId = "https://kino-xp-backend.azurewebsites.net/showing/showingid/"
+const getMovieWithId = "https://kino-xp-backend.azurewebsites.net/api/movies/movieid/"
+const getAllTickets = "https://kino-xp-backend.azurewebsites.net/tickets"
+const saveSeatsUrl = "https://kino-xp-backend.azurewebsites.net/ticket"
+
+//URL for fetching Locally (this is only for debugging)
+// const getShowingWithId = "http://localhost:8080/showing/showingid/"
+// const getMovieWithId = "http://localhost:8080/api/movies/movieid/"
+// const getAllTickets = "http://localhost:8080/tickets"
+// const saveSeatsUrl = "http://localhost:8080/ticket"
 
 //methods to get the shit going
 fetchTickets(getAllTickets)
-
 
 function fetchShowing(fetchUrl, id) {
     fetch(fetchUrl + id)
@@ -81,7 +85,7 @@ function fetchTickets(fetchUrl) {
 function inputMovieInfo(movieBody) {
     const movieName = document.getElementById("movieName")
     const theaterName = document.getElementById("theaterName")
-    movieName.innerHTML = movieBody.movieName
+    movieName.innerHTML = movieBody.title
     theaterName.innerHTML = "Theater number: " + theaterId
 }
 
@@ -196,20 +200,22 @@ function saveSelectedSeats(customerPhone) {
 
     //iterates over the selectedSeatsIDs.length to add one ticket at a time from the list.
     //I don't think the fetch can POST a whole list at a time... :)
+    let seatsSaved = 0;
     for (let i = 0; i < selectedSeatsIDs.length; i++) {
-        console.log("i: " + i + ", selected seat id: " + selectedSeatsIDs[i])
         const data = {
             customerPhone: customerPhone,
             showingId: showingId,
-            seatId: selectedSeatsIDs[i]
+            seatId: selectedSeatsIDs[i],
+            ticketId: null
         };
-        console.log(data)
+        const body = JSON.stringify(data)
+        console.log(body)
         fetch(saveSeatsUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: body
         })
             .then(response => {
                 if (!response.ok) {
@@ -219,22 +225,17 @@ function saveSelectedSeats(customerPhone) {
             })
             .then(data => {
                 console.log('Seats saved successfully:', data);
+                seatsSaved++
+                if (seatsSaved === selectedSeatsIDs.length) {
+                    window.location.reload()
+                    alert("Your tickets has been reserved")
+                }
             })
             .catch(error => {
                 console.error('Error saving seats:', error);
             });
-        window.location.reload();
     }
-
 }
-
-// document.getElementById("clickable").onclick = () => {
-//
-// }
-// loginLink.onclick = function(event) {
-//     var popup = document.getElementById("myPopup");
-//     popup.classList.toggle("show");
-// }
 
 function addPhoneNumber() {
     if (selectedSeatsIDs.length === 0) {
