@@ -1,6 +1,6 @@
-const employeeCheck = "http://localhost:8080/employeeCheck";
-const postEmployee = "http://localhost:8080/employee";
-const getEmployeeById = "http://localhost:8080/employee/";
+const employeeCheck = "https://kino-xp-backend.azurewebsites.net/employeeCheck";
+const postEmployee = "https://kino-xp-backend.azurewebsites.net/employee";
+const getEmployeeById = "https://kino-xp-backend.azurewebsites.net/employee/";
 
 const employeeData = {
     id: null,
@@ -38,11 +38,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (data.is_operator) {
                     // Redirect to operator dashboard or desired page
                     window.sessionStorage.setItem('employee', JSON.stringify(data));
-                    window.location.href = '/operatorDashboard.html'; // Change the URL to your operator dashboard page
+                    window.location.href = 'html/operatorDashboard.html'; // Change the URL to your operator dashboard page
                 } else {
                     // Redirect to regular employee dashboard or desired page
                     window.sessionStorage.setItem('employee', JSON.stringify(data));
-                    window.location.href = '/employeeDashboard.html'; // Change the URL to your regular employee dashboard page
+                    window.location.href = 'html/employeeDashboard.html'; // Change the URL to your regular employee dashboard page
                 }
             })
             .catch(error => {

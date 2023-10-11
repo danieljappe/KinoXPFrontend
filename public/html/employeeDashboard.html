@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kino XP</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
     
 </head>
@@ -13,7 +13,7 @@
 <body>
     <nav>
         <div class="wrapper">
-            <div class="logo"><a href="index.html">Kino XP</a></div>
+            <div class="logo"><a href="../index.html">Kino XP</a></div>
             <input type="checkbox" id="menu-btn">
             <input type="checkbox" id="close-btn">
             <ul class="nav-links">
@@ -119,12 +119,23 @@
 
     <!-- Page Content -->
 
-    <div class="page-content">
+    <div class="page-container">
 
         <section>
-            <h1>Logged in as Operator</h1>
-            
-            
+                <div class="flexbox-container">
+                    <div class="flexbox-content">
+                        <div class="div1"> </div>
+                        <div style="flex: 2;">
+                            <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis, rerum odit itaque voluptatum molestias beatae in debitis dignissimos et, neque aperiam rem animi repellendus illum facere consequatur ab obcaecati eveniet. </p> 
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="div3"> 
+                        <h1>Lorem</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consequatur aliquam voluptate iusto accusamus quidem id eos nam velit vel esse facere ex, debitis nostrum obcaecati nihil sunt sapiente? Mollitia.</p>
+                    </div>
+                </div>
         </section>
 
     </div>
@@ -135,13 +146,13 @@
     const employeeData = JSON.parse(window.sessionStorage.getItem('employee'));
 
     // Get the <section> element by its ID
-    const sectionElement = document.querySelector('section');
+    const dashboardDivElement = document.querySelector('.div1');
 
     // Check if employeeData is not null or undefined
     if (employeeData) {
         // Update the content inside the <section> element
-        sectionElement.innerHTML = `
-            <h1>Logged in as Operator</h1>
+        dashboardDivElement.innerHTML = `
+            <h1>Logged in as Employee</h1>
             <p>Employee ID: ${employeeData.employee_id}</p>
             <p>Is operator: ${employeeData.is_operator}</p>
             <p>Name: ${employeeData.employee_name}</p>
@@ -149,7 +160,7 @@
         `;
     } else {
         // Handle the case when employeeData is null or undefined
-        sectionElement.innerHTML = `<h1>No employee data found!</h1>`;
+        dashboardDivElement.innerHTML = `<h1>No employee data found!</h1>`;
     }
 });
     </script>

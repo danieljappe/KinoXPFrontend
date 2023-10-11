@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add movie page</title>
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css">
+</head>
+
+<body>
+<nav id="addMovieNav" style="display: flex; margin-bottom: 25px;">
+    <a href="../index.html" style="text-decoration: none; color: inherit;">
+        <h1 style="font-size: 45px; padding: 10px 15px 10px 15px; text-transform: capitalize;">
+            Add Movie</h1>
+    </a>
+</nav>
+
+<div id="leftBox">
+    <h2 id="addMovieH2">Enter movie details</h2>
+</div>
+
+<div id="rightBox">
+    <form id="movieForm" action="http://localhost:8080/movie" method="post">
+        <div>
+            <label class="addMovieLabel">Enter movie title: </label>
+            <input class="addMovieInput" type="text" name="movieName" placeholder="Enter here..." required>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Enter movie desc.: </label>
+            <textarea class="addMovieDescription" name="movieDescription" rows="4" cols="50"
+                      placeholder="Write your description here..." required></textarea>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Select movie genre: </label>
+            <select class="addMovieInput" name="genre" required>
+                <option value="" disabled selected>Select a genre</option>
+                <option value="action">Action</option>
+                <option value="adventure">Adventure</option>
+                <option value="animation">Animation</option>
+                <option value="comedy">Comedy</option>
+                <option value="crime">Crime</option>
+                <option value="documentary">Documentary</option>
+                <option value="drama">Drama</option>
+                <option value="family">Family</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="history">History</option>
+                <option value="horror">Horror</option>
+                <option value="music">Music</option>
+                <option value="mystery">Mystery</option>
+                <option value="romance">Romance</option>
+                <option value="science_fiction">Science Fiction</option>
+                <option value="thriller">Thriller</option>
+                <option value="war">War</option>
+                <option value="western">Western</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Enter age restriction: </label>
+            <select class="addMovieInput" name="ageRestriction" required>
+                <option value="" disabled selected>Choose an age restriction</option>
+                <option value="0">General Audience (G)</option>
+                <option value="6">Suitable for 6 years and older (PG)</option>
+                <option value="12">Suitable for 12 years and older (PG-12)</option>
+                <option value="15">Suitable for 15 years and older (PG-15)</option>
+                <option value="18">Suitable for 18 years and older (R)</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Enter movie runtime: </label>
+            <input class="addMovieInput" type="number" name="runtime" placeholder="Enter runtime in minutes here..." required>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Enter movie trailer link: </label>
+            <input class="addMovieInput" type="text" name="trailerLink" placeholder="Insert link here..." required>
+        </div>
+
+        <div>
+            <label class="addMovieLabel">Enter movie poster link: </label>
+            <input class="addMovieInput" type="text" name="posterLink" placeholder="Insert link here..." required>
+        </div>
+
+        <button class="addMovieSubmit" type="submit">Add Movie</button>
+        <button class="addMovieBackBtn" type="button" onclick="goToIndex()">Tilbage til forsiden</button>
+    </form>
+</div>
+
+<script>
+
+    document.getElementById('movieForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        var formData = new FormData(event.target);
+
+        var jsonObject = {};
+        formData.forEach(function(value, key){
+            jsonObject[key] = value;
+        });
+
+        var jsonString = JSON.stringify(jsonObject);
+        console.log(jsonString);
+
+
+        fetch('http://localhost:8080/movie', {
+            method: 'POST',
+            body: jsonString,
+            headers:{'content-type': 'application/json'}
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                goToIndex()
+                alert("Movie added to database");
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+
+    function goToIndex() {
+        window.location.href = '../index.html';
+    }
+</script>
+
+</body>
+</html>
