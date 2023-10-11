@@ -3,7 +3,7 @@ import DateParser from "../utilities/date_parser.js";
 import Repository from "./repository.js";
 
 export default class ShowingRepository extends Repository {
-    createShowing;
+    createShowingURL;
     allShowings3Months;
     allShowings2Months;
     dateParser;
@@ -12,23 +12,23 @@ export default class ShowingRepository extends Repository {
     constructor() {
         super();
         this.allMovies = this.baseURL + "/movies";
-        this.createShowing = this.baseURL + "/showing";
+        this.createShowingURL = this.baseURL + "/showing";
         this.allShowings3Months = this.baseURL + "/showings/months/3";
         this.allShowings2Months = this.baseURL + "/showings/months/2";
         this.dateParser = new DateParser();
     }
 
-    async createShowing(showingData) { //requires a showing class
+    createShowing = async function(showing) { //requires a showing class -> ../models/showing.js
         try {
             const jsonObject = {
-                "movieId" : showingData.movieId,
-                "theaterId" : showingData.theaterId,
-                "showingDate" : showingData.showingDate
+                "movieId" : showing.movieId,
+                "theaterId" : showing.theaterId,
+                "showingDateTime" : showing.dateTime
             };
-            const response = await this.post(createShowing, jsonObject);
+            const response = await this.post(this.createShowingURL, jsonObject);
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-            const createShowing = await response.json();
-            return createShowing;
+            const json = await response.json();
+            return json;
         } catch (error) {
             console.error('Create Showing Error:', error);
             throw error;
@@ -36,12 +36,11 @@ export default class ShowingRepository extends Repository {
     }
 
     getAllShowings = async function() {
-        const response = await this.fetchData(this.baseURL + "/showings");
-        //const response = await this.fetchData(this.allShowings3Months);
+        //testing: const response = await this.fetchData(this.baseURL + "/showings");
+        const response = await this.fetchData(this.allShowings3Months);
         console.log(`There are ${response.length} showings`);
         if (response.length === 0) return [];
         for (let i = 0; i < response.length; i++) {
-            console.log(response[i].theaterId);
             this.showings.push(this.createShowingObject(response[i])); 
         }
         return this.showings;

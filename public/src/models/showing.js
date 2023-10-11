@@ -7,7 +7,7 @@ export default class Showing {
     movie = undefined;
     
     // Contructor
-    ShowingDTO(
+    constructor(
         movieId, //num
         theaterId, //num
         dateTime, //string
@@ -21,7 +21,7 @@ export default class Showing {
         //get time and date from dateTime
         const dateObject = new Date(dateTime);
         this.date = dateParser.parseDate(dateObject, new Date(Date.now()));
-        this.time = dateParser.getTimeFromIso8600();
+        this.time = dateParser.getTimeFromIso8601(this.dateTime);
     }
 
     addMovie = (movie) => this.movie = movie;
