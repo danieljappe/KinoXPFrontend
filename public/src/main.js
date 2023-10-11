@@ -1,28 +1,33 @@
 import Showing from "./models/showing.js";
 import { ShowingRepository } from "./repository/showing_repository.js";
+import { MovieRepository } from "./repository/movie_repository.js";
 import DateParser from "./utilities/date_parser.js";
 
 console.log("before");
 const showingRepository = new ShowingRepository();
+const movieRepository = new MovieRepository();
 /*const movs = repository.getAllMovies();
 for (let i = 0; i < movs.length; i++) console.log(movs[i]);*/
 
 const showings = await showingRepository.getAllShowings();
 const dateParser = new DateParser();
 
-console.log("after");
-
 const showingsToCreate = [
-  new Showing(1, 1, "2023-11-06T17:00:00", dateParser),
-  new Showing(2, 2, "2023-11-01T15:00:00", dateParser),
-  new Showing(3, 2, "2023-11-12T18:00:00", dateParser),
-  new Showing(4, 1, "2023-11-31T11:00:00", dateParser),
-  new Showing(5, 1, "2023-10-31T21:00:00", dateParser),
+  new Showing(0, 1, 2, "2023-10-16T15:00:00", dateParser),
+  new Showing(1, 2, 1, "2023-10-16T16:00:00", dateParser),
+  new Showing(2, 3, 2, "2023-10-16T17:00:00", dateParser)
 ];
-console.log(showingsToCreate);
 
 for (let i = 0; i < showingsToCreate.length; i++) {
-  //await showingRepository.createShowing(showingsToCreate[i]); 
+  //showingRepository.createShowing(showingsToCreate[i]);
+}
+
+const allMovies = await movieRepository.getAllMovies();
+
+for (let i = 0; i < showings.length; i++) {
+  const movie = await movieRepository.getMovie(showings[i].movieId);
+  showings[i].movie = movie;
+  console.log(showings[i]);
 }
 
 

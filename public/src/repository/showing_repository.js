@@ -23,7 +23,7 @@ export default class ShowingRepository extends Repository {
             const jsonObject = {
                 "movieId" : showing.movieId,
                 "theaterId" : showing.theaterId,
-                "showingDateTime" : showing.dateTime
+                "showingDateTime" : new Date(showing.dateTime)
             };
             const response = await this.post(this.createShowingURL, jsonObject);
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
@@ -36,8 +36,8 @@ export default class ShowingRepository extends Repository {
     }
 
     getAllShowings = async function() {
-        //testing: const response = await this.fetchData(this.baseURL + "/showings");
-        const response = await this.fetchData(this.allShowings3Months);
+        const response = await this.fetchData(this.baseURL + "/showings");
+        //const response = await this.fetchData(this.allShowings3Months);
         console.log(`There are ${response.length} showings`);
         if (response.length === 0) return [];
         for (let i = 0; i < response.length; i++) {
@@ -47,12 +47,7 @@ export default class ShowingRepository extends Repository {
     }
 
     createShowingObject = function(response) {
-        return new Showing(response.movieId, response.theaterId, response.showingDateTime, this.dateParser);
+        return new Showing(response.showingId, response.movieId, response.theaterId, response.showingDateTime, this.dateParser);
     }
-
-    createMovieObject = function(jsonResponse) {
-
-    }
-
 
 } export { ShowingRepository };

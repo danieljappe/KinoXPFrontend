@@ -21,7 +21,7 @@ export default class Movie {
     response;
     
     // Contructor
-    Movie(
+    constructor(
         movieId,
         title,
         genre,
