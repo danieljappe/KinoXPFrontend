@@ -28,38 +28,34 @@ document.addEventListener('DOMContentLoaded', function () {
     
         //Get all movies
 
-    getAllMovies = baseURL + "/api/movies/getAll"
-    fetch(getAllMovies)
-    .then(response => {
-        // Check if the request was successful (status code 200)
-        if (response.ok) {
-            // Parse the JSON response
-            return response.json();
-        }
-        // Handle errors if the response status is not OK
-        throw new Error('Network response was not ok.');
-    })
-    .then(data => {
-        // Update the innerHTML of a div with the received data
-        const moviesDiv = document.querySelector('.div3 .viewmovies');
-        // Assuming data is an array of movie objects, you can format and display them as needed
-        moviesDiv.innerHTML = data.map(movie => {
-            return `
-                    <div class="movieBox">
-                        <div class="movieDiv">
-                            <div>Movie ID: ${movie.movieId}</div>
-                            <div>${movie.title}</div>
-                        </div>
-                        <div>
-                            <button class="deleteMovieButton" data-movie-id="${movie.movieId}">Delete</button>
-                        </div>
-                    </div>`;
-        }).join('');
-    })
-    .catch(error => {
-        // Handle errors occurred during the fetch operation
-        console.error('There has been a problem with your fetch operation:', error);
-    });
+    getAllMovies = baseURL + "/api/movies/get-all"
+    function fetchAndUpdateMovies() {
+        fetch(getAllMovies)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(data => {
+                const moviesDiv = document.querySelector('.div3 .viewmovies');
+                moviesDiv.innerHTML = data.map(movie => {
+                    return `
+                        <div class="movieBox">
+                            <div class="movieDiv">
+                                <div>Movie ID: ${movie.movieId}</div>
+                                <div>${movie.title}</div>
+                            </div>
+                            <div>
+                                <a href="#" class="deleteMovieButton" data-movie-id="${movie.imdbID}">Delete</a>
+                            </div>
+                        </div>`;
+                }).join('');
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+    }
 
                     
     
@@ -96,7 +92,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (response.ok) {
                 // Movie added successfully
                 alert('Movie added successfully!');
-                // You can update the UI or perform any other actions here
+                
+                imdbIdInput.value = '';
+                ageRestrictionInput.value = '';
+                trailerUrlInput.value = '';
             } else {
                 // Handle errors if the response status is not OK
                 console.error('Movie could not be added.');
@@ -108,7 +107,47 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('There has been a problem with your fetch operation:', error);
         });
     });
-                    
+
+
+                    // Delete Movie
+        // Add event listener for the parent container (moviesDiv) using event delegation
+const moviesDiv = document.querySelector('.div3 .viewmovies');
+moviesDiv.addEventListener('click', function(event) {
+    const target = event.target;
+
+    // Check if the clicked element has the class 'deleteMovieButton'
+    if (target.classList.contains('deleteMovieButton')) {
+        event.preventDefault();
+
+        // Get the data-movie-id attribute from the clicked element
+        const movieId = target.getAttribute('data-movie-id');
+        console.log(`Movie ID ${movieId} clicked for deletion.`);
+
+        // Make a DELETE request to delete the movie with the specified movieId
+        const deleteMovieEndpoint = `https://kino-xp-backend.azurewebsites.net/api/movies/${movieId}`;
+        fetch(deleteMovieEndpoint, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                // Movie deleted successfully
+                console.log(`Movie with ID ${movieId} deleted successfully!`);
+                // Reload div
+                fetchAndUpdateMovies();
+                // Optionally, you can remove the movie box from the DOM here
+                target.closest('.movieBox').remove(); // Removes the parent .movieBox element
+            } else {
+                // Handle errors if the response status is not OK
+                console.error('Movie could not be deleted.');
+            }
+        })
+        .catch(error => {
+            // Handle errors occurred during the fetch operation
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+    }
+});
+
     
 
 
@@ -118,19 +157,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const defaultShowingDiv = document.querySelector('.div3 .default-showing');
     const viewMoviesDiv = document.querySelector('.div3 .viewmovies');
     const addMoviesDiv = document.querySelector('.div3 .addmovies');
-    const deleteMoviesDiv = document.querySelector('.div3 .deletemovies');
 
     // Get references to the buttons in div2
     const viewMoviesButton = document.querySelector('.div2 button:nth-child(1)');
     const addMoviesButton = document.querySelector('.div2 button:nth-child(2)');
-    const deleteMoviesButton = document.querySelector('.div2 button:nth-child(3)');
 
     // Add click event listeners to the buttons
     viewMoviesButton.addEventListener('click', function () {
         defaultShowingDiv.style.display = 'none';
         viewMoviesDiv.style.display = 'block';
         addMoviesDiv.style.display = 'none';
-        deleteMoviesDiv.style.display = 'none';
+
+        fetchAndUpdateMovies();
         
     });
 
@@ -138,13 +176,5 @@ document.addEventListener('DOMContentLoaded', function () {
         defaultShowingDiv.style.display = 'none';
         viewMoviesDiv.style.display = 'none';
         addMoviesDiv.style.display = 'block';
-        deleteMoviesDiv.style.display = 'none';
-    });
-
-    deleteMoviesButton.addEventListener('click', function () {
-        defaultShowingDiv.style.display = 'none';
-        viewMoviesDiv.style.display = 'none';
-        addMoviesDiv.style.display = 'none';
-        deleteMoviesDiv.style.display = 'block';
     });
 });
