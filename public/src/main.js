@@ -1,7 +1,7 @@
 import Showing from "./models/showing.js";
 import { ShowingRepository } from "./repository/showing_repository.js";
 import { MovieRepository } from "./repository/movie_repository.js";
-import { PopularMovies as CurrentMovies } from "./popular-movies/popular-movies.js";
+import { CurrentMovies as CurrentMovies } from "./current_movies/current_movies.js";
 
 //repositories
 const showingRepository = new ShowingRepository();

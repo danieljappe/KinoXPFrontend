@@ -1,4 +1,4 @@
-export default class PopularMovies {
+export default class CurrentMovies {
     movies;
 
     constructor(movies) {
@@ -56,4 +56,4 @@ export default class PopularMovies {
             if (i == 7) break; //allow max 8 movies
         }
     }
-} export { PopularMovies };
+} export { CurrentMovies as CurrentMovies };
