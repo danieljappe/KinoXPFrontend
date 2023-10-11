@@ -7,6 +7,7 @@ export default class ShowingRepository extends Repository {
     allShowings3Months;
     allShowings2Months;
     dateParser;
+    showings = [];
 
     constructor() {
         super();
@@ -16,27 +17,18 @@ export default class ShowingRepository extends Repository {
         this.allShowings2Months = this.baseURL + "/showings/months/2";
         this.dateParser = new DateParser();
     }
-    
-    //arrays to keep data stored
-    showings = [];
-    movies = [];
 
-
-    getAllMovies = function() {
-        
-    }
-
-    async createShowing(showingData) {
+    async createShowing(showingData) { //requires a showing class
         try {
-            const response = await fetch(this.allShowings3Months, {
-                method: 'POST',
-                headers: {  'Content-Type': 'application/json'  },
-                body: JSON.stringify(showingData),
-            });
-            console.log(response);
+            const jsonObject = {
+                "movieId" : showingData.movieId,
+                "theaterId" : showingData.theaterId,
+                "showingDate" : showingData.showingDate
+            };
+            const response = await this.post(createShowing, jsonObject);
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-            const createdShowing = await response.json();
-            return createdShowing;
+            const createShowing = await response.json();
+            return createShowing;
         } catch (error) {
             console.error('Create Showing Error:', error);
             throw error;
@@ -44,18 +36,19 @@ export default class ShowingRepository extends Repository {
     }
 
     getAllShowings = async function() {
-        const response = await this.fetchData(this.allShowings2Months);
+        const response = await this.fetchData(this.baseURL + "/showings");
+        //const response = await this.fetchData(this.allShowings3Months);
         console.log(`There are ${response.length} showings`);
         if (response.length === 0) return [];
         for (let i = 0; i < response.length; i++) {
-            showings.push(createShowingObject(response[i])); 
+            console.log(response[i].theaterId);
+            this.showings.push(this.createShowingObject(response[i])); 
         }
-        
-        return showings;
+        return this.showings;
     }
 
-    createShowingObject = function(jsonResponse) {
-        return new Showing(jsonResponse.movieId, jsonResponse.theaterId, jsonResponse.date, dateParser);
+    createShowingObject = function(response) {
+        return new Showing(response.movieId, response.theaterId, response.showingDateTime, this.dateParser);
     }
 
     createMovieObject = function(jsonResponse) {

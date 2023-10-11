@@ -88,6 +88,7 @@ const showingRepository = new ShowingRepository();
 /*const movs = repository.getAllMovies();
 for (let i = 0; i < movs.length; i++) console.log(movs[i]);*/
 const showings = await showingRepository.getAllShowings();
+console.log(showings);
 /*
 for (let i = 0; i < 4; i++) {
   await repository.createShowing(

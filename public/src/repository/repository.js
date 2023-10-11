@@ -7,10 +7,14 @@ export default class Repository {
     constructor() {
         this.baseURL = "https://kino-xp-backend.azurewebsites.net";   
     }
-    
-    //arrays to keep data stored
-    showings = [];
-    movies = [];
+
+    post = async function(url, json) {
+        return await fetch(url, {
+            method: 'POST',
+            headers: {  'Content-Type': 'application/json'  },
+            body: JSON.stringify(json),
+        });
+    }
 
     // Fetch data from URL
     fetchData = async function(url) {

@@ -4,6 +4,7 @@ export default class Showing {
     dateTime; //dateTime eg. "2023-10-06T15:00:00"
     time; //string
     date; //string
+    movie = undefined;
     
     // Contructor
     ShowingDTO(
@@ -22,4 +23,7 @@ export default class Showing {
         this.date = dateParser.parseDate(dateObject, new Date(Date.now()));
         this.time = dateParser.getTimeFromIso8600();
     }
+
+    addMovie = (movie) => this.movie = movie;
+    
 }
