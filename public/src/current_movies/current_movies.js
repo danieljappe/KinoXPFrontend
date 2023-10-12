@@ -5,10 +5,11 @@ export default class CurrentMovies {
         this.movies = movies;
     }
 
-    //from: https://www.youtube.com/watch?v=-FZ-pPFAjYY&ab_channel=FilmSelectTrailer
-    //to: https://www.youtube.com/embed/-FZ-pPFAjYY
 
     _toEmbeddedLink = (link) => {
+        //This function adds support, so the embedder authorizes the link
+        //from: https://www.youtube.com/watch?v=-FZ-pPFAjYY&ab_channel=FilmSelectTrailer
+        //to:   https://www.youtube.com/embed/-FZ-pPFAjYY
         const url = "https://www.youtube.com/embed/";
         const id = link.split("=")[1].split("&")[0];
         return url + id;
