@@ -305,10 +305,8 @@ function toggleElement(element) {
     }
 }
 
-//todo: When costumer inputs phone number it should show a list of all tickets associated with that number
 let phoneNumber = document.getElementById("customerPhoneNumber");
 
-//todo fix up the fetch
 function showReservations() {
     fetch(`https://kino-xp-backend.azurewebsites.net/tickets/phone/${phoneNumber.value}`, {
         method: 'GET',
