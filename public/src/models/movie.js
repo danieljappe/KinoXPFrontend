@@ -20,7 +20,6 @@ export default class Movie {
     website;
     response;
     
-    // Contructor
     constructor(
         movieId,
         title,

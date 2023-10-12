@@ -29,4 +29,4 @@ export default class Showing {
 
     addMovie = (movie) => this.movie = movie;
     
-}
+} export { Showing };
