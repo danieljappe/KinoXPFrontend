@@ -329,9 +329,11 @@ button:hover{
 
 .div3 .addmovies{
     display: none;
-    width: 25vw;
+    width: 30vw;
     height: 50vh;
     background-color: #333;
+    padding: 15px;
+    border-radius: 75px 20px 75px 20px;
 }
 
 .div3 .addmovies form{
