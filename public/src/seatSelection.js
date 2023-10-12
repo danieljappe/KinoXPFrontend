@@ -14,8 +14,10 @@ let movieId = 0
 let theaterId = 0
 let totalPrice = 0
 
+const urlParams = new URLSearchParams(window.location.search);
+const showingId = urlParams.get('showingId');
+
 //data the html/Javascript needs to function
-const showingId = 1
 
 //URL for  fetching
 const getShowingWithId = "https://kino-xp-backend.azurewebsites.net/showing/showingid/"
@@ -31,7 +33,7 @@ const addCustomerUrl = "https://kino-xp-backend.azurewebsites.net/customer"
 // const saveSeatsUrl = "http://localhost:8080/ticket"
 
 //methods to get the shit going
-fetchTickets(getAllTickets)
+fetchTickets(getAllTickets);
 
 function fetchShowing(fetchUrl, id) {
     fetch(fetchUrl + id)
@@ -68,15 +70,15 @@ function fetchMovie(fetchUrl, id) {
     })
 }
 
-function fetchTickets(fetchUrl) {
-    fetch(fetchUrl)
+async function fetchTickets(fetchUrl) {
+    await fetch(fetchUrl)
         .then(result => {
             if (result >= 400) {
                 throw new Error();
             }
             return result.json()
         }).then(body => {
-        occupiedSeatIds = body.filter(ticket => ticket.showingId === showingId).map(ticket => ticket.seatId);
+        occupiedSeatIds = body.filter(ticket => ticket.showingId == showingId).map(ticket => ticket.seatId);
         console.log("occupied seats ids: " + occupiedSeatIds)
         fetchShowing(getShowingWithId, showingId)
     })
