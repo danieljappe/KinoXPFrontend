@@ -1,11 +1,15 @@
 export default class ElementMaker {
     
     //Makes a button
-    getButton = function(className, id, text) {
+    getButton = function(className, showingId, text) {
         const button = document.createElement('button');
         className != null? button.className = className : null;
-        id != null? button.id = id : null;
         button.innerText = text;
+        button.addEventListener('click', function() {
+            if (showingId !== -1) {
+                window.location.href = "./html/reserveSeats.html?showingId=" + showingId;
+            }
+        });
         return button;
     }
 
