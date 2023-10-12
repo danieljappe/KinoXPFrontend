@@ -2,7 +2,7 @@ export default class ElementMaker {
     
     //Makes a button
     getButton = function(className, showingId, text, isDetails, showing) {
-        const button = document.createElement('button');
+        const button = document.createElement('button'); 
         className != null? button.className = className : null;
         button.innerText = text;
         const self = this;
@@ -16,7 +16,7 @@ export default class ElementMaker {
                 close.onclick = () => modal.style.display = "none";
             
                 window.onclick = (event) => {if (event.target == modal) modal.style.display = "none"};
-                
+
                 // Populate modal with movie details
                 document.getElementById('modalPoster').src = showing.movie.poster;
                 document.getElementById('modalTitle').textContent = showing.movie.title;
