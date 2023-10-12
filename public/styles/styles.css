@@ -492,15 +492,16 @@ section:not(.calendar-box .popular-movies-section) {
   }
 .cancel-modal-content {
     background-color: #121212;
-    margin: 5% auto; /* 15% from the top and centered */
+    margin: 8% auto; /* 15% from the top and centered */
     padding: 20px;
     width: 30%; /* Could be more or less, depending on screen size */
-    height: 70%;
+    height: 74%;
+    border: 1px solid white;
 }
 
 .cancel-form {
     position: absolute;
-    top: 45%;
+    top: 54%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
