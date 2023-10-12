@@ -39,13 +39,11 @@ export default class Schedule {
     _findShowingsByDate(date, showings) {
         const results = [];
         for (let i = 0; i < showings.length; i++) {
-            console.log(showings[i].dateTime);
             if (this._sameDate(new Date(showings[i].dateTime), date) && this._sameMonth(new Date(showings[i].dateTime), date)) {
                 results.push(showings[i]);
             }
             if (results.length == this.showsPerDay) return results;
         }
-        console.log(results.length);
         return results;
     }
 

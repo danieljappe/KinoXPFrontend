@@ -26,7 +26,7 @@ export default class MovieSchedule {
 
     _getTheater = (theaterId) => {
         if (theaterId === 0) {
-            return "";
+            return "\u00A0";
         } else {
             return "Theater " + theaterId;
         }
@@ -34,7 +34,7 @@ export default class MovieSchedule {
 
     _getTime = (theaterId, time) => {
         if (theaterId === 0) {
-            return "";
+            return " ";
         } else {
             return time;
         }
@@ -71,6 +71,7 @@ export default class MovieSchedule {
         const movieBox = this.elementMaker.getDiv('movie-box');
     
         //making a dark overlay with title and genre
+        showing.theaterId !== 0? console.log(showing) : null;
         const overlay = this.elementMaker.getDiv('movie-overlay');
         overlay.appendChild(this.elementMaker.getP('movie-title', showing.movie.title));
         overlay.appendChild(this.elementMaker.getP('genre-title', showing.movie.genre));
@@ -79,15 +80,15 @@ export default class MovieSchedule {
         //add image
         const img = document.createElement('img');
         img.className = 'poster-image';
-        img.src = showing.imageUrl;
-        img.alt = showing.title;
+        img.src = showing.movie.poster;
+        img.alt = showing.movie.title;
         movieBox.appendChild(img);
     
         //add buttons
         const buttons = this.elementMaker.getDiv('movie-action-buttons');
         if (!this.isMO) {
-            buttons.appendChild(this.elementMaker.getButton('action-button-left', 'Details'));
-            buttons.appendChild(this.elementMaker.getButton('action-button-right', 'Book Seats'));
+            buttons.appendChild(this.elementMaker.getButton('action-button-left', "s" + showing.id, 'Details'));
+            buttons.appendChild(this.elementMaker.getButton('action-button-right', "s" + showing.id, 'Book Seats'));
         } else {
             buttons.appendChild(this.elementMaker.getButton('mo-action-button', 'Edit'));
         }
