@@ -192,3 +192,124 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     
 });
+
+
+
+
+//Cancel reservation
+// Cancel reservation Modal
+// Add event listener to cancel button
+//fixme What does this piece of code even do??? The pop up still shows and the functionality of it still works
+const cancelReservationButton = document.querySelector('.cancel-button');
+const cancelForm = document.querySelector('.cancel-form');
+// cancelReservationButton.addEventListener("click", function(event) {
+//     event.preventDefault(); // Prevents the form from being submitted
+//     toggleElement(cancelForm);
+//     if (cancelForm.style.display === "none" || cancelForm.style.display === "") {
+//         cancelForm.style.display = "block";
+//     } else {
+//         cancelForm.style.display = "none";
+//     }
+// });
+
+var cancelModel = document.getElementById("myCancelModal");
+// Get the button that opens the modal
+var cancelLink = document.getElementById("cancel-reservation");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("cancelClose")[0];
+// When the user clicks on the link, open the modal
+cancelLink.onclick = function(event) {
+    event.preventDefault(); // Prevent the default link behavior (navigating to a new page)
+    cancelModel.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    cancelModel.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == cancelModel) {
+        cancelModel.style.display = "none";
+    }
+}
+// Toggle function to show/hide an element
+function toggleElement(element) {
+    if (element.style.display === "none" || element.style.display === "") {
+        element.style.display = "block";
+    } else {
+        element.style.display = "none";
+    }
+}
+
+
+
+
+
+
+
+let phoneNumber = document.getElementById("customerPhoneNumber");
+
+function showReservations() {
+    fetch(`https://kino-xp-backend.azurewebsites.net/tickets/phone/${phoneNumber.value}`, {
+        method: 'GET',
+        headers: {'content-type': 'application/json'}
+    })
+        .then(res => res.json())
+        .then(ticketData => {
+            //todo add method here that runs the foreach loop
+            createTickets(ticketData)
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+function createTickets(ticketData) {
+    //Emil
+    const tickets = document.getElementById("ticketBody")
+    tickets.innerHTML = ""
+    ticketData.forEach(ticket => {
+        const row = document.createElement('tr')
+
+        const ticketIdCell = document.createElement('td');
+        ticketIdCell.textContent = ticket.ticketId;
+        row.appendChild(ticketIdCell);
+
+        const showingIdCell = document.createElement('td');
+        showingIdCell.textContent = ticket.showingId;
+        row.appendChild(showingIdCell);
+
+        const seatIdCell = document.createElement('td');
+        seatIdCell.textContent = ticket.seatId;
+        row.appendChild(seatIdCell);
+
+        const cancelButtonCell = document.createElement('td');
+        const cancelButton = document.createElement('button');
+        cancelButton.textContent = "Cancel";
+        cancelButton.classList="addMovieBackBtn"
+        cancelButton.onclick = function(){
+            deleteTicket(ticket.ticketId)
+        }
+        cancelButtonCell.appendChild(cancelButton)
+        row.appendChild(cancelButton);
+        tickets.appendChild(row);
+    })
+}
+
+function deleteTicket(ticketId) {
+    fetch(`https://kino-xp-backend.azurewebsites.net/ticket/delete/${ticketId}`, {
+        method: 'DELETE',
+        // headers: {'content-type': 'application/json'}
+    })
+        .then(response => {
+            if (response.ok) {
+                // Ticket deleted successfully, update the list
+                showReservations();
+            } else {
+                console.error('Error:', response.status);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}

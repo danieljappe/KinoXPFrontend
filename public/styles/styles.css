@@ -490,6 +490,13 @@ section:not(.calendar-box .popular-movies-section) {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
+.cancel-modal-content {
+    background-color: #121212;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    width: 30%; /* Could be more or less, depending on screen size */
+    height: 70%;
+}
 
 .cancel-form {
     position: absolute;
@@ -497,6 +504,8 @@ section:not(.calendar-box .popular-movies-section) {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
 }
 
   /* The Close Button */
