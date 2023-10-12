@@ -2,6 +2,8 @@ import Showing from "./models/showing.js";
 import { ShowingRepository } from "./repository/showing_repository.js";
 import { MovieRepository } from "./repository/movie_repository.js";
 import { CurrentMovies as CurrentMovies } from "./current_movies/current_movies.js";
+import { MovieSchedule as MovieSchedule } from "./movie_schedule/movie_schedule.js";
+import { Schedule as Schedule } from "./models/schedule.js";
 
 //repositories
 const showingRepository = new ShowingRepository();
@@ -10,6 +12,9 @@ const movieRepository = new MovieRepository();
 //data
 const showingsNext3Months = await showingRepository.getAllShowings();
 const allMovies = await movieRepository.getAllMovies();
+for (let i = 0; i < showingsNext3Months.length; i++) {
+  showingsNext3Months[i].addMovie(movieRepository.getMovie(showingsNext3Months[i].movieId));
+}
 
 /* //FOR TESTING
 const showingsToCreate = [
@@ -28,7 +33,9 @@ const currentMovies = new CurrentMovies(allMovies);
 await currentMovies.show();
 
 //fill the calendar schedule
-
+const schedule = new Schedule(showingsNext3Months);
+const movieSchedule = new MovieSchedule(schedule, false);
+movieSchedule.generateListViewItems();
 
 
 
