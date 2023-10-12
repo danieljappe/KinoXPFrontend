@@ -78,7 +78,7 @@ async function fetchTickets(fetchUrl) {
             }
             return result.json()
         }).then(body => {
-        occupiedSeatIds = body.filter(ticket => ticket.showingId === showingId).map(ticket => ticket.seatId);
+        occupiedSeatIds = body.filter(ticket => ticket.showingId == showingId).map(ticket => ticket.seatId);
         console.log("occupied seats ids: " + occupiedSeatIds)
         fetchShowing(getShowingWithId, showingId)
     })
