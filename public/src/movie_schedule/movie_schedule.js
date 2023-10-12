@@ -98,4 +98,4 @@ export default class MovieSchedule {
         return movieContainer;
     }
     
-} export { MovieSchedule };
+}; export { MovieSchedule };
