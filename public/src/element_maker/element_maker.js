@@ -6,7 +6,9 @@ export default class ElementMaker {
         className != null? button.className = className : null;
         button.innerText = text;
         button.addEventListener('click', function() {
-            window.location.href = "./html/reserveSeats.html?showingId=" + showingId;
+            if (showingId !== -1) {
+                window.location.href = "./html/reserveSeats.html?showingId=" + showingId;
+            }
         });
         return button;
     }
