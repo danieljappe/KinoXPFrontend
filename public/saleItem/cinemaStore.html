@@ -4,93 +4,22 @@
     <meta charset="UTF-8">
     <title>Cinema Store</title>
     <link rel="stylesheet" href="cinemaStore.css">
-
-    <script src="../src/employeeLogin.js" defer></script>
     <script src="cinemaStore.js" defer></script>
-
 
 </head>
 
 <body>
-<nav>
-    <div class="wrapper">
-        <div class="logo"><a href="#">Kino XP</a></div>
-        <input type="checkbox" id="menu-btn">
-        <input type="checkbox" id="close-btn">
-        <ul class="nav-links">
-            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-
-            <!-- <li><a href="#">Home</a></li> -->
-            <li><a href="html/about.html">Krav</a></li>
-
-            <li>
-                <a href="#" class="desktop-item">SletMigGerne</a>
-                <input type="checkbox" id="showDrop">
-                <label for="showDrop" class="mobile-item">Dropdown Menu</label>
-                <ul class="drop-menu">
-                    <li><a href="#">Option</a></li>
-                    <li><a href="#">Option</a></li>
-                    <li><a href="#">Option</a></li>
-                    <li><a href="#">Option</a></li>
-                </ul>
-            </li>
-
-            <!-- This was missing -->
-            <li><a href="">Movie Operations</a>
-                <input type="checkbox">
-                <label for="showDrop" class="mobile-item">Dropdown Menu</label>
-                <ul class="drop-menu">
-                    <li><a href="html/addMovie.html">Add New Movie</a></li>
-                    <li><a href="html/editMovie.html">Edit Movie</a></li>
-                </ul>
-            </li>
-
-            <!-- Mega Menu -->
-            <li>
-                <a href="#" class="desktop-item">Mega Menu</a>
-                <input type="checkbox" id="showMega">
-                <label for="showMega" class="mobile-item">Mega Menu</label>
-                <div class="mega-box">
-                    <div class="content">
-                        <div class="row">
-                            <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg"
-                                 alt="">
-                        </div>
-                        <li><a href="#">About</a></li>
-
-                        <!-- Account -->
-                        <li>
-                            <a id="login-link" href="#">Login</a>
-                        </li>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
-    </div>
-</nav>
-
 
 <header>
     <h1>Welcome to the Cinema Store</h1>
 </header>
-
-<div class="flexbox-container"  style="margin-top: 12vh;">
+<div class="flexbox-container" style="margin-top: 12vh;">
     <div class="flexbox-title">
-        <h1 style="color: #fff;">Drinks</h1>
+        <h1 style="color: #fff;">Sale Items</h1>
     </div>
-    <div class="flexbox-content" id="drinks-container">
-        <!-- Items will be added here dynamically using JavaScript -->
+    <div class="flexbox-content" id="sale-items-container">
+        <!-- Sale items will be added here dynamically using JavaScript -->
     </div>
-</div>
-
-<div class="flexbox-container">
-    <div class="flexbox-title">
-        <h1 style="color: #fff;">Snacks</h1>
-    </div>
-    <div class= "flexbox-content" id="snacks-container">
-    <!-- Items will be added here dynamically using JavaScript -->
-</div>
 </div>
 
 <div id="store-bucket">
