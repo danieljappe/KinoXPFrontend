@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kino XP</title>
+    <link rel="stylesheet" href="../styles/reserveSeats.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+
+
+</head>
+<body>
+<nav style="position: unset">
+    <div class="wrapper">
+        <div class="logo"><a href="#">Kino XP</a></div>
+        <input type="checkbox" id="menu-btn">
+        <input type="checkbox" id="close-btn">
+        <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+
+            <!-- <li><a href="#">Home</a></li> -->
+
+
+            <li><a href="about.html">Krav</a></li>
+
+            <li>
+                <a href="#" class="desktop-item">Options</a>
+                <input type="checkbox" id="showDrop">
+                <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+                <ul class="drop-menu">
+                    <li><a href="#">Option</a></li>
+                    <li><a href="#">Option</a></li>
+                    <li><a href="#">Option</a></li>
+                    <li><a href="#">Option</a></li>
+                </ul>
+            </li>
+
+            <!-- Mega Menu -->
+            <li>
+                <a href="#" class="desktop-item">Mega Menu</a>
+                <input type="checkbox" id="showMega">
+                <label for="showMega" class="mobile-item">Mega Menu</label>
+                <div class="mega-box">
+                    <div class="content">
+
+                        <div class="row">
+                            <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg"
+                                 alt="">
+                        </div>
+
+                        <div class="row">
+                            <header>Service 1</header>
+                            <ul class="mega-links">
+                                <li><a>Drop menu 1</a></li>
+                                <li><a>Drop menu 2</a></li>
+                                <li><a>Drop menu 3</a></li>
+                                <li><a>Drop menu 4</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="row">
+                            <header>Service 2</header>
+                            <ul class="mega-links">
+                                <li><a href="#">Text</a></li>
+                                <li><a href="#">Text</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="row">
+                            <header>Service 3</header>
+                            <ul class="mega-links">
+                                <li><a href="#">Text</a></li>
+                                <li><a href="#">Text</a></li>
+                                <li><a href="#">Text</a></li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+            </li>
+
+            <li><a href="#">About</a></li>
+
+            <!-- Account -->
+            <li>
+                <a id="login-link" href="#">Login</a>
+            </li>
+        </ul>
+        <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+    </div>
+
+</nav>
+
+
+<div class="page-content-reserveSeats">
+    <section style="flex-direction: row">
+        <div class="sideBar"style="margin-top: 40vh">
+            <div class="sideBarContent">
+                <h3 id="movieName">{Movie name}</h3>
+                <h3 id="theaterName">{Theater number}</h3>
+            </div>
+            <div class="sideBarContent">
+                <h2>Tickets:</h2>
+                <div class="seat-flexbox">
+                    <div class="seat-id"></div>
+                </div>
+                <input id="reserveTicketButton" type="button" value="Reserve Tickets" onclick="addPhoneNumber()"/>
+            </div>
+        </div>
+        <div class="section-generator">
+            <div id="seatDiv" class="seatDiv"></div>
+        </div>
+
+
+        <script src="../src/seatSelection.js"></script>
+    </section>
+</div>
+
+</body>
+</html>
