@@ -206,7 +206,7 @@ nav .wrapper{
 }
 
 section {
-    margin-top: 5vh;
+    margin-top: 10vh;
     width: 90%;
     max-width: 90%;
     padding: 5vh;
@@ -275,6 +275,36 @@ button:hover{
 
 .div3 .addmovies{
     display: none;
+    width: 25vw;
+    height: 50vh;
+}
+
+.div3 .addmovies form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.div3 .addmovies form div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh 0 1vh 0;
+}
+
+.div3 .addmovies form label{
+    width: auto;
+    margin-right: 1vh;
+}
+
+.div3 .addmovies form input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    text-align: center;
 }
 
 .div3 .deletemovies{
@@ -288,6 +318,16 @@ button:hover{
     justify-content: center;
     width: 100%;
     border: 1px dotted #fff;
+}
+
+.addmovies button{
+    margin: 1vh;
+}
+
+.addmovies button:hover{
+    cursor: pointer;
+    background-color: #3A3B3C;
+    transition: all 0.3s ease;
 }
 
 .movieBox{

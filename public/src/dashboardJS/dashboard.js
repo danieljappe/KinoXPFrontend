@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // Movie Operations
     baseURL = "https://kino-xp-backend.azurewebsites.net/"
     
+
+
         //Get all movies
 
     getAllMovies = baseURL + "/api/movies/get-all"
@@ -63,12 +65,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('movieForm').addEventListener('submit', function (event) {
         event.preventDefault();
+
+        // Function to extract the movie ID from the trailer URL
+        function extractMovieId(url) {
+            // Regular expression to match the movie ID starting with "tt"
+            const regex = /\/title\/(tt\d+)\//;
+            const match = url.match(regex); // Match the pattern in the URL
+            console.log(match);
+            console.log(match[1]);
+        
+            if (match && match[1]) {
+                return match[1]; // Return the extracted movie ID
+            } else {
+                return null; // Return null if no match is found
+            }
+        }
     
         // Get values from the form fields
-        const imdbId = document.querySelector('.addMovieIdInput').value;
-        const ageRestriction = document.querySelector('.addMovieInput[name="ageRestriction"]').value;
-        const trailerUrl = document.querySelector('.addMovieInput[name="trailerLink"]').value;
-    
+        let imdbId = document.querySelector('.addMovieIdInput').value;
+        let ageRestriction = document.querySelector('.addMovieInput[name="ageRestriction"]').value;
+        let trailerUrl = document.querySelector('.addMovieInput[name="trailerLink"]').value;
+        imdbId = extractMovieId(imdbId);
+
         // Prepare the movie data object
         const movieData = {
             imdbId: imdbId,
@@ -93,9 +111,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Movie added successfully
                 alert('Movie added successfully!');
                 
-                imdbIdInput.value = '';
-                ageRestrictionInput.value = '';
-                trailerUrlInput.value = '';
+                imdbId.value = '';
+                ageRestriction.value = '';
+                trailerUrl.value = '';
             } else {
                 // Handle errors if the response status is not OK
                 console.error('Movie could not be added.');
@@ -110,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
                     // Delete Movie
+
         // Add event listener for the parent container (moviesDiv) using event delegation
 const moviesDiv = document.querySelector('.div3 .viewmovies');
 moviesDiv.addEventListener('click', function(event) {
