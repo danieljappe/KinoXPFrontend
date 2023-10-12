@@ -1,201 +1,82 @@
-const movies = [
-    [
-        {
-            id: 1,
-            title: "Coca Cola",
-            description: "Buy a Coca Cola for refreshing yourself.",
-            genre: "Drinks",
-            posterLink: "https://www.coca-cola.com/content/dam/onexp/dk/da/home-images/brands-images/coca-cola/DK_coca-cola-original-taste-danmark_750x750.jpg"
-        },
+document.addEventListener("DOMContentLoaded", function () {
+    // JavaScript to define fixed items and their costs
+    const drinksContainer = document.getElementById('drinks-container');
+    const snacksContainer = document.getElementById('snacks-container');
+    const storeList = document.getElementById('store-list');
+    const totalElement = document.getElementById('total');
+    let total = 0.00;
 
-        {
-            id: 2,
-            title: "Fanta",
-            description: "Buy a Fanta for fantastic enjoyment.",
-            genre: "Drinks",
-            posterLink: "https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
-        },
+    // Define fixed items and their costs
+    const drinks = [
+        { name: 'water', cost: 1},
+        { name: 'Coca Cola', cost: 2 },
+        { name: 'Fanta', cost: 2 },
+        { name: 'Red Bull', cost: 4 },
+        // Add more drink items here
+    ];
 
-        {
-            id: 3,
-            title: "Water Bottle",
-            description: "Stay hydrated with a refreshing bottle of water.",
-            genre: "Drinks",
-            posterLink: "https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
-        },
-        {
-            id: 4,
-            title: "Popcorn",
-            description: "Enjoy classic popcorn for a better movie experience.",
-            genre: "Snack",
-            posterLink: "https://m.media-amazon.com/images/M/MV5BMTc3NjM4MTY3MV5BMl5BanBnXkFtZTcwODk4Mzg3OA@@._V1_.jpg"
-        },
-        {
-            id: 5,
-            title: "Nachos",
-            description: "Crunchy nachos, a perfect movie snack choice.",
-            genre: "Snack",
-            posterLink: "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
-        },
-        {
-            id: 6,
-            title: "HARIBO Gummies",
-            description: "Indulge in delicious HARIBO gummy candies.",
-            genre: "Snack",
-            posterLink: "https://m.media-amazon.com/images/M/MV5BZjYzNTMzZTAtNzMzOS00ZWRhLTg3MWMtM2NjYmJmZjU4NmFhL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMzI3NjY2ODc@._V1_.jpg"
-        },
-        {
-            id: 7,
-            title: "Kims Chips",
-            description: "Kims chips for a fresh movie enjoyment.",
-            genre: "Snack",
-            posterLink: "https://m.media-amazon.com/images/M/MV5BMzM5NjUxOTEyMl5BMl5BanBnXkFtZTgwNjEyMDM0MDE@._V1_FMjpg_UX1000_.jpg"
-        },
-        {
-            id: 8,
-            title: "Large Popcorn",
-            description: "Enjoy a jumbo-sized popcorn during your movie.",
-            genre: "Snack",
-            posterLink: "https://example.com/popcorn.jpg"
-        }
+    const snacks = [
+        { name: 'Popcorn', cost: 2 },
+        { name: 'LargePopcorn', cost: 3 },
+        { name: 'Haribo bag', cost: 1 },
+        { name: 'nachos', cost: 4 },
+        { name: 'Chips', cost: 2 },
+        // Add more snack items here
+    ];
 
-    ]
-
-];
-
-const flexboxContainer = document.querySelector('.popular-movies-section');
-const flexboxContent = document.querySelector('.popular-movies-content');
-
-for (let i = 0; i < movies.length; i++) {
-    const divElement = document.createElement('div');
-    divElement.className = ` popular-movies-item popular-movies-item-${movies[i].id}`;
-    divElement.style.backgroundImage = `url(${movies[i].posterLink})`;
-    divElement.innerHTML = `
-  <div class="popular-movies-overlay">
-    <div class="description">
-      <h3>${movies[i].title}</h3>
-      <p>${movies[i].description}</p>
-      <p><strong>Genre:</strong> ${movies[i].genre}</p>
-      <p><strong>Age Restriction:</strong> ${movies[i].ageRestriction}</p>
-      <p>Run Time: ${movies[i].runTime} minutes</p>
-      <a href="${movies[i].trailerLink}" target="_blank">Watch Trailer</a>
-    </div>
-    <div class="overlay-textbox">
-      <p class="popular-movies-overlay-title">${movies[i].title}</p>
-      <p class="popular-movies-overlay-subtitle">${movies[i].description}</p>
-    </div>
-  </div>  
-  `;
-    flexboxContent.appendChild(divElement);
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-
-    const modal = document.getElementById('movieModal');
-    const close = document.querySelector('.close');
-
-
-    window.addEventListener('click', function (event) {
-        if (event.target == movieModal) {
-            movieModal.style.display = 'none';
-        }
+    // Create and display drink items
+    drinks.forEach(item => {
+        createAndDisplayItem(drinksContainer, item);
     });
 
-    close.onclick = function () {
-        modal.style.display = "none";
-    }
+    // Create and display snack items
+    snacks.forEach(item => {
+        createAndDisplayItem(snacksContainer, item);
+    });
 
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+    function createAndDisplayItem(container, item) {
+        const itemContainer = document.createElement('div');
+        itemContainer.classList.add('flexbox-item');
 
-    const flexboxItems = document.querySelectorAll('.popular-movies-item');
+        const itemName = document.createElement('span');
+        itemName.textContent = `${item.name} - $${item.cost.toFixed(2)}`;
 
-    flexboxItems.forEach((flexboxItem, index) => {
-        flexboxItem.addEventListener("click", function () {
-            // Populate modal with movie details
-            document.getElementById('modalPoster').src = movies[index].posterLink;
-            document.getElementById('modalTitle').textContent = movies[index].title;
-            document.getElementById('modalDescription').textContent = movies[index].description;
-            document.getElementById('modalGenre').innerHTML = "<strong>Genre:</strong> " + movies[index].genre;
-            document.getElementById('modalAgeRestriction').innerHTML = "<strong>Age:</strong> " + movies[index].ageRestriction;
-            document.getElementById('modalRunTime').innerHTML = "<strong>Run time:</strong> " + movies[index].runTime + " minutes";
-            document.getElementById('modalTrailer').src = movies[index].trailerLink;
+        const buyButton = document.createElement('button');
+        buyButton.textContent = 'Buy';
+        buyButton.addEventListener('click', () => {
+            const storeItem = document.createElement('li');
+            storeItem.textContent = item.name;
+            storeItem.dataset.cost = item.cost;
 
-            // Display modal
-            modal.style.display = "block";
+            // Add a Remove button to the store item
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.addEventListener('click', () => {
+                storeList.removeChild(storeItem);
+                calculateTotal();
+            });
 
-            // Get the modal
-            var movieModal = document.getElementById("movieModal");
-
-            var span = document.querySelector("span.close");
-
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function (event) {
-                console.log("Event handler called");
-                if (event.target == modal) {
-                    console.log("Clicked outside the modal");
-                    movieModal.style.display = "none";
-                }
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    movieModal.style.display = "none";
-                }
-            }
-
-
+            storeItem.appendChild(removeButton);
+            storeList.appendChild(storeItem);
+            calculateTotal();
         });
-    });
 
-
-    // Login Modal
-
-    var loginModal = document.getElementById("myModal");
-    // Get the button that opens the modal
-    var loginLink = document.getElementById("login-link");
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-    // When the user clicks on the link, open the modal
-
-    loginLink.onclick = function (event) {
-        event.preventDefault(); // Prevent the default link behavior (navigating to a new page)
-        loginModal.style.display = "block";
+        itemContainer.appendChild(itemName);
+        itemContainer.appendChild(buyButton);
+        container.appendChild(itemContainer);
     }
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        loginModal.style.display = "none";
+    function calculateTotal() {
+        // Calculate the total cost
+        total = 0.00;
+        storeList.querySelectorAll('li').forEach(item => {
+            const itemCost = parseFloat(item.dataset.cost);
+            if (!isNaN(itemCost)) {
+                total += itemCost;
+            }
+        });
+        totalElement.textContent = total.toFixed(2);
     }
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == loginModal) {
-            loginModal.style.display = "none";
-        }
-    }
-
-    // Toggle function to show/hide an element
-    function toggleElement(element) {
-        if (element.style.display === "none" || element.style.display === "") {
-            element.style.display = "block";
-        } else {
-            element.style.display = "none";
-        }
-    }
-
-    // Add event listener to login button
-    const loginButton = document.querySelector('.login-button');
-    const loginForm = document.querySelector('.login-form');
-
-    loginButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevents the form from being submitted
-        toggleElement(loginForm);
-    });
-
+    calculateTotal();
 });
