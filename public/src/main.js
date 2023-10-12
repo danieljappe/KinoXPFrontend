@@ -275,25 +275,69 @@ function toggleElement(element) {
 //todo: When costumer inputs phone number it should show a list of all tickets associated with that number
 let phoneNumber = document.getElementById("customerPhoneNumber");
 
-// function showReservations() {
-//     console.log(phoneNumber.value);
-// }
-
 //todo fix up the fetch
 function showReservations() {
-    console.log(phoneNumber.value);
-    fetch('kino-xp-backend.azurewebsites.net/tickets/' + phoneNumber.value, {
+    fetch(`https://kino-xp-backend.azurewebsites.net/tickets/phone/${phoneNumber.value}`, {
         method: 'GET',
         headers: {'content-type': 'application/json'}
     })
         .then(res => res.json())
         .then(ticketData => {
-            // document.getElementById("reservation-list-item-1").innerHTML = "Does this work?"
-            // document.getElementById("movieName").value = movieData.name
-            // document.getElementById("movieDescription").value = movieData.description
+            //todo add method here that runs the foreach loop
+            createTickets(ticketData)
         })
         .catch(error => {
             console.error('Error:', error);
         });
 }
+
+function createTickets(ticketData) {
+    //Emil
+    const tickets = document.getElementById("ticketBody")
+    tickets.innerHTML = ""
+    ticketData.forEach(ticket => {
+        const row = document.createElement('tr')
+
+        const ticketIdCell = document.createElement('td');
+        ticketIdCell.textContent = ticket.ticketId;
+        row.appendChild(ticketIdCell);
+
+        const showingIdCell = document.createElement('td');
+        showingIdCell.textContent = ticket.showingId;
+        row.appendChild(showingIdCell);
+
+        const seatIdCell = document.createElement('td');
+        seatIdCell.textContent = ticket.seatId;
+        row.appendChild(seatIdCell);
+
+        const cancelButtonCell = document.createElement('td');
+        const cancelButton = document.createElement('button');
+        cancelButton.textContent = "Cancel";
+        cancelButton.onclick = function(){
+            deleteTicket(ticket.ticketId)
+        }
+        cancelButtonCell.appendChild(cancelButton)
+        row.appendChild(cancelButton);
+        tickets.appendChild(row);
+    })
+}
+
+function deleteTicket(ticketId) {
+    fetch(`https://kino-xp-backend.azurewebsites.net/ticket/delete/${ticketId}`, {
+        method: 'DELETE',
+        // headers: {'content-type': 'application/json'}
+    })
+        .then(response => {
+            if (response.ok) {
+                // Ticket deleted successfully, update the list
+                showReservations();
+            } else {
+                console.error('Error:', response.status);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
 
