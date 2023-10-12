@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kino XP</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
 
+
+
 </head>
 <body>
-<nav>
+<nav style="position: unset">
     <div class="wrapper">
         <div class="logo"><a href="#">Kino XP</a></div>
         <input type="checkbox" id="menu-btn">
@@ -94,8 +96,8 @@
 
 
 <div class="page-content-reserveSeats">
-    <section style="display: flex">
-        <div class="sideBar">
+    <section style="flex-direction: row">
+        <div class="sideBar"style="margin-top: 40vh">
             <div class="sideBarContent">
                 <h3 id="movieName">{Movie name}</h3>
                 <h3 id="theaterName">{Theater number}</h3>

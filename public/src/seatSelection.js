@@ -19,9 +19,10 @@ const showingId = 1
 
 //URL for  fetching
 const getShowingWithId = "https://kino-xp-backend.azurewebsites.net/showing/showingid/"
-const getMovieWithId = "https://kino-xp-backend.azurewebsites.net/api/movies/movieid/"
+const getMovieWithId = "https://kino-xp-backend.azurewebsites.net/api/movies/movie-id/"
 const getAllTickets = "https://kino-xp-backend.azurewebsites.net/tickets"
 const saveSeatsUrl = "https://kino-xp-backend.azurewebsites.net/ticket"
+const addCustomerUrl = "https://kino-xp-backend.azurewebsites.net/customer"
 
 //URL for fetching Locally (this is only for debugging)
 // const getShowingWithId = "http://localhost:8080/showing/showingid/"
@@ -81,7 +82,6 @@ function fetchTickets(fetchUrl) {
     })
 }
 
-
 function inputMovieInfo(movieBody) {
     const movieName = document.getElementById("movieName")
     const theaterName = document.getElementById("theaterName")
@@ -116,10 +116,10 @@ function createSeats(rows, seatsPerRow) {
 
             if (i >= rows - 10) {
                 seatButton.classList.add("vipSeat")
-                seatButton.innerHTML = "<img class='vipSeat' src='public/icons/vipSeat.png'/>"
+                seatButton.innerHTML = "<img class='vipSeat' src='/public/icons/vipSeat.png'/>"
             } else {
                 seatButton.classList.add("seat")
-                seatButton.innerHTML = "<img class='seat' src='public/icons/seat.png'/>"
+                seatButton.innerHTML = "<img class='seat' src='/public/icons/seat.png'/>"
             }
 
             if (!occupiedSeatIds.includes(seatId)) {
@@ -195,11 +195,7 @@ function updateTotalPrice(seat, toAdd) {
 }
 
 function saveSelectedSeats(customerPhone) {
-    //TODO need to POST CUSTOMER before ticket
-    //TODO IF customer already exist use that one ELSE put new in customer table
-
     //iterates over the selectedSeatsIDs.length to add one ticket at a time from the list.
-    //I don't think the fetch can POST a whole list at a time... :)
     let seatsSaved = 0;
     for (let i = 0; i < selectedSeatsIDs.length; i++) {
         const data = {
@@ -236,13 +232,42 @@ function saveSelectedSeats(customerPhone) {
             });
     }
 }
+function addCustomer(customerPhone){
+
+    const data = {
+        customerPhone: customerPhone,
+    };
+    const body = JSON.stringify(data)
+    console.log(body)
+    fetch(addCustomerUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: body
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Customer added successfully:', data);
+            saveSelectedSeats(customerPhone)
+        })
+        .catch(error => {
+            console.error('Error saving customer:', error);
+        });
+}
 
 function addPhoneNumber() {
     if (selectedSeatsIDs.length === 0) {
         alert("Click on the seats to reserve them")
     } else {
-        let phoneNumber = prompt("Total price is " + totalPrice + "kr.\n Please write your phone number to reserve the tickets: ")
-        console.log("The phone number : " + phoneNumber)
-        saveSelectedSeats(phoneNumber)
+        let customerPhone = prompt("Total price is " + totalPrice + "kr.\n Please write your phone number to reserve the tickets: ")
+        console.log("The phone number : " + customerPhone)
+        addCustomer(customerPhone)
+
     }
 }

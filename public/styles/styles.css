@@ -343,7 +343,6 @@ html, body, section:not(.calendar-box .popular-movies-section) {
 .page-content-reserveSeats {
     height: 100vh;
     text-align: center;
-    margin: 10vh auto;
     border: 0;
     outline: 0;
 }
@@ -708,6 +707,7 @@ section:not(.calendar-box .popular-movies-section) {
     width: 40vh;
     background: #333;
     height: 140%;
+
 }
 .sideBarContent{
     margin: 1vh 1vw 1vh 1vw;
