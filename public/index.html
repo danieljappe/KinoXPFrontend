@@ -36,15 +36,11 @@
             <li><a href="html/about.html">Krav</a></li>
 
             <li>
-                <a href="#" class="desktop-item">SletMigGerne</a>
-                <input type="checkbox" id="showDrop">
-                <label for="showDrop" class="mobile-item">Dropdown Menu</label>
-                <ul class="drop-menu">
-                    <li><a href="#">Option</a></li>
-                    <li><a href="#">Option</a></li>
-                    <li><a href="#">Option</a></li>
-                    <li><a href="#">Option</a></li>
-                </ul>
+<!--                <a href="#" class="desktop-item">Reservations</a>-->
+            <a id="cancel-reservation" href="#">View reservation</a>
+
+            <input type="checkbox" id="showDrop">
+
             </li>
 
             <li><a href="">Movie Operations</a>
@@ -87,7 +83,7 @@
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-            
+
             <div class="login-form">
                 <span class="close">&times;</span>
                 <div>
@@ -105,7 +101,40 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- modals -->
+    <!--                    FIXME -edit works now-->
+    <!-- Modal content -->
+    <div id="myCancelModal" class="myCancelModal">
+        <div class="cancel-modal-content">
+            <span class="cancelClose">x</span>
+            <div class="cancel-form">
+                <h2>View reservation</h2>
+                <div>
+                    <div>
+                        <h3>Input Number to see reservations</h3>
+                        <input type="text" required id="customerPhoneNumber">
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Ticket ID-</th>
+                            <th>Showing ID-</th>
+                            <th>Seat ID-</th>
+                            <th>Cancel</th>
+                        </tr>
+                        </thead>
+                        <tbody id="ticketBody"></tbody>
+                    </table>
+                </div>
+                <div>
+<!--                    <input type="submit" value="Show reservations" onclick="showReservations()">-->
+                    <input class="btn-style" type="submit" value="Show reservations" onclick="showReservations()">
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 
     <div id="movieModal" class="modal">
         <div class="modal-content-movie">

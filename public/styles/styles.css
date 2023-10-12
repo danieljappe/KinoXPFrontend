@@ -374,7 +374,7 @@ section:not(.calendar-box .popular-movies-section) {
     overflow: hidden; /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  
+
   /* Modal Content/Box */
   .modal-content {
     background-color: #121212;
@@ -477,6 +477,38 @@ section:not(.calendar-box .popular-movies-section) {
   }
 
 
+
+.myCancelModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+.cancel-modal-content {
+    background-color: #121212;
+    margin: 8% auto; /* 15% from the top and centered */
+    padding: 20px;
+    width: 30%; /* Could be more or less, depending on screen size */
+    height: 74%;
+    border: 1px solid white;
+}
+
+.cancel-form {
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
   /* The Close Button */
   .close {
     z-index: 10;
@@ -486,13 +518,28 @@ section:not(.calendar-box .popular-movies-section) {
     font-weight: 400;
     margin-right: 24px;
   }
-  
+
   .close:hover,
   .close:focus {
     color: white;
     text-decoration: none;
     cursor: pointer;
   }
+
+  /*Cancel close button*/
+.cancelClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.cancelClose:hover,
+.cancelClose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
   .login-form {
     position: absolute;

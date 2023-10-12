@@ -25,13 +25,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Movie Operations
     baseURL = "https://kino-xp-backend.azurewebsites.net/"
-    
+    const loadingElement = document.querySelector('.loading-message');
 
 
         //Get all movies
 
     getAllMovies = baseURL + "/api/movies/get-all"
     function fetchAndUpdateMovies() {
+        
+        loadingElement.style.display = 'block'; // Show loading message
+    
         fetch(getAllMovies)
             .then(response => {
                 if (response.ok) {
@@ -53,11 +56,15 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                         </div>`;
                 }).join('');
+    
+                loadingElement.style.display = 'none'; // Hide loading message after data is loaded
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
+                loadingElement.style.display = 'none'; // Hide loading message if there is an error
             });
     }
+    
 
                     
     
@@ -149,12 +156,14 @@ moviesDiv.addEventListener('click', function(event) {
         })
         .then(response => {
             if (response.ok) {
+                loadingElement.style.display = 'none'; // Hide loading message after data is loaded
                 // Movie deleted successfully
                 console.log(`Movie with ID ${movieId} deleted successfully!`);
                 // Reload div
                 fetchAndUpdateMovies();
                 // Optionally, you can remove the movie box from the DOM here
                 target.closest('.movieBox').remove(); // Removes the parent .movieBox element
+                loadingElement.style.display = 'none'; // Hide loading message after data is loaded
             } else {
                 // Handle errors if the response status is not OK
                 console.error('Movie could not be deleted.');

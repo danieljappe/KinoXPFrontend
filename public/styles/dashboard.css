@@ -203,12 +203,14 @@ nav .wrapper{
     align-items: center;
     justify-content: flex-start;
     height: 100vh; /* Set the container height to fill the viewport */
+    overflow: hidden;
 }
 
 section {
     margin-top: 10vh;
     width: 90%;
     max-width: 90%;
+    max-height: 90%;
     padding: 5vh;
     block-size: 100%;
 }
@@ -219,7 +221,7 @@ section {
     align-items: center;
     justify-content: start;
     height: 100%;
-    border: 1px dotted #fff;
+    background-color: #222;
 }
 
 .flexbox-content{
@@ -228,20 +230,33 @@ section {
     align-items: center;
     justify-content: start;
     height: 100%;
-    border: 1px solid #fff;
+    background-color: #333;
+    border-radius: 100px 25px 100px 25px;
 }
 
 .flexbox-content div{
-    border: 1px dotted #fff;
+    padding: 1vh;
+    background-color: #444;
     margin: 5vh;
+    border-radius: 40px;
+    border-radius: 50px 30px 75px 10px;
 }
 
 button:hover{
     cursor: pointer;
 }
 
+.div1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+}
+
+
 .div2{
-    width: 25vw; 
+    width: 20vw; 
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
@@ -260,7 +275,6 @@ button:hover{
     justify-content: center;
     height: 95%;
     width: 95%;
-    border: 1px dotted #fff;
     margin: 10px;
 }
 
@@ -271,12 +285,55 @@ button:hover{
 
 .div3 .viewmovies{
     display: none;
+    max-height: 95%;
+    overflow-y: scroll;
+    background-color: #333;
+    padding: 10px;
+}
+
+.div3 .viewmovies::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+.div3 .viewmovies::-webkit-scrollbar-thumb {
+    background-color: #5c5c5c; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Radius of the scrollbar thumb corners */
+}
+
+.div3 .viewmovies::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the scrollbar track */
+}
+
+.div3 .viewmovies .movieBox div a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 5px 10px;
+    margin: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background-color: #444;
+}
+
+.div3 .viewmovies .movieBox div a:hover{
+    background: red;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.div3 .viewmovies .movieBox{
+    background-color: #222;
+    border-radius: 10px;
 }
 
 .div3 .addmovies{
     display: none;
-    width: 25vw;
+    width: 30vw;
     height: 50vh;
+    background-color: #333;
+    padding: 15px;
+    border-radius: 75px 20px 75px 20px;
 }
 
 .div3 .addmovies form{
@@ -317,7 +374,7 @@ button:hover{
     align-items: center;
     justify-content: center;
     width: 100%;
-    border: 1px dotted #fff;
+    padding: 0 10px;
 }
 
 .addmovies button{
@@ -336,6 +393,6 @@ button:hover{
     align-items: center;
     justify-content: center;
     width: 100%;
-    border: 1px dotted #fff;
+    margin-bottom: 1vh;
 }
 
