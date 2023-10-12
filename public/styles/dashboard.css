@@ -202,17 +202,19 @@ nav .wrapper{
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 100vh; /* Set the container height to fill the viewport */
-    overflow: hidden;
+    scroll-snap-type: y mandatory;
+    padding-top: 10vh;
+    overflow-y: auto;
 }
 
 section {
-    margin-top: 10vh;
     width: 90%;
     max-width: 90%;
     max-height: 90%;
     padding: 5vh;
     block-size: 100%;
+    height: 90vh;
+    scroll-snap-align: start;
 }
 
 .flexbox-container{
@@ -222,6 +224,7 @@ section {
     justify-content: start;
     height: 100%;
     background-color: #222;
+    border-radius: 25px;
 }
 
 .flexbox-content{
