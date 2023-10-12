@@ -50,7 +50,7 @@ export default class MovieRepository extends Repository {
             json.metascore,
             json.imdbRating,
             json.imdbVotes,
-            json.trailerURL,
+            json.trailerUrl,
             json.imdbID,
             json.website,
             json.response
