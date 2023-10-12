@@ -4,7 +4,7 @@ export default class ElementMaker {
     getButton = function(className, id, text) {
         const button = document.createElement('button');
         className != null? button.className = className : null;
-        id != null? div.id = id : null;
+        id != null? button.id = id : null;
         button.innerText = text;
         return button;
     }

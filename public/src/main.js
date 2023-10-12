@@ -36,3 +36,8 @@ for (let i = 0; i < showingsToCreate.length; i++) {
 //insert movies to 'current movies'-section
 const currentMovies = new CurrentMovies(allMovies);
 await currentMovies.show();
+
+//add movie schedule
+const schedule = new Schedule(showingsNext3Months);
+const movieSchedule = new MovieSchedule(schedule, false);
+movieSchedule.generateListViewItems();

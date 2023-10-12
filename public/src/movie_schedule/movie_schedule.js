@@ -90,7 +90,7 @@ export default class MovieSchedule {
             buttons.appendChild(this.elementMaker.getButton('action-button-left', "s" + showing.id, 'Details'));
             buttons.appendChild(this.elementMaker.getButton('action-button-right', "s" + showing.id, 'Book Seats'));
         } else {
-            buttons.appendChild(this.elementMaker.getButton('mo-action-button', 'Edit'));
+            buttons.appendChild(this.elementMaker.getButton('mo-action-button', null, 'Edit'));
         }
         movieBox.appendChild(buttons);
         movieContainer.appendChild(movieBox);
