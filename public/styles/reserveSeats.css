@@ -373,53 +373,53 @@ section:not(.calendar-box .popular-movies-section) {
     height: 100%; /* Full height */
     overflow: hidden; /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
+}
 
-  /* Modal Content/Box */
-  .modal-content {
+/* Modal Content/Box */
+.modal-content {
     background-color: #121212;
     margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
     width: 30%; /* Could be more or less, depending on screen size */
     height: 55%;
-  }
+}
 
-  .modal-content-movie {
+.modal-content-movie {
     background-color: #181818;
     margin: 6% auto; /* 15% from the top and centered */
     padding: 1vh;
     width: 90%; /* Could be more or less, depending on screen size */
     height: 80%;
-  }
+}
 
-  .modal-content-movie img {
+.modal-content-movie img {
     width: 100%;
     height: 100%;
     object-fit:contain ;
-  }
+}
 
-  .movie-flex{
+.movie-flex{
     display: flex;
     flex-direction: row;
     height: 100%;
     margin: auto;
-  }
+}
 
-  .movie-wrapper{
+.movie-wrapper{
     display: flex;
     flex-direction: column;
     justify-content:flex-start;
     align-items: center;
     width: 90%;
     margin-top: 3vh;
-  }
+}
 
-  .movieposter{
+.movieposter{
     width: 40%;
     margin-left: 2vw;
-  }
+}
 
-  .movie-wrapper .movie-title{
+.movie-wrapper .movie-title{
     padding: 0%;
     width: 80%;
     text-align: start;
@@ -427,21 +427,21 @@ section:not(.calendar-box .popular-movies-section) {
     font-size: 24px;
     line-height: 40px;
     height: 45px;
-  }
+}
 
-  .movie-wrapper .movie-undertitle{
+.movie-wrapper .movie-undertitle{
     width: 80%;
     display: flex;
     justify-content: start;
     text-align: start;
-  }
+}
 
-  #modalGenre, #modalAgeRestriction, #modalRunTime {
+#modalGenre, #modalAgeRestriction, #modalRunTime {
     margin-right: 24px;
     color: rgba(255,255,255,0.85);
-  }
+}
 
-  .movie-wrapper .movie-description, #modalDescription{
+.movie-wrapper .movie-description, #modalDescription{
     margin-top: 6px;
     margin-bottom: 12px;
     width: 100%;
@@ -452,86 +452,49 @@ section:not(.calendar-box .popular-movies-section) {
     padding-left: 3vw;
     font-weight: 100;
     color: rgba(255,255,255,0.7);
-  }
+}
 
-  .movie-wrapper .movie-booking{
+.movie-wrapper .movie-booking{
     width: 80%;
     height: 10%;
     display: flex;
     justify-content: start;
     align-items: start;
-  }
+}
 
-  .movie-wrapper .movie-trailer{
+.movie-wrapper .movie-trailer{
     width: 80%;
     height: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .movie-wrapper .movie-trailer iframe{
+}
+.movie-wrapper .movie-trailer iframe{
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-  }
-
-
-
-.myCancelModal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 10; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: hidden; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-
-.cancel-form {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
 }
 
-  /* The Close Button */
-  .close {
+
+/* The Close Button */
+.close {
     z-index: 10;
     color: #aaa;
     float: right;
     font-size: 36px;
     font-weight: 400;
     margin-right: 24px;
-  }
+}
 
-  .close:hover,
-  .close:focus {
+.close:hover,
+.close:focus {
     color: white;
     text-decoration: none;
     cursor: pointer;
-  }
-
-  /*Cancel close button*/
-.cancelClose {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
 }
 
-.cancelClose:hover,
-.cancelClose:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-  .login-form {
+.login-form {
     position: absolute;
     top: 45%;
     left: 50%;
@@ -655,51 +618,51 @@ section:not(.calendar-box .popular-movies-section) {
 }
 
 
- .seat {
+.seat {
     width: 30px;
     height: 25px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-     /*filter: hue-rotate(235deg);*/
-     /*filter: hue-rotate(300deg);*/
+    /*filter: hue-rotate(235deg);*/
+    /*filter: hue-rotate(300deg);*/
 }
- .vipSeat{
-     width: 30px;
-     height: 25px;
-     border-top-left-radius: 10px;
-     border-top-right-radius: 10px;
-     /*filter: hue-rotate(50deg);*/
- }
+.vipSeat{
+    width: 30px;
+    height: 25px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /*filter: hue-rotate(50deg);*/
+}
 .seatButtonOccupied{
     background-color: transparent;
     border-style: hidden;
     opacity: 0.15;
 }
- .seatButton{
-     background-color: transparent;
-     border-style: hidden;
- }
+.seatButton{
+    background-color: transparent;
+    border-style: hidden;
+}
 
 .seatButton:hover{
     background-color: green;
     opacity: 50%;
     border-radius: 50%;
 }
- .seatButton.selected {
-     background-color: #116911;
-     border-radius: 30%;
-     box-shadow: 0 0 5px rgba(0, 0, 0, 100);
- }
+.seatButton.selected {
+    background-color: #116911;
+    border-radius: 30%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 100);
+}
 
- .seatDiv {
-     margin-top: 10px;
- }
- .ticketDiv{
-     border: gray;
-     border-style: solid;
-     padding: 1vh;
-     margin: 1vh;
- }
+.seatDiv {
+    margin-top: 10px;
+}
+.ticketDiv{
+    border: gray;
+    border-style: solid;
+    padding: 1vh;
+    margin: 1vh;
+}
 .selectedSeatInfoDiv{
     width: 20%;
     height: 10%;
@@ -710,11 +673,11 @@ section:not(.calendar-box .popular-movies-section) {
     /*margin-right: 10%;*/
 }
 
- .seatInfoDiv {
+.seatInfoDiv {
     margin-top: 75px;
-     text-align: center;
+    text-align: center;
 
- }
+}
 .seat-flexbox{
     display: flex;
     flex-direction: column;

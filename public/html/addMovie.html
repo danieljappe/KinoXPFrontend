@@ -29,7 +29,7 @@
         <div>
             <label class="addMovieLabel">Enter movie desc.: </label>
             <textarea class="addMovieDescription" name="movieDescription" rows="4" cols="50"
-                      placeholder="Enter here..." required></textarea>
+                      placeholder="Write your description here..." required></textarea>
         </div>
 
         <div>
@@ -96,13 +96,11 @@
 
         var formData = new FormData(event.target);
 
-        // Create JSON object
         var jsonObject = {};
         formData.forEach(function(value, key){
             jsonObject[key] = value;
         });
 
-        // Convert JSON object to string for testing/logging
         var jsonString = JSON.stringify(jsonObject);
         console.log(jsonString);
 
@@ -124,7 +122,7 @@
     });
 
     function goToIndex() {
-        window.location.href = 'index.html';
+        window.location.href = '../index.html';
     }
 </script>
 

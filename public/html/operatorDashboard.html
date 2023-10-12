@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kino XP</title>
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
     
 </head>
@@ -119,40 +119,72 @@
 
     <!-- Page Content -->
 
-    <div class="page-content">
+    <div class="page-container">
 
         <section>
-            <h1>Logged in as Operator</h1>
-            
-            
+                <div class="flexbox-container">
+                    <div class="flexbox-content">
+                        <div class="div1"> </div>
+                        <h2 style="margin-bottom: -3vh;">Operator Functions:</h2>
+                        <div class="div2">
+                            <button>
+                                <a>View movies in the database</a>
+                            </button>
+                            <button>
+                                <a">Add movie to the database</a>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="div3">
+                        <div class="default-showing">
+                            <h1>Welcome operator</h1>
+                            <p>This is your homepage, you can access movie operations on the left and view and edit the schedule below</p>
+                        </div>
+                        <div class="viewmovies">
+                        </div>
+                        <div class="addmovies">
+                            <form id="movieForm" method="post">
+                                <div>
+                                    <h1>
+                                        Add Movie
+                                    </h1>
+                                    <a style="text-decoration: none;" target="_blank" href="https://www.imdb.com/">Find the movie here and insert the link below</a>
+                                </div>
+                                <div>
+                                    <label class="addMovieIdLabel">Insert the IMDB link address: </label>
+                                    <input class="addMovieIdInput" type="text" name="movieId" placeholder="Enter here..." required>
+                                </div>
+
+                                <div>
+                                    <label class="addMovieLabel">Enter age restriction: </label>
+                                    <select class="addMovieInput" name="ageRestriction" required>
+                                        <option value="" disabled selected>Choose an age restriction</option>
+                                        <option value="0">General Audience (G)</option>
+                                        <option value="6">Suitable for 6 years and older (PG)</option>
+                                        <option value="12">Suitable for 12 years and older (PG-12)</option>
+                                        <option value="15">Suitable for 15 years and older (PG-15)</option>
+                                        <option value="18">Suitable for 18 years and older (R)</option>
+                                    </select>
+                                </div>
+                        
+                                <div>
+                                    <label class="addMovieLabel">Insert movie trailer link from youtube: </label>
+                                    <input class="addMovieInput" type="text" name="trailerLink" placeholder="Insert link here..." required>
+                                </div>
+                        
+                                <button style="margin-top: 10px;" class="addMovieSubmit" type="submit">Add Movie</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
         </section>
+
 
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-    // Retrieve employee data from sessionStorage
-    const employeeData = JSON.parse(window.sessionStorage.getItem('employee'));
-
-    // Get the <section> element by its ID
-    const sectionElement = document.querySelector('section');
-
-    // Check if employeeData is not null or undefined
-    if (employeeData) {
-        // Update the content inside the <section> element
-        sectionElement.innerHTML = `
-            <h1>Logged in as Operator</h1>
-            <p>Employee ID: ${employeeData.employee_id}</p>
-            <p>Is operator: ${employeeData.is_operator}</p>
-            <p>Name: ${employeeData.employee_name}</p>
-            <!-- Add more properties as needed -->
-        `;
-    } else {
-        // Handle the case when employeeData is null or undefined
-        sectionElement.innerHTML = `<h1>No employee data found!</h1>`;
-    }
-});
-    </script>
+    <script src="../src/dashboardJS/dashboard.js"></script>
 </body>
 
 </html>

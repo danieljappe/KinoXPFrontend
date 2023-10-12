@@ -1,0 +1,24 @@
+:root {
+    --g1: black;
+    --g2: #101040;
+    --g3: #501010;
+}
+
+.popular-movies-section {
+    width: 100%;
+    background: linear-gradient(/* Set your desired background color here */
+    130deg,
+    transparent 0% 0%,
+var(--g1) 25%,
+var(--g2) 50%,
+var(--g3) 78%,
+var(--g1) 90%
+    );
+}
+
+.product-image {
+    max-width: 100px; /* You can adjust the size as needed */
+    max-height: 100px; /* You can adjust the size as needed */
+    float: left; /* Float the image to the left */
+    margin-right: 10px; /
+}

@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kino XP</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/reserveSeats.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+
 
 </head>
 <body>
-<nav>
+<nav style="position: unset">
     <div class="wrapper">
         <div class="logo"><a href="#">Kino XP</a></div>
         <input type="checkbox" id="menu-btn">
@@ -43,7 +45,8 @@
                     <div class="content">
 
                         <div class="row">
-                            <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="">
+                            <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg"
+                                 alt="">
                         </div>
 
                         <div class="row">
@@ -87,111 +90,33 @@
         </ul>
         <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
     </div>
+
 </nav>
 
-<div id="myModal" class="modal">
 
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-
-        <div class="login-form">
-
-            <h2>Sign In</h2>
-
-            <div>
-                <div>
-                    <h3>Username</h3>
-                    <input type="text" required>
+<div class="page-content-reserveSeats">
+    <section style="flex-direction: row">
+        <div class="sideBar"style="margin-top: 40vh">
+            <div class="sideBarContent">
+                <h3 id="movieName">{Movie name}</h3>
+                <h3 id="theaterName">{Theater number}</h3>
+            </div>
+            <div class="sideBarContent">
+                <h2>Tickets:</h2>
+                <div class="seat-flexbox">
+                    <div class="seat-id"></div>
                 </div>
-
-                <div>
-                    <h3>Password</h3>
-                    <input type="password" required>
-                </div>
-
-                <div> <a href="#">Forgot Password</a> <a href="#">Signup</a>
-                </div>
-
-                <div>
-                    <input type="submit" value="Login">
-                </div>
-
+                <input id="reserveTicketButton" type="button" value="Reserve Tickets" onclick="addPhoneNumber()"/>
             </div>
         </div>
-    </div>
-
-</div>
-
-
-</nav>
-
-<div>
-    <section>
-
-        <div id="info"class="seatInfoDiv">
-            <h1>Reserve Tickets</h1>
-            <h2>{Movie name}</h2>
-            <h2>{Theater}</h2></div>
-        <div id="seatDiv" class="seatDiv"></div>
+        <div class="section-generator">
+            <div id="seatDiv" class="seatDiv"></div>
+        </div>
 
 
-
-<!--WHAT CLASS/ID SHOULD BE HERE?? THE BUTTON LOOKS LIKE SHEIT-->
-<div>
-    <ul class="nav-links">
-<!--        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>-->
-        <li><a class="addPhoneNumberbtn" id="add-phone-link" href="#">Next</a></li>
-        </ul>
-</div>
+        <script src="../src/seatSelection.js"></script>
     </section>
 </div>
 
-
-<div id="myNextButton" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-
-        <div class="login-form">
-
-            <h2>Please add your phone number</h2>
-
-            <div>
-                <form action="index.html" method="get">
-                <div>
-                    <h3>Phone number</h3>
-                    <input type="text" id="phoneNumber" required>
-<!--                    todo HOW DO WE TRANSFER THIS PHONE NUMBER DATA TO THE DATABASE ALONG WITH SEATS??-->
-                </div>
-
-<!--                <div>-->
-<!--                    <h3>Password</h3>-->
-<!--                    <input type="password" required>-->
-<!--                </div>-->
-
-<!--                <div> <a href="#">Forgot Password</a> <a href="#">Signup</a>-->
-<!--                </div>-->
-
-                <div>
-                    <input type="submit" value="Confirm reservation">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-
-
-
-
-<script src="seatSelection.js"></script>
-</div>
-
-<script src="seatSelection.js"></script>
 </body>
 </html>

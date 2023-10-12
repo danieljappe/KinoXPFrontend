@@ -1,3 +1,35 @@
+import Showing from "./models/showing.js";
+import { ShowingRepository } from "./repository/showing_repository.js";
+import { MovieRepository } from "./repository/movie_repository.js";
+import DateParser from "./utilities/date_parser.js";
+
+console.log("before");
+const showingRepository = new ShowingRepository();
+const movieRepository = new MovieRepository();
+/*const movs = repository.getAllMovies();
+for (let i = 0; i < movs.length; i++) console.log(movs[i]);*/
+
+const showings = await showingRepository.getAllShowings();
+const dateParser = new DateParser();
+
+const showingsToCreate = [
+  new Showing(0, 1, 2, "2023-10-16T15:00:00", dateParser),
+  new Showing(1, 2, 1, "2023-10-16T16:00:00", dateParser),
+  new Showing(2, 3, 2, "2023-10-16T17:00:00", dateParser)
+];
+
+for (let i = 0; i < showingsToCreate.length; i++) {
+  //showingRepository.createShowing(showingsToCreate[i]);
+}
+
+const allMovies = await movieRepository.getAllMovies();
+
+for (let i = 0; i < showings.length; i++) {
+  const movie = await movieRepository.getMovie(showings[i].movieId);
+  showings[i].movie = movie;
+  console.log(showings[i]);
+}
+
 
 const movies = [
   {
@@ -82,31 +114,30 @@ const movies = [
   }
 ];
 
-const flexboxContainer = document.querySelector('.popular-movies-section');
 const flexboxContent = document.querySelector('.popular-movies-content');
 
-movies.forEach(movie => {
+for (let i = 0; i < movies.length; i++) {
   const divElement = document.createElement('div');
-  divElement.className = ` popular-movies-item popular-movies-item-${movie.id}`;
-  divElement.style.backgroundImage = `url(${movie.posterLink})`;
+  divElement.className = ` popular-movies-item popular-movies-item-${movies[i].id}`;
+  divElement.style.backgroundImage = `url(${movies[i].posterLink})`;
   divElement.innerHTML = `
   <div class="popular-movies-overlay">
     <div class="description">
-      <h3>${movie.title}</h3>
-      <p>${movie.description}</p>
-      <p><strong>Genre:</strong> ${movie.genre}</p>
-      <p><strong>Age Restriction:</strong> ${movie.ageRestriction}</p>
-      <p>Run Time: ${movie.runTime} minutes</p>
-      <a href="${movie.trailerLink}" target="_blank">Watch Trailer</a>
+      <h3>${movies[i].title}</h3>
+      <p>${movies[i].description}</p>
+      <p><strong>Genre:</strong> ${movies[i].genre}</p>
+      <p><strong>Age Restriction:</strong> ${movies[i].ageRestriction}</p>
+      <p>Run Time: ${movies[i].runTime} minutes</p>
+      <a href="${movies[i].trailerLink}" target="_blank">Watch Trailer</a>
     </div>
     <div class="overlay-textbox">
-      <p class="popular-movies-overlay-title">${movie.title}</p>
-      <p class="popular-movies-overlay-subtitle">${movie.description}</p>
+      <p class="popular-movies-overlay-title">${movies[i].title}</p>
+      <p class="popular-movies-overlay-subtitle">${movies[i].description}</p>
     </div>
   </div>  
   `;
   flexboxContent.appendChild(divElement);
-});
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -149,12 +180,14 @@ document.addEventListener('DOMContentLoaded', function() {
           // Get the modal
           var movieModal = document.getElementById("movieModal"); 
 
-          var span = document.querySelector(".close")
+          var span = document.querySelector("span.close");
 
           
             // When the user clicks on <span> (x), close the modal
             span.onclick = function(event) {
+              console.log("Event handler called");
               if (event.target == modal) {
+                console.log("Clicked outside the modal");
                 movieModal.style.display = "none";
               }
             }

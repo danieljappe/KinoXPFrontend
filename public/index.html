@@ -14,9 +14,10 @@
     <!-- Scripts -->
     <!--<script src="https://kit.fontawesome.com/a076d05399.js" defer></script>-->
     <script src="https://kit.fontawesome.com/a076d05399.js" defer></script>
-    <script src="employeeLogin.js"defer></script>
-    <script src="src/main.js" defer></script>
+    <script src="src/employeeLogin.js" defer></script>
+    <script src="src/main.js" type="module" defer></script>
     <script src="src/movie_schedule/movie_schedule_script.js" type="module" defer></script>
+    <script type="module" src="src/repository/showing_repository.js" defer></script>
 </head>
 
 <body>
@@ -28,12 +29,13 @@
         <ul class="nav-links">
             <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
 
+            <!-- <li><a href="#">Home</a></li> -->
 
 
             <li><a href="html/about.html">Krav</a></li>
 
             <li>
-                <a href="#" class="desktop-item">Operations</a>
+                <a href="#" class="desktop-item">SletMigGerne</a>
                 <input type="checkbox" id="showDrop">
                 <label for="showDrop" class="mobile-item">Dropdown Menu</label>
                 <ul class="drop-menu">
@@ -44,29 +46,14 @@
                 </ul>
             </li>
 
-            <li><a href="html/addMovie.html">Add Movie</a></li>
-
-            <div id="addMovieModal" class="modal">
-                <div class="modal-content">
-                    <div id="addMovieClose" class="close">&times;</div>
-                    <form id="addMovieForm">
-                        <h2>Add Movie</h2>
-                        <div>
-                            <div>
-                                <h3>Movie title</h3>
-                                <input type="text" placeholder="Indtast filmtitel" required>
-                            </div>
-                            <div>
-                                <h3>Description</h3>
-                                <input type="text" required>
-                            </div>
-                            <div>
-                                <input type="submit" value="Add movie">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <li><a href="">Movie Operations</a>
+                <input type="checkbox">
+                <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+                <ul class="drop-menu">
+                    <li><a href="html/addMovie.html">Add New Movie</a></li>
+                    <li><a href="html/editMovie.html">Edit Movie</a></li>
+                </ul>
+            </li>
 
             <!-- Mega Menu -->
             <li>
@@ -80,37 +67,6 @@
                             <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg"
                                  alt="">
                         </div>
-                    <div class="wrapper">
-                        <div class="row">
-                            <header>Service 1</header>
-                            <ul class="mega-links">
-                                <li><a>Drop menu 1</a></li>
-                                <li><a>Drop menu 2</a></li>
-                                <li><a>Drop menu 3</a></li>
-                                <li><a>Drop menu 4</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="row">
-                            <header>Service 2</header>
-                            <ul class="mega-links">
-                                <li><a href="#">Text</a></li>
-                                <li><a href="#">Text</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="row">
-                            <header>Service 3</header>
-                            <ul class="mega-links">
-                                <li><a href="#">Text</a></li>
-                                <li><a href="#">Text</a></li>
-                                <li><a href="#">Text</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </li>
 
 
             <li><a href="#">About</a></li>
@@ -124,21 +80,30 @@
         </div>
     </nav>
 
-
-        <div id="myModal" class="modal">
+    <!-- modals -->
+    <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close">&times;</span>
+
             <div class="login-form">
-                <h1>Sign In</h1>
+                <span class="close">&times;</span>
                 <div>
-                    <h3>Username</h3>
-                    <input type="text" id="username" required>
+                    <h1>Sign In</h1>
+                </div>
+                <div>
+                    <h3>Employee ID</h3>
+                    <input type="text" id="username" required  style="width: 40%;">
                 </div>
                 <div style="margin-bottom: 2vh;">
                     <h3>Password</h3>
                     <input type="password" id="password" required>
                 </div>
+                <input class="btn-style" type="submit" value="Login" id="login-btn">
+            </div>
+        </div>
+    </div>
+
+
                 <div>
                     <input type="submit" value="Login" id="login-btn">
                 </div>
@@ -147,7 +112,7 @@
     </div>
 
     <!-- modals -->
-    <!--                    FIXME cancel reservation pop up doesn't show-->
+    <!--                    FIXME -edit works now-->
     <!-- Modal content -->
     <div id="myCancelModal" class="myCancelModal">
         <div class="modal-content">
@@ -203,10 +168,10 @@
                     <div class="movie-description">
                         <p id="modalDescription"></p>
                     </div>
-                    <div class="movie-booking">
+                    <!--<div class="movie-booking">
                         <p style="margin-right: 10px;">Next showing: ?</p>
                         <button id="modalBooking">Reserve Seats</button>
-                    </div>
+                    </div>-->
                     <div class="movie-trailer">
                         <iframe id="modalTrailer" width="640" height="360" frameborder="0" allowfullscreen allow="autoplay"></iframe></iframe>
                     </div>
@@ -218,7 +183,7 @@
 
     <section class="popular-movies-section">
         <div class="popular-movies-title">
-            <h1 class="popular-movies-title">Popular movies</h1>
+            <h1 class="popular-movies-title">Current movies</h1>
         </div>
         <div class="popular-movies-content">
             <!-- forEach -->
@@ -279,6 +244,5 @@
             </div>
         </div>
     </section>
-
 </body>
 </html>
