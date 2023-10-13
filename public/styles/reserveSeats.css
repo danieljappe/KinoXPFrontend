@@ -655,7 +655,8 @@ section:not(.calendar-box .popular-movies-section) {
 }
 
 .seatDiv {
-    margin-top: 10px;
+    /*padding-top: 50vh;*/
+
 }
 .ticketDiv{
     border: gray;
@@ -701,7 +702,7 @@ section:not(.calendar-box .popular-movies-section) {
     flex-direction: row;
     align-items: start;
     justify-content: center;
-    /*margin-top: 50vh;*/
+    margin-top: 45vh;
 }
 .sideBar {
     width: 40vh;
