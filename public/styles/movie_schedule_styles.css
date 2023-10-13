@@ -71,7 +71,7 @@
     display: flex;
     justify-content: left;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: auto;
     white-space: nowrap;
 }
 
