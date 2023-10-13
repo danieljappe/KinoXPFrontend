@@ -1,3 +1,5 @@
+import ShowingRepository from "../repository/showing_repository.js";
+
 export default class ElementMaker {
     
     //Makes a button
@@ -23,8 +25,39 @@ export default class ElementMaker {
                 document.getElementById('modalDescription').textContent = showing.movie.plot;
                 document.getElementById('modalTrailer').src = self._toEmbeddedLink(showing.movie.trailerURL);
                 modal.style.display = "block";
-            } else if (isEdit) {
-                
+            }  else if (isEdit) {
+                const editModal = document.querySelector(".modal");
+                editModal.style.display = "block";
+                const close = document.querySelector(".close");
+                console.log(showing);
+
+                // Function to handle form submission
+                const handleFormSubmit = async () => {
+                    const movieId = document.getElementById("movieId").value;
+                    const theaterId = document.getElementById("theaterId").value;
+                    const showingDateTime = showing.dateTime;
+
+                    const showingData = {
+                        movieId: parseInt(movieId),
+                        theaterId: parseInt(theaterId),
+                        dateTime: new Date(showingDateTime)
+                    };
+                    console.log(showingData);
+                    try {
+                        await new ShowingRepository().createShowing(showingData);
+                        // Optionally: Handle success behavior here
+                        alert("Showing created");
+                        editModal.style.display = "none";
+                    } catch (error) {
+                        // Handle error
+                        alert("Error creating showing");
+                        console.error('Error creating showing:', error);
+                    }
+                };
+
+                const submitButton = document.getElementById("addShowing-btn");
+                submitButton.addEventListener("click", handleFormSubmit);
+
             }
         });
         return button;
