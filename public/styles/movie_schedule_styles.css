@@ -1,12 +1,26 @@
 
 .calendar-box {
     width: 100%;
-    height: 644px !important;
+    height: 75vh !important;
     display: flexbox;
     flex-direction: row !important;
     margin-bottom: 100px;
     padding-top: 6px;
     border-bottom: 6px solid black;
+}
+
+.calendar::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+    height: 5px;
+}
+
+.calendar::-webkit-scrollbar-thumb {
+    background-color: #5c5c5c; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Radius of the scrollbar thumb corners */
+}
+
+.calendar::-webkit-scrollbar-track {
+    background-color: #020225; /* Color of the scrollbar track */
 }
 
 .mo-calendar-box {
@@ -56,7 +70,8 @@
     box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: left;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
 }
 

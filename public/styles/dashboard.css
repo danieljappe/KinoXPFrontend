@@ -211,7 +211,7 @@ section {
     width: 90%;
     max-width: 90%;
     max-height: 90%;
-    padding: 5vh;
+    padding: 2vh;
     block-size: 100%;
     height: 90vh;
     scroll-snap-align: start;
@@ -295,7 +295,7 @@ button:hover{
 }
 
 .div3 .viewmovies::-webkit-scrollbar {
-    width: 10px; /* Width of the scrollbar */
+    width:5px; /* Width of the scrollbar */
 }
 
 .div3 .viewmovies::-webkit-scrollbar-thumb {
