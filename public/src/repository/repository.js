@@ -27,4 +27,4 @@ export default class Repository {
             throw error;
         } 
     }
-}  export { Repository as Repository };
+};  export { Repository as Repository };

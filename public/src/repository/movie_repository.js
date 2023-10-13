@@ -58,4 +58,4 @@ export default class MovieRepository extends Repository {
     }
 
 
-} export { MovieRepository };
+}; export { MovieRepository };

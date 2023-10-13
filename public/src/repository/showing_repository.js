@@ -50,4 +50,4 @@ export default class ShowingRepository extends Repository {
         return new Showing(response.showingId, response.movieId, response.theaterId, response.showingDateTime, this.dateParser);
     }
 
-} export { ShowingRepository };
+}; export { ShowingRepository };

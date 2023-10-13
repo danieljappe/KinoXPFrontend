@@ -86,18 +86,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fetchAndDisplaySaleItems();
     console.log('JavaScript code is executed');
-    // Add an event listener to the "Purchase" button
 
+
+// Add an event listener to the "Purchase" button
+    // ... Your previous JavaScript code ...
+
+// Add an event listener to the "Purchase" button
     purchaseButton.addEventListener('click', function () {
         const customerPhone = prompt('Please enter your customer number:');
         if (customerPhone !== null) {
             const customerNumberInt = parseInt(customerPhone);
             if (!isNaN(customerNumberInt)) {
+                const saleDateInput = document.getElementById('saleDateInput'); // Get the sale date input element
                 const saleDate = saleDateInput.value; // Get the selected sale date
                 if (saleDate) {
                     // Here you can implement the purchase logic
-                    alert(`You have made a purchase on ${saleDate} with a total cost of $${totalCostDisplay.textContent}.`);
-                    alert(`Customer number: ${customerPhone}`);
+                    const purchaseMessage = `Purchase is done by customer number: ${customerPhone} and the sale date is: ${saleDate}.`;
+                    alert(purchaseMessage);
                     // You can also send a request to your backend to record the purchase
                     // and provide more advanced functionality as needed.
                 } else {
@@ -111,3 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
+
+
