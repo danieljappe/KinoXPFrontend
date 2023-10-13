@@ -16,11 +16,13 @@ export default class MovieSchedule {
     }
 
     generateListViewItems = () => {
+        const self = this;
         for (let i = 0; i < this.schedule.schedule.length; i = i + this.schedule.showsPerDay) {
             this._createCard(
                 this.schedule.schedule[i],
                 this.schedule.schedule[i+1],
             );
+            if (i == 7) break; //allow max 8 movies
         }
     }
 
@@ -87,10 +89,10 @@ export default class MovieSchedule {
         //add buttons
         const buttons = this.elementMaker.getDiv('movie-action-buttons');
         if (!this.isMO) {
-            buttons.appendChild(this.elementMaker.getButton('action-button-left', null, 'Details'));
-            buttons.appendChild(this.elementMaker.getButton('action-button-right', showing.id, 'Book Seats'));
+            buttons.appendChild(this.elementMaker.getButton('action-button-left', null, 'Details', true, showing));
+            buttons.appendChild(this.elementMaker.getButton('action-button-right', showing.id, 'Book Seats', false, showing));
         } else {
-            buttons.appendChild(this.elementMaker.getButton('mo-action-button', null, 'Edit'));
+            buttons.appendChild(this.elementMaker.getButton('mo-action-button', null, 'Edit', false, showing));
         }
         movieBox.appendChild(buttons);
         movieContainer.appendChild(movieBox);
