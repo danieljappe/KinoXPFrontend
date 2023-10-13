@@ -5,9 +5,690 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Dropdown and Mega Menu</title>
-    <link rel="stylesheet" href="kinoxp-9c7c3.web.app/styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+    <style>/* Add the provided styles here */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
 
+    html::-webkit-scrollbar {
+        width: 10px;
+        height: 5px;
+    }
+    html::-webkit-scrollbar-thumb {
+        background-color: #5c5c5c; /* Color of the scrollbar thumb */
+        border-radius: 5px; /* Radius of the scrollbar thumb corners */
+    }
+
+    html::-webkit-scrollbar-track {
+        background-color: #222; /* Color of the scrollbar track */
+    }
+
+    /* Variables */
+    :root {
+        --background-color: #101010;
+        --navbar-color: #080808;
+    }
+
+    body{
+        background-color: var(--background-color);
+        color: #fff;
+    }
+
+    nav{
+        position: fixed;
+        z-index: 99;
+        width: 100%;
+        background: var(--navbar-color);
+    }
+    nav .wrapper{
+        position: relative;
+        max-width: 1300px;
+        padding: 0px 30px;
+        height: 70px;
+        line-height: 70px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .wrapper .logo a{
+        color: #f2f2f2;
+        font-size: 30px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .wrapper .nav-links{
+        display: inline-flex;
+    }
+    .nav-links li{
+        list-style: none;
+    }
+    .nav-links li a{
+        color: #f2f2f2;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 9px 15px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+    .nav-links li a:hover{
+        background: #3A3B3C;
+    }
+    .nav-links .mobile-item{
+        display: none;
+    }
+    .nav-links .drop-menu{
+        position: absolute;
+        background: #242526;
+        width: 180px;
+        line-height: 45px;
+        top: 85px;
+        opacity: 0;
+        visibility: hidden;
+        box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    }
+    .nav-links li:hover .drop-menu,
+    .nav-links li:hover .mega-box{
+        transition: all 0.3s ease;
+        top: 70px;
+        opacity: 1;
+        visibility: visible;
+    }
+    .drop-menu li a{
+        width: 100%;
+        display: block;
+        padding: 0 0 0 15px;
+        font-weight: 400;
+        border-radius: 0px;
+    }
+    .content .row img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .content .row header{
+        color: #f2f2f2;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .wrapper .btn{
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+    }
+    .wrapper .btn.close-btn{
+        position: absolute;
+        right: 30px;
+        top: 10px;
+    }
+
+    nav input{
+        display: none;
+    }
+
+
+    .flexbox-container {
+        display: flex;
+        flex-direction: column;
+        margin: 1.5em;
+        border: 1px solid #444;
+        position: relative;
+    }
+
+    .flexbox-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .flexbox-title {
+        border: 1px solid #555;
+        background-color: #333;
+        text-align: center;
+        color: #fff;
+        position: absolute;
+        width: 50%;
+        /* center */
+        left: 50%;
+        margin-top: 2vh;
+        transform: translate(-50%, -50%);
+    }
+
+    .flexbox-item {
+        width: 10vw;
+        height: 31vh;
+        margin: 1vw;
+        margin-top: 7vh;
+        border: 1px solid #fff;
+        background-color: #333;
+        text-align: center;
+        line-height: 20vh;
+        background-size: auto 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .flexbox-item:hover {
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+
+    .flexbox-big-item {
+        width: 40vw;
+        height: 50vh;
+        margin: 1vw;
+        margin-top: 7vh;
+        border: 1px solid #fff;
+        background-color: #333;
+        text-align: center;
+        line-height: 50vh;
+    }
+
+    .description {
+        display: none; /* or display: block; or any other initial display property */
+    }
+
+
+    html, body, section:not(.calendar-box .popular-movies-section .footer) {
+        block-size: 100%;
+    }
+    .page-content-reserveSeats {
+        height: 100vh;
+        text-align: center;
+        border: 0;
+        outline: 0;
+    }
+
+    html, body, section {
+        block-size: 100%;
+    }
+
+    html {
+        scroll-snap-type: y mandatory;
+    }
+
+    section:not(.calendar-box .popular-movies-section) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 10; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: hidden; /* Enable scroll if needed */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #121212;
+        margin: 10% auto;
+        padding: 20px;
+        width: 30%; /* Could be more or less, depending on screen size */
+        height: 55%;
+        border-radius: 50px;
+    }
+
+    .modal-content-movie {
+        background-color: #181818;
+        margin: 6% auto; /* 15% from the top and centered */
+        padding: 1vh;
+        width: 90%; /* Could be more or less, depending on screen size */
+        height: 80%;
+    }
+
+    .modal-content-movie img {
+        width: 100%;
+        height: 100%;
+        object-fit:contain ;
+    }
+
+    .movie-flex{
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        margin: auto;
+    }
+
+    .movie-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        align-items: center;
+        width: 90%;
+        margin-top: 3vh;
+    }
+
+    .movieposter{
+        width: 40%;
+        margin-left: 2vw;
+    }
+
+    .movie-wrapper .movie-title{
+        padding: 0%;
+        width: 80%;
+        text-align: start;
+        font-weight: 900;
+        font-size: 24px;
+        line-height: 40px;
+        height: 45px;
+    }
+
+    .movie-wrapper .movie-undertitle{
+        width: 80%;
+        display: flex;
+        justify-content: start;
+        text-align: start;
+    }
+
+    #modalGenre, #modalAgeRestriction, #modalRunTime {
+        margin-right: 24px;
+        color: rgba(255,255,255,0.85);
+    }
+
+    .movie-wrapper .movie-description{
+        margin-top: 6px;
+        margin-bottom: 12px;
+        width: 100%;
+        height: 130px;
+        font-size: 14px;
+        text-align:left;
+        overflow-y: auto;
+        padding-left: 3vw;
+        font-weight: 100;
+        color: rgba(255,255,255,0.7);
+    }
+
+    .movie-wrapper .movie-description::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+        height: 5px;
+    }
+
+    .movie-wrapper .movie-description::-webkit-scrollbar-thumb {
+        background-color: #5c5c5c; /* Color of the scrollbar thumb */
+        border-radius: 5px; /* Radius of the scrollbar thumb corners */
+    }
+
+    .movie-wrapper .movie-description::-webkit-scrollbar-track {
+        background-color: #222; /* Color of the scrollbar track */
+    }
+
+    .movie-wrapper .movie-booking{
+        width: 80%;
+        height: 10%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+    }
+
+    .movie-wrapper .movie-trailer{
+        width: 80%;
+        height: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .movie-wrapper .movie-trailer iframe{
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+    .myCancelModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 10; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: hidden; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    .cancel-modal-content {
+        background-color: #121212;
+        margin: 8% auto; /* 15% from the top and centered */
+        padding: 20px;
+        width: 30%; /* Could be more or less, depending on screen size */
+        height: 74%;
+        border: 1px solid white;
+    }
+
+    .cancel-form {
+        position: absolute;
+        top: 54%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        max-height: calc(100vh - 210px);
+        overflow-y: auto;
+    }
+
+    /* The Close Button */
+    .close {
+        z-index: 10;
+        color: #aaa;
+        float: right;
+        font-size: 36px;
+        font-weight: 400;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /*Cancel close button*/
+    .cancelClose {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .cancelClose:hover,
+    .cancelClose:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .login-form {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .login-form div {
+        position: relative;
+        margin: 4vh;
+        padding: 1vh;
+        padding-bottom: 1vh;
+        color: white;
+        border-radius: 20px; /* Border radius for rounded corners */
+        background-color: #222;
+    }
+
+    .login-form div input {
+        width: calc(100% - 60px); /* Adjust width based on padding and border widths */
+        text-align: center;
+        padding: 3px 30px;
+        font-size: 12px;
+        outline: none; /* Remove input outline */
+        background-color: transparent; /* Make input background transparent */
+        color: white; /* Text color */
+        border: 2px solid #1d1037; /* Border color for input focus */
+        border-radius: 20px; /* Match the border-radius of the container */
+    }
+
+    .login-form div input:focus {
+        background-image: linear-gradient(to right, #101040, #501010);;
+    }
+
+
+    .btn-style{
+        background-color: transparent;
+        border: 2px solid;
+        border-image: linear-gradient(to right, #101040, #501010); /* Gradient border */
+        border-image-slice: 1; /* Ensures the entire border is covered by the gradient */
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+    .btn-style:hover{
+        background-color: lightgray;
+        color: #000;
+    }
+    #leftBox{
+        border:1px solid lightgray;
+        margin-top: 140px;
+        margin-left: 15%;
+        padding: 25px;
+        width: 22.5%;
+        float:left;
+        height:auto;
+        background: #192531;
+        font-style: normal;
+        text-align: center;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    }
+    #rightBox{
+        border:1px solid lightgray;
+        margin-top: 140px;
+        margin-left: 5%;
+        padding: 0 25px 25px 25px;
+        width: 42.5%;
+        float:left;
+        height:auto;
+        background: #192531;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+
+    }
+    #addMovieH2{
+        text-transform: uppercase;
+    }
+    .addMovieLabel{
+        display: block;
+        margin-top:15px;
+        margin-bottom: 10px;
+        text-transform: capitalize;
+        font-size: 17px;
+    }
+    .addMovieInput{
+        background: lightgray;
+        padding: 5px 10px 5px 10px;
+        border:1px solid white;
+        color: black;
+        width: 60%;
+    }
+    .addMovieSubmit{
+        margin-top:20px;
+        color:white;
+        background-color: #024825;
+        border: 1px solid lightgray;
+        cursor: pointer;
+        padding: 10px 25px 10px 25px;
+        margin-right:15px;
+        float:left;
+    }
+    .addMovieSubmit:hover{
+        background-color: #036132;
+    }
+    .addMovieBackBtn{
+        margin-top:20px;
+        color:white;
+        background-color: #480202;
+        border: 1px solid lightgray;
+        cursor: pointer;
+        padding: 10px 25px 10px 25px;
+        float:left;
+    }
+    .addMovieBackBtn:hover{
+        background-color: #610303;
+    }
+    .addMovieDescription{
+        width:60%;
+        background: lightgray;
+        padding: 5px 10px 5px 10px;
+        border:1px solid white;
+    }
+
+
+    .seat {
+        width: 30px;
+        height: 25px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        /*filter: hue-rotate(235deg);*/
+        /*filter: hue-rotate(300deg);*/
+    }
+    .vipSeat{
+        width: 30px;
+        height: 25px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        /*filter: hue-rotate(50deg);*/
+    }
+    .seatButtonOccupied{
+        background-color: transparent;
+        border-style: hidden;
+        opacity: 0.15;
+    }
+    .seatButton{
+        background-color: transparent;
+        border-style: hidden;
+    }
+
+    .seatButton:hover{
+        background-color: green;
+        opacity: 50%;
+        border-radius: 50%;
+    }
+    .seatButton.selected {
+        background-color: #116911;
+        border-radius: 30%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 100);
+    }
+
+    .seatDiv {
+        margin-top: 10px;
+    }
+    .ticketDiv{
+        border: gray;
+        border-style: solid;
+        padding: 1vh;
+        margin: 1vh;
+    }
+    .selectedSeatInfoDiv{
+        width: 20%;
+        height: 10%;
+        border-style: solid;
+        border-color: #282424;
+        border-width: 5px;
+        margin-left: auto;
+        /*margin-right: 10%;*/
+    }
+
+    .seatInfoDiv {
+        margin-top: 75px;
+        text-align: center;
+
+    }
+    .seat-flexbox{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items: center;
+        height: 100%;
+        margin: auto;
+    }
+    .seat-id{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+        max-width: 100%;
+    }
+    .section-generator {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: center;
+        /*margin-top: 50vh;*/
+    }
+    .sideBar {
+        width: 40vh;
+        background: #333;
+        height: 140%;
+
+    }
+    .sideBarContent{
+        margin: 1vh 1vw 1vh 1vw;
+        border: 1px solid #fff;
+        padding: 1vh;
+    }
+
+    .footer{
+        width: 100%;
+        height: 100%;
+    }
+    .footer-content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10rem;
+        align-items: start;
+        height: 95%;
+        width: 100%;
+        padding-top: 4vh;
+        background-color: #222;
+    }
+    .footer-bottom{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+    }
+    .footer p{
+        opacity: 75%;
+    }
+
+    /*About page*/
+    .body-text{
+        margin-top: 50%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .about-footer-content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10rem;
+        align-items: start;
+        height: 50%;
+        width: 100%;
+        padding-top: 4vh;
+        background-color: #222;
+    }
+    .about-footer{
+        width: 100%;
+        height: 100%;
+        margin-bottom: 10px;
+    }</style>
 </head>
 
 <body>
