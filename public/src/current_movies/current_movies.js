@@ -45,7 +45,7 @@ export default class CurrentMovies {
                 
                     close.onclick = () => modal.style.display = "none";
                 
-                    window.onclick = (event) => {if (event.target == modal) modal.style.display = "none"};
+                    window.onclick = (event) => { if (event.target == modal) modal.style.display = "none" };
                     // Populate modal with movie details
                     document.getElementById('modalPoster').src = self.movies[index].poster;
                     document.getElementById('modalTitle').textContent = self.movies[index].title;
