@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const storeList = document.getElementById('store-list');
     const totalAmount = document.getElementById('total');
     const storeItems = []; // To keep track of items in the store bucket
+    const totalCostDisplay = document.getElementById('total');
+    const purchaseButton = document.getElementById('purchase-button');
 
     // Function to fetch and display sale items
     function fetchAndDisplaySaleItems() {
@@ -82,7 +84,30 @@ document.addEventListener("DOMContentLoaded", function () {
         totalAmount.textContent = total.toFixed(2);
     }
 
-    // Fetch and display sale items when the page loads
     fetchAndDisplaySaleItems();
     console.log('JavaScript code is executed');
+    // Add an event listener to the "Purchase" button
+
+    purchaseButton.addEventListener('click', function () {
+        const customerPhone = prompt('Please enter your customer number:');
+        if (customerPhone !== null) {
+            const customerNumberInt = parseInt(customerPhone);
+            if (!isNaN(customerNumberInt)) {
+                const saleDate = saleDateInput.value; // Get the selected sale date
+                if (saleDate) {
+                    // Here you can implement the purchase logic
+                    alert(`You have made a purchase on ${saleDate} with a total cost of $${totalCostDisplay.textContent}.`);
+                    alert(`Customer number: ${customerPhone}`);
+                    // You can also send a request to your backend to record the purchase
+                    // and provide more advanced functionality as needed.
+                } else {
+                    alert('Please select a sale date.');
+                }
+            } else {
+                alert('Invalid customer number. Please enter a valid integer.');
+            }
+        } else {
+            alert('Purchase canceled. Please enter a customer number to complete the purchase.');
+        }
+    });
 });
