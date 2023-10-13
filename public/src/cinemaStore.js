@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const saleItemsContainer = document.getElementById('sale-items-container');
-    const storeBucket = document.getElementById('store-bucket');
     const storeList = document.getElementById('store-list');
     const totalAmount = document.getElementById('total');
     const storeItems = []; // To keep track of items in the store bucket
-    const totalCostDisplay = document.getElementById('total');
     const purchaseButton = document.getElementById('purchase-button');
 
     // Function to fetch and display sale items
@@ -26,15 +24,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to display sale items
     function displaySaleItems(saleItems) {
-        saleItems.forEach(item => {
-            createAndDisplayItem(saleItemsContainer, item);
+        saleItems.forEach((item, index) => {
+            createAndDisplayItem(saleItemsContainer, item, index);
         });
     }
 
-    // Create and display sale item
-    function createAndDisplayItem(container, item) {
+// Create and display sale item
+    function createAndDisplayItem(container, item, index) {
         const itemContainer = document.createElement('div');
         itemContainer.classList.add('flexbox-item');
+
+        // Set the background image using CSS
+        itemContainer.style.backgroundImage = `url('${item.posterPicture}')`;
 
         const itemName = document.createElement('span');
         itemName.textContent = `${item.saleItemName} - $${item.saleItemPrice.toFixed(2)}`;
@@ -47,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         itemContainer.appendChild(buyButton);
         container.appendChild(itemContainer);
     }
+
 
     // Function to handle "Buy" button click event
     function addToBucket(item) {
