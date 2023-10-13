@@ -7,6 +7,19 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+}
+html::-webkit-scrollbar-thumb {
+    background-color: #5c5c5c; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Radius of the scrollbar thumb corners */
+}
+
+html::-webkit-scrollbar-track {
+    background-color: #222; /* Color of the scrollbar track */
+}
+
 /* Variables */
 :root {
     --background-color: #101010;
@@ -283,7 +296,7 @@ section:not(.calendar-box .popular-movies-section) {
     color: rgba(255,255,255,0.85);
   }
 
-  .movie-wrapper .movie-description, #modalDescription{
+  .movie-wrapper .movie-description{
     margin-top: 6px;
     margin-bottom: 12px;
     width: 100%;
@@ -295,6 +308,20 @@ section:not(.calendar-box .popular-movies-section) {
     font-weight: 100;
     color: rgba(255,255,255,0.7);
   }
+
+.movie-wrapper .movie-description::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+    height: 5px;
+}
+
+.movie-wrapper .movie-description::-webkit-scrollbar-thumb {
+    background-color: #5c5c5c; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Radius of the scrollbar thumb corners */
+}
+
+.movie-wrapper .movie-description::-webkit-scrollbar-track {
+    background-color: #222; /* Color of the scrollbar track */
+}
 
   .movie-wrapper .movie-booking{
     width: 80%;
