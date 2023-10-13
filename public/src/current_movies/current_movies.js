@@ -45,7 +45,7 @@ export default class CurrentMovies {
                 
                     close.onclick = () => modal.style.display = "none";
                 
-                    window.onclick = (event) => {if (event.target == modal) modal.style.display = "none"};
+                    window.onclick = (event) => { if (event.target == modal) modal.style.display = "none" };
                     // Populate modal with movie details
                     document.getElementById('modalPoster').src = self.movies[index].poster;
                     document.getElementById('modalTitle').textContent = self.movies[index].title;
@@ -54,7 +54,7 @@ export default class CurrentMovies {
                     modal.style.display = "block";
             })})(i);
             flexboxContent.appendChild(divElement);
-            if (i == 7) break; //allow max 8 movies
+            if (i == 6) break; //allow max 8 movies
         }
     }
 } export { CurrentMovies as CurrentMovies };

@@ -21,7 +21,7 @@ export default class MovieRepository extends Repository {
         console.log(`There are ${response.length} movies`);
         if (response.length === 0) return [];
         for (let i = 0; i < response.length; i++) {
-            this.movies.push(this.createMovieObject(response[i])); 
+            this.movies.push(this.createMovieObject(response[i]));
         }
         return this.movies;
     }
@@ -58,4 +58,4 @@ export default class MovieRepository extends Repository {
     }
 
 
-} export { MovieRepository };
+}; export { MovieRepository };

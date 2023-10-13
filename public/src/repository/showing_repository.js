@@ -36,7 +36,7 @@ export default class ShowingRepository extends Repository {
     }
 
     getAllShowings = async function() {
-        const response = await this.fetchData(this.baseURL + "/showings");
+        const response = await this.fetchData(this.allShowings3Months);
         //const response = await this.fetchData(this.allShowings3Months);
         console.log(`There are ${response.length} showings`);
         if (response.length === 0) return [];
