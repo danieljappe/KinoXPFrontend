@@ -1,7 +1,7 @@
 export default class ElementMaker {
     
     //Makes a button
-    getButton = function(className, showingId, text, isDetails, showing) {
+    getButton = function(className, showingId, text, isDetails, showing, isEdit) {
         const button = document.createElement('button'); 
         className != null? button.className = className : null;
         button.innerText = text;
@@ -23,6 +23,8 @@ export default class ElementMaker {
                 document.getElementById('modalDescription').textContent = showing.movie.plot;
                 document.getElementById('modalTrailer').src = self._toEmbeddedLink(showing.movie.trailerURL);
                 modal.style.display = "block";
+            } else if (isEdit) {
+                
             }
         });
         return button;

@@ -84,10 +84,10 @@ export default class MovieSchedule {
         //add buttons
         const buttons = this.elementMaker.getDiv('movie-action-buttons');
         if (!this.isMO) {
-            buttons.appendChild(this.elementMaker.getButton('action-button-left', null, 'Details', true, showing));
-            buttons.appendChild(this.elementMaker.getButton('action-button-right', showing.id, 'Book Seats', false, showing));
+            buttons.appendChild(this.elementMaker.getButton('action-button-left', null, 'Details', true, showing, false));
+            buttons.appendChild(this.elementMaker.getButton('action-button-right', showing.id, 'Book Seats', false, showing, false));
         } else {
-            buttons.appendChild(this.elementMaker.getButton('mo-action-button', null, 'Edit', false, showing));
+            buttons.appendChild(this.elementMaker.getButton('mo-action-button', null, 'Edit', false, showing, true));
         }
         movieBox.appendChild(buttons);
         movieContainer.appendChild(movieBox);
