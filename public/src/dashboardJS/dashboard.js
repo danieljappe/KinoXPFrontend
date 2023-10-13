@@ -163,7 +163,7 @@ moviesDiv.addEventListener('click', function(event) {
                 fetchAndUpdateMovies();
                 // Optionally, you can remove the movie box from the DOM here
                 target.closest('.movieBox').remove(); // Removes the parent .movieBox element
-                loadingElement.style.display = 'none'; // Hide loading message after data is loaded
+                loadingElement.style.display = 'flex'; // Hide loading message after data is loaded
             } else {
                 // Handle errors if the response status is not OK
                 console.error('Movie could not be deleted.');
