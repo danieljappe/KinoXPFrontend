@@ -16,7 +16,6 @@ export default class MovieSchedule {
     }
 
     generateListViewItems = () => {
-        const self = this;
         for (let i = 0; i < this.schedule.schedule.length; i = i + this.schedule.showsPerDay) {
             this._createCard(
                 this.schedule.schedule[i],
@@ -54,11 +53,7 @@ export default class MovieSchedule {
         card.appendChild(this._getMovieContainer(showing2, this.isMO));
     
         //add to list view
-        if (!this.isMO) {
-            this.scheduleDestination.appendChild(card);
-        } else {
-            //moMovieSchedule.appendChild(card);
-        }
+        this.scheduleDestination.appendChild(card);
     }
 
     _getMovieContainer = function(showing) {
