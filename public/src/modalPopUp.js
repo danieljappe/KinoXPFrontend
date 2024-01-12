@@ -89,20 +89,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 //Cancel reservation
-// Cancel reservation Modal
 // Add event listener to cancel button
-//fixme What does this piece of code even do??? The pop up still shows and the functionality of it still works
 const cancelReservationButton = document.querySelector('.cancel-button');
 const cancelForm = document.querySelector('.cancel-form');
-// cancelReservationButton.addEventListener("click", function(event) {
-//     event.preventDefault(); // Prevents the form from being submitted
-//     toggleElement(cancelForm);
-//     if (cancelForm.style.display === "none" || cancelForm.style.display === "") {
-//         cancelForm.style.display = "block";
-//     } else {
-//         cancelForm.style.display = "none";
-//     }
-// });
 
 var cancelModel = document.getElementById("myCancelModal");
 // Get the button that opens the modal
